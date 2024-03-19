@@ -9,8 +9,8 @@ export default function Home() {
     <div className="dark">
       <Hero />
       <Features />
-      <Vision />
       <Mission />
+      <Vision />
       <Faq />
     </div>
   );

@@ -16,17 +16,16 @@ export default function Footer() {
 
         <div className="mt-3">
           <p className="text-gray-500">
-            We&apos;re part of the{" "}
+            Somos parte de&nbsp;
             <a
-              className="font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-500 dark:hover:text-blue-400"
+              className="font-semibold text-green-600 hover:text-green-700 dark:text-green-500 dark:hover:text-green-400"
               href="#"
             >
-              Htmlstream
+              Puerto Rico
             </a>{" "}
-            family.
           </p>
           <p className="text-gray-500">
-            © Albert Car Rental. 2024 Htmlstream. All rights reserved.
+            © Albert Car Rental. 2024. Todos los derechos reservados.
           </p>
         </div>
 

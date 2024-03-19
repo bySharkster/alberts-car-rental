@@ -1,6 +1,13 @@
+"use client";
+
 import Link from "next/link";
+import routes from "@/types/routes";
+import { usePathname } from "next/navigation";
+import path from "path";
 
 export default function Header() {
+  const pathname = usePathname();
+
   return (
     <header className="flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full text-sm fixed">
       <nav
@@ -62,33 +69,28 @@ export default function Header() {
           className="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block"
         >
           <div className="flex flex-col gap-y-4 gap-x-0 mt-5 md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-7 md:mt-0 md:ps-7">
-            <a
-              className="font-medium text-blue-600 md:py-6 dark:text-blue-500"
-              href="/"
-              aria-current="page"
-            >
-              Inicio
-            </a>
-            <Link
-              className="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
-              href="/contact"
-            >
-              Contactanos
-            </Link>
-            <a
-              className="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
-              href="#"
-            >
-              Work
-            </a>
-            <a
-              className="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
-              href="#"
-            >
-              Blog
-            </a>
+            <ul className="flex space-x-4">
+              {routes.map(({ href, label }) => (
+                <li
+                  key={href}
+                  className={`font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500 
+                  ${
+                    pathname === href
+                      ? "text-blue-500 hover:text-blue-400 md:py-6 dark:text-blue-400 dark:hover:text-blue-500"
+                      : ""
+                  }
+                                    
+                  `}
+                >
+                  <Link href={href} key={label}>
+                    <p>{label}</p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
 
-            <div className="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] md:[--trigger:hover] md:py-4">
+            {/* Dropdown Section */}
+            {/* <div className="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] md:[--trigger:hover] md:py-4">
               <button
                 type="button"
                 className="flex items-center w-full text-gray-500 hover:text-gray-400 font-medium dark:text-gray-400 dark:hover:text-gray-500 "
@@ -174,9 +176,10 @@ export default function Header() {
                   Team Account
                 </a>
               </div>
-            </div>
+            </div> */}
 
-            <a
+            {/* Login Section */}
+            {/* <a
               className="flex items-center gap-x-2 font-medium text-gray-500 hover:text-blue-600 md:border-s md:border-gray-300 md:my-6 md:ps-6 dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500"
               href="#"
             >
@@ -196,7 +199,7 @@ export default function Header() {
                 <circle cx="12" cy="7" r="4" />
               </svg>
               Log in
-            </a>
+            </a> */}
           </div>
         </div>
       </nav>

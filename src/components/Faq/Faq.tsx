@@ -7,12 +7,12 @@ export default function Faq() {
         <div className="md:col-span-2">
           <div className="max-w-xs">
             <h2 className="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">
-              Frequently
+              Preguntas
               <br />
-              asked questions
+              Frecuentes
             </h2>
             <p className="mt-1 hidden md:block text-gray-600 dark:text-gray-400">
-              Answers to the most frequently asked questions.
+              Respuestas a las preguntas más realizas
             </p>
           </div>
         </div>
@@ -80,7 +80,7 @@ export default function Faq() {
                 className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-two"
               >
-                My team has credits. How do we use them?
+                Duis condimentum sit amet ex eu feugiat.
                 <svg
                   className="hs-accordion-active:hidden block flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
                   xmlns="http://www.w3.org/2000/svg"
@@ -116,8 +116,10 @@ export default function Faq() {
                 aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-two"
               >
                 <p className="text-gray-600 dark:text-gray-400">
-                  Once your team signs up for a subscription plan. This is where
-                  we sit down, grab a cup of coffee and dial in the details.
+                  Nullam ac diam a est malesuada pharetra. Aliquam suscipit
+                  massa ut arcu vehicula, a elementum lectus semper. Integer
+                  quis augue vel turpis viverra euismod. Ut pretium lectus ac
+                  lacus gravida maximus.
                 </p>
               </div>
             </div>
@@ -166,8 +168,10 @@ export default function Faq() {
                 aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-three"
               >
                 <p className="text-gray-600 dark:text-gray-400">
-                  Our subscriptions are tiered. Understanding the task at hand
-                  and ironing out the wrinkles is key.
+                  Nullam ac diam a est malesuada pharetra. Aliquam suscipit
+                  massa ut arcu vehicula, a elementum lectus semper. Integer
+                  quis augue vel turpis viverra euismod. Ut pretium lectus ac
+                  lacus gravida maximus.
                 </p>
               </div>
             </div>
@@ -217,8 +221,7 @@ export default function Faq() {
               >
                 <p className="text-gray-600 dark:text-gray-400">
                   Protecting the data you trust to Albert Car Rental is our
-                  first priority. This part is really crucial in keeping the
-                  project in line to completion.
+                  first priority.
                 </p>
               </div>
             </div>
@@ -231,7 +234,7 @@ export default function Faq() {
                 className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-five"
               >
-                How do I get access to a theme I purchased?
+                Duis condimentum sit amet ex eu feugiat.
                 <svg
                   className="hs-accordion-active:hidden block flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
                   xmlns="http://www.w3.org/2000/svg"
@@ -267,13 +270,10 @@ export default function Faq() {
                 aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-five"
               >
                 <p className="text-gray-600 dark:text-gray-400">
-                  If you lose the link for a theme you purchased, don&apos;t
-                  panic! We&apos;ve got you covered. You can login to your
-                  account, tap your avatar in the upper right corner, and tap
-                  Purchases. If you didn&apos;t create a login or can&apos;t
-                  remember the information, you can use our handy Redownload
-                  page, just remember to use the same email you originally made
-                  your purchases with.
+                  Nullam ac diam a est malesuada pharetra. Aliquam suscipit
+                  massa ut arcu vehicula, a elementum lectus semper. Integer
+                  quis augue vel turpis viverra euismod. Ut pretium lectus ac
+                  lacus gravida maximus.
                 </p>
               </div>
             </div>
@@ -286,7 +286,7 @@ export default function Faq() {
                 className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-six"
               >
-                Upgrade License Type
+                Duis condimentum sit amet ex eu feugiat.
                 <svg
                   className="hs-accordion-active:hidden block flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
                   xmlns="http://www.w3.org/2000/svg"
@@ -322,10 +322,10 @@ export default function Faq() {
                 aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-six"
               >
                 <p className="text-gray-600 dark:text-gray-400">
-                  There may be times when you need to upgrade your license from
-                  the original type you purchased and we have a solution that
-                  ensures you can apply your original purchase cost to the new
-                  license purchase.
+                  Nullam ac diam a est malesuada pharetra. Aliquam suscipit
+                  massa ut arcu vehicula, a elementum lectus semper. Integer
+                  quis augue vel turpis viverra euismod. Ut pretium lectus ac
+                  lacus gravida maximus.
                 </p>
               </div>
             </div>

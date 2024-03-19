@@ -1,14 +1,14 @@
 export default function Page() {
   //   <!-- Contact Us -->
   return (
-    <div className="max-w-[85rem] px-4 py-10 sm:px-6  lg:px-8 lg:py-14 mx-auto">
+    <div className="max-w-[85rem] px-4 pt-28 pb-10 lg:pt-32 sm:px-6 lg:px-8 lg:pb-14 mx-auto">
       <div className="max-w-2xl lg:max-w-5xl mx-auto">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-gray-800 sm:text-4xl dark:text-white">
-            Contact us
+            Contáctenos
           </h1>
-          <p className="mt-1 text-gray-600 dark:text-gray-400">
-            We&apos;d love to talk about how we can help you.
+          <p className="mt-1 text-gray-800 dark:text-gray-400">
+            Nos encantaria hablar con usted y saber en que podemos ayudarle.
           </p>
         </div>
 
@@ -16,7 +16,7 @@ export default function Page() {
           {/* <!-- Card --> */}
           <div className="flex flex-col border rounded-xl p-4 sm:p-6 lg:p-8 dark:border-gray-700">
             <h2 className="mb-8 text-xl font-semibold text-gray-800 dark:text-gray-200">
-              Fill in the htmlForm
+              Información de Contacto
             </h2>
 
             <form>
@@ -28,27 +28,27 @@ export default function Page() {
                       htmlFor="hs-firstname-contacts-1"
                       className="sr-only"
                     >
-                      First Name
+                      Nombre
                     </label>
                     <input
                       type="text"
                       name="hs-firstname-contacts-1"
                       id="hs-firstname-contacts-1"
                       className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                      placeholder="First Name"
+                      placeholder="Nombre"
                     />
                   </div>
 
                   <div>
                     <label htmlFor="hs-lastname-contacts-1" className="sr-only">
-                      Last Name
+                      Apellido
                     </label>
                     <input
                       type="text"
                       name="hs-lastname-contacts-1"
                       id="hs-lastname-contacts-1"
                       className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                      placeholder="Last Name"
+                      placeholder="Apellidos"
                     />
                   </div>
                 </div>
@@ -56,7 +56,7 @@ export default function Page() {
 
                 <div>
                   <label htmlFor="hs-email-contacts-1" className="sr-only">
-                    Email
+                    Correo Electrónico
                   </label>
                   <input
                     type="email"
@@ -64,32 +64,32 @@ export default function Page() {
                     id="hs-email-contacts-1"
                     autoComplete="email"
                     className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                    placeholder="Email"
+                    placeholder="Correo Electrónico"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="hs-phone-number-1" className="sr-only">
-                    Phone Number
+                    Número de Teléfono
                   </label>
                   <input
                     type="text"
                     name="hs-phone-number-1"
                     id="hs-phone-number-1"
                     className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                    placeholder="Phone Number"
+                    placeholder="Número de Teléfono"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="hs-about-contacts-1" className="sr-only">
-                    Details
+                    Detalles
                   </label>
                   <textarea
                     id="hs-about-contacts-1"
                     name="hs-about-contacts-1"
                     className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                    placeholder="Details"
+                    placeholder="Detalles"
                   ></textarea>
                 </div>
               </div>
@@ -98,15 +98,15 @@ export default function Page() {
               <div className="mt-4 grid">
                 <button
                   type="submit"
-                  className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                  className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-green-600 text-white hover:bg-green-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 >
-                  Send inquiry
+                  Enviar Información
                 </button>
               </div>
 
               <div className="mt-3 text-center">
                 <p className="text-sm text-gray-500">
-                  We&apos;ll get back to you in 1-2 business days.
+                  Nos pondremos en contacto en 1-2 dias laborables.
                 </p>
               </div>
             </form>
@@ -115,7 +115,7 @@ export default function Page() {
 
           <div className="divide-y divide-gray-200 dark:divide-gray-800">
             {/* <!-- Icon Block --> */}
-            <div className="flex gap-x-7 py-6">
+            <div className=" flex gap-x-7 py-6">
               <svg
                 className="flex-shrink-0 size-6 mt-1.5 text-gray-800 dark:text-gray-200"
                 xmlns="http://www.w3.org/2000/svg"
@@ -128,22 +128,22 @@ export default function Page() {
                 stroke-linecap="round"
                 stroke-linejoin="round"
               >
-                <circle cx="12" cy="12" r="10" />
-                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-                <path d="M12 17h.01" />
+                <path d="m7 11 2-2-2-2" />
+                <path d="M11 13h4" />
+                <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
               </svg>
               <div className="grow">
                 <h3 className="font-semibold text-gray-800 dark:text-gray-200">
-                  Knowledgebase
+                  Listo para alquilar
                 </h3>
                 <p className="mt-1 text-sm text-gray-500">
-                  We&apos;re here to help with any questions or code.
+                  Escribenos por whatsapp{" "}
                 </p>
                 <a
                   className="mt-2 inline-flex items-center gap-x-2 text-sm font-medium text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                  href="#"
+                  href="https://wa.link/k91t18"
                 >
-                  Contact support
+                  Alquila Ya
                   <svg
                     className="flex-shrink-0 size-2.5 transition ease-in-out group-hover:translate-x-1"
                     width="16"
@@ -186,13 +186,14 @@ export default function Page() {
                   FAQ
                 </h3>
                 <p className="mt-1 text-sm text-gray-500">
-                  Search our FAQ htmlFor answers to anything you might ask.
+                  Busca nuestras Preguntas Frecuente para respuestas de dudas
+                  que podrias tener.
                 </p>
                 <a
                   className="mt-2 inline-flex items-center gap-x-2 text-sm font-medium text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                   href="#"
                 >
-                  Visit FAQ
+                  Visita las Preguntas Frecuentes
                   <svg
                     className="flex-shrink-0 size-2.5 transition ease-in-out group-hover:translate-x-1"
                     width="16"
@@ -214,7 +215,7 @@ export default function Page() {
             {/* <!-- End Icon Block --> */}
 
             {/* <!-- Icon Block --> */}
-            <div className=" flex gap-x-7 py-6">
+            <div className="flex gap-x-7 py-6">
               <svg
                 className="flex-shrink-0 size-6 mt-1.5 text-gray-800 dark:text-gray-200"
                 xmlns="http://www.w3.org/2000/svg"
@@ -227,22 +228,22 @@ export default function Page() {
                 stroke-linecap="round"
                 stroke-linejoin="round"
               >
-                <path d="m7 11 2-2-2-2" />
-                <path d="M11 13h4" />
-                <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+                <circle cx="12" cy="12" r="10" />
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                <path d="M12 17h.01" />
               </svg>
               <div className="grow">
                 <h3 className="font-semibold text-gray-800 dark:text-gray-200">
-                  Developer APIs
+                  Servicio
                 </h3>
                 <p className="mt-1 text-sm text-gray-500">
-                  Check out our development quickstart guide.
+                  Estamos aqui para ayudarte en lo que necesites.
                 </p>
                 <a
                   className="mt-2 inline-flex items-center gap-x-2 text-sm font-medium text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                  href="#"
+                  href="https://wa.link/7hyee9"
                 >
-                  Contact sales
+                  Contacte a soporte
                   <svg
                     className="flex-shrink-0 size-2.5 transition ease-in-out group-hover:translate-x-1"
                     width="16"
@@ -282,16 +283,16 @@ export default function Page() {
               </svg>
               <div className="grow">
                 <h3 className="font-semibold text-gray-800 dark:text-gray-200">
-                  Contact us by email
+                  Contáctenos por correo electrónico
                 </h3>
                 <p className="mt-1 text-sm text-gray-500">
-                  If you wish to write us an email instead please use
+                  Si desea escribirnos por correo electrónico
                 </p>
                 <a
                   className="mt-2 inline-flex items-center gap-x-2 text-sm font-medium text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                  href="#"
+                  href="mailto:contact@albercarrental.com"
                 >
-                  example@site.com
+                  contact@albercarrental.com
                 </a>
               </div>
             </div>

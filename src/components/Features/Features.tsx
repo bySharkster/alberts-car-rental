@@ -9,7 +9,7 @@ export default function Features() {
         <div className="relative z-10 lg:grid lg:grid-cols-12 lg:gap-16 lg:items-center">
           <div className="mb-10 lg:mb-0 lg:col-span-6 lg:col-start-8 lg:order-2">
             <h2 className="text-2xl text-gray-800 font-bold sm:text-3xl dark:text-gray-200">
-              Fully customizable rules to match your unique needs
+              Nullam ac diam a est malesuada pharetra.
             </h2>
 
             {/* <!-- Tab Navs --> */}
@@ -47,11 +47,12 @@ export default function Features() {
                   </svg>
                   <span className="grow ms-6">
                     <span className="block text-lg font-semibold hs-tab-active:text-blue-600 text-gray-800 dark:hs-tab-active:text-blue-500 dark:text-gray-200">
-                      Advanced tools
+                      Carro 1{" "}
                     </span>
                     <span className="block mt-1 text-gray-800 dark:hs-tab-active:text-gray-200 dark:text-gray-200">
-                      Use Albert Car Rental thoroughly thought and automated
-                      libraries to manage your businesses.
+                      Aliquam suscipit massa ut arcu vehicula, a elementum
+                      lectus semper. Integer quis augue vel turpis viverra
+                      euismod. Ut pretium lectus ac lacus gravida maximus.
                     </span>
                   </span>
                 </span>
@@ -83,11 +84,12 @@ export default function Features() {
                   </svg>
                   <span className="grow ms-6">
                     <span className="block text-lg font-semibold hs-tab-active:text-blue-600 text-gray-800 dark:hs-tab-active:text-blue-500 dark:text-gray-200">
-                      Smart dashboards
+                      Carro 2{" "}
                     </span>
                     <span className="block mt-1 text-gray-800 dark:hs-tab-active:text-gray-200 dark:text-gray-200">
-                      Quickly Albert Car Rental sample components, copy-paste
-                      codes, and start right off.
+                      Aliquam suscipit massa ut arcu vehicula, a elementum
+                      lectus semper. Integer quis augue vel turpis viverra
+                      euismod. Ut pretium lectus ac lacus gravida maximus.
                     </span>
                   </span>
                 </span>
@@ -122,11 +124,12 @@ export default function Features() {
                   </svg>
                   <span className="grow ms-6">
                     <span className="block text-lg font-semibold hs-tab-active:text-blue-600 text-gray-800 dark:hs-tab-active:text-blue-500 dark:text-gray-200">
-                      Powerful features
+                      Add-ons{" "}
                     </span>
                     <span className="block mt-1 text-gray-800 dark:hs-tab-active:text-gray-200 dark:text-gray-200">
-                      Reduce time and effort on building modern look design with
-                      Albert Car Rental only.
+                      Aliquam suscipit massa ut arcu vehicula, a elementum
+                      lectus semper. Integer quis augue vel turpis viverra
+                      euismod. Ut pretium lectus ac lacus gravida maximus.
                     </span>
                   </span>
                 </span>
@@ -147,7 +150,7 @@ export default function Features() {
                 >
                   <Image
                     className="shadow-xl shadow-gray-200 rounded-xl dark:shadow-gray-900/[.2]"
-                    src="https://images.unsplash.com/photo-1605629921711-2f6b00c6bbf4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&h=1220&q=80"
+                    src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     alt="Image Description"
                     width={500}
                     height={500}
@@ -162,7 +165,7 @@ export default function Features() {
                 >
                   <Image
                     className="shadow-xl shadow-gray-200 rounded-xl dark:shadow-gray-900/[.2]"
-                    src="https://images.unsplash.com/photo-1665686306574-1ace09918530?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&h=1220&q=80"
+                    src="https://images.unsplash.com/photo-1559416523-140ddc3d238c?q=80&w=2051&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     alt="Image Description"
                     width={500}
                     height={500}
@@ -177,7 +180,7 @@ export default function Features() {
                 >
                   <Image
                     className="shadow-xl shadow-gray-200 rounded-xl dark:shadow-gray-900/[.2]"
-                    src="https://images.unsplash.com/photo-1598929213452-52d72f63e307?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&h=1220&q=80"
+                    src="https://images.unsplash.com/photo-1612764811443-091302bb1e2d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     alt="Image Description"
                     width={500}
                     height={500}

@@ -7,14 +7,13 @@ export default function Mision() {
         <div className="grid gap-12">
           <div>
             <h2 className="text-3xl text-gray-800 font-bold lg:text-4xl dark:text-white">
-              Our mision
+              Nuestra Misión
             </h2>
             <p className="mt-3 text-gray-800 dark:text-gray-400">
-              For as long as there have been cities, the public square has been
-              a fundamental part of the urban landscape - an open, approachable
-              space to meet and engage with friends and neighbours. Space aims
-              to capture this spirit of bringing people together in an exciting,
-              welcoming environment.
+              En Albert Car Rental, potenciamos su viaje con soluciones de
+              alquiler de vehículos asequibles y confiables. Experimente la
+              libertad y la comodidad de explorar Puerto Rico a su propio ritmo,
+              ya sea residente local o turista visitante.
             </p>
           </div>
 
@@ -43,12 +42,12 @@ export default function Mision() {
               </svg>
               <div className="ms-5 sm:ms-8">
                 <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200">
-                  High quality Co-Living spaces
+                  Calidad y libertad
                 </h3>
                 <p className="mt-1 text-gray-600 dark:text-gray-400">
-                  Our fully furnished spaces are designed and purpose-built with
-                  Co-Living in mind, featuring high-end finishes and amenities
-                  that go far beyond traditional apartment buildings.
+                  En Albert Car Rental, no nos dedicamos sólo al alquiler de
+                  coches, nuestro objetivo es proporcionar una puerta de entrada
+                  a la libertad y la exploración.
                 </p>
               </div>
             </div>
@@ -75,42 +74,13 @@ export default function Mision() {
               </svg>
               <div className="ms-5 sm:ms-8">
                 <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200">
-                  Fostering vibrant communities
+                  Una Verdadera Aventura
                 </h3>
                 <p className="mt-1 text-gray-600 dark:text-gray-400">
-                  Our passion is bringing people together. Beyond creating
-                  beautiful spaces, we provide shared experiences.
-                </p>
-              </div>
-            </div>
-            {/* <!-- End Icon Block --> */}
-
-            {/* <!-- Icon Block --> */}
-            <div className="flex">
-              <svg
-                className="flex-shrink-0 mt-2 size-6 text-gray-800 dark:text-white"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M7 10v12" />
-                <path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2h0a3.13 3.13 0 0 1 3 3.88Z" />
-              </svg>
-              <div className="ms-5 sm:ms-8">
-                <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200">
-                  Simple and all-inclusive
-                </h3>
-                <p className="mt-1 text-gray-600 dark:text-gray-400">
-                  We worry about the details so that our residents don&apos;t
-                  have to. From our online application process to simple,
-                  all-inclusive billing we aim to make the living experience as
-                  effortless as possible.
+                  Con un compromiso con la accesibilidad, la confiabilidad y un
+                  servicio al cliente incomparable, nos aseguramos de que cada
+                  viaje que emprenda con nuestros vehículos no sea solo un
+                  viaje, sino una verdadera aventura con comodidad y estilo.
                 </p>
               </div>
             </div>
