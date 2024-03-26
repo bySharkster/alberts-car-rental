@@ -9,7 +9,7 @@ export default function Features() {
         <div className="relative z-10 lg:grid lg:grid-cols-12 lg:gap-16 lg:items-center">
           <div className="mb-10 lg:mb-0 lg:col-span-6 lg:col-start-8 lg:order-2">
             <h2 className="text-2xl text-gray-800 font-bold sm:text-3xl dark:text-gray-200">
-              Nullam ac diam a est malesuada pharetra.
+              Servicio de Alquiler de Vehiculos desde $35.00+
             </h2>
 
             {/* <!-- Tab Navs --> */}
@@ -46,18 +46,21 @@ export default function Features() {
 
                   <span className="grow ms-6">
                     <span className="block text-lg font-semibold hs-tab-active:text-blue-600 text-gray-800 dark:hs-tab-active:text-blue-500 dark:text-gray-200">
-                      Carro 1{" "}
+                      Toyota Yaris 2016
                     </span>
                     <span className="block mt-1 text-gray-800 dark:hs-tab-active:text-gray-200 dark:text-gray-200">
-                      Aliquam suscipit massa ut arcu vehicula, a elementum
-                      lectus semper. Integer quis augue vel turpis viverra
-                      euismod. Ut pretium lectus ac lacus gravida maximus.
+                      <ul>
+                        <li> Amplio y espacioso</li>
+                        <li> Transmision Automatica</li>
+                        <li> Hasta 5 personas</li>
+                        <li> Excelente Aire Acondicionado</li>
+                      </ul>
                     </span>
                   </span>
                 </span>
               </button>
 
-              <button
+              {/* <button
                 type="button"
                 className="hs-tab-active:bg-white hs-tab-active:shadow-md hs-tab-active:hover:border-transparent text-start hover:bg-gray-200 p-4 md:p-5 rounded-xl dark:hs-tab-active:bg-slate-900 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 id="tabs-with-card-item-2"
@@ -94,7 +97,7 @@ export default function Features() {
                     </span>
                   </span>
                 </span>
-              </button>
+              </button> */}
 
               <button
                 type="button"
@@ -125,12 +128,17 @@ export default function Features() {
                   </svg>
                   <span className="grow ms-6">
                     <span className="block text-lg font-semibold hs-tab-active:text-blue-600 text-gray-800 dark:hs-tab-active:text-blue-500 dark:text-gray-200">
-                      Add-ons{" "}
+                      Add-ons
                     </span>
                     <span className="block mt-1 text-gray-800 dark:hs-tab-active:text-gray-200 dark:text-gray-200">
-                      Aliquam suscipit massa ut arcu vehicula, a elementum
-                      lectus semper. Integer quis augue vel turpis viverra
-                      euismod. Ut pretium lectus ac lacus gravida maximus.
+                      <ul>
+                        <li>
+                          Ofrecemos servicio de alquiler de &apos;car seat&apos;
+                          para los mas pequeños. <br />
+                          <br />
+                        </li>
+                        <li>Entre otros servicios...</li>
+                      </ul>
                     </span>
                   </span>
                 </span>
@@ -151,14 +159,14 @@ export default function Features() {
                 >
                   <Image
                     className="shadow-xl shadow-gray-200 rounded-xl dark:shadow-gray-900/[.2]"
-                    src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="Image Description"
+                    src="/images/car1.png"
+                    alt=""
                     width={500}
                     height={500}
                   />
                 </div>
 
-                <div
+                {/* <div
                   id="tabs-with-card-2"
                   className="hidden"
                   role="tabpanel"
@@ -171,7 +179,7 @@ export default function Features() {
                     width={500}
                     height={500}
                   />
-                </div>
+                </div> */}
 
                 <div
                   id="tabs-with-card-3"

@@ -12,7 +12,7 @@ export default function Faq() {
               Frecuentes
             </h2>
             <p className="mt-1 hidden md:block text-gray-600 dark:text-gray-400">
-              Respuestas a las preguntas más realizas
+              Respuestas a las preguntas más realizadas
             </p>
           </div>
         </div>
@@ -29,7 +29,7 @@ export default function Faq() {
                 className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-one"
               >
-                Can I cancel at anytime?
+                Donde se recoge el vehículo?
                 <svg
                   className="hs-accordion-active:hidden block flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
                   xmlns="http://www.w3.org/2000/svg"
@@ -65,9 +65,8 @@ export default function Faq() {
                 aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-one"
               >
                 <p className="text-gray-600 dark:text-gray-400">
-                  Yes, you can cancel anytime no questions are asked while you
-                  cancel but we would highly appreciate if you will give us some
-                  feedback.
+                  El vehículo se recoge y se entrega en Ponce PR, la ubicación
+                  del vehículo se le enviará el día que haga la reservación.
                 </p>
               </div>
             </div>
@@ -80,7 +79,7 @@ export default function Faq() {
                 className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-two"
               >
-                Duis condimentum sit amet ex eu feugiat.
+                Desde cuanto comienzan los alquileres de vehículos?
                 <svg
                   className="hs-accordion-active:hidden block flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
                   xmlns="http://www.w3.org/2000/svg"
@@ -116,10 +115,8 @@ export default function Faq() {
                 aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-two"
               >
                 <p className="text-gray-600 dark:text-gray-400">
-                  Nullam ac diam a est malesuada pharetra. Aliquam suscipit
-                  massa ut arcu vehicula, a elementum lectus semper. Integer
-                  quis augue vel turpis viverra euismod. Ut pretium lectus ac
-                  lacus gravida maximus.
+                  Los alquileres comienzan desde $35.00 (precio varía por
+                  temporada).
                 </p>
               </div>
             </div>
@@ -132,7 +129,7 @@ export default function Faq() {
                 className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-three"
               >
-                How does Albert Car Rental&apos;s pricing work?
+                Donde está localizado el local?
                 <svg
                   className="hs-accordion-active:hidden block flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
                   xmlns="http://www.w3.org/2000/svg"
@@ -168,10 +165,8 @@ export default function Faq() {
                 aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-three"
               >
                 <p className="text-gray-600 dark:text-gray-400">
-                  Nullam ac diam a est malesuada pharetra. Aliquam suscipit
-                  massa ut arcu vehicula, a elementum lectus semper. Integer
-                  quis augue vel turpis viverra euismod. Ut pretium lectus ac
-                  lacus gravida maximus.
+                  Actualmente no contamos con local físico, el recogido y la
+                  entrega se realiza en la ubicación proporcionada.
                 </p>
               </div>
             </div>
@@ -184,7 +179,7 @@ export default function Faq() {
                 className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-four"
               >
-                How secure is Albert Car Rental?
+                Puedo cancelar el alquiler?
                 <svg
                   className="hs-accordion-active:hidden block flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
                   xmlns="http://www.w3.org/2000/svg"
@@ -220,8 +215,9 @@ export default function Faq() {
                 aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-four"
               >
                 <p className="text-gray-600 dark:text-gray-400">
-                  Protecting the data you trust to Albert Car Rental is our
-                  first priority.
+                  Si, puede cancelar tomando en cuenta las políticas de
+                  cancelación y devolución de dinero provistas en el contrato el
+                  día de la reservación.
                 </p>
               </div>
             </div>
@@ -234,7 +230,7 @@ export default function Faq() {
                 className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-five"
               >
-                Duis condimentum sit amet ex eu feugiat.
+                Puedo re agendar el alquiler?
                 <svg
                   className="hs-accordion-active:hidden block flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
                   xmlns="http://www.w3.org/2000/svg"
@@ -270,10 +266,8 @@ export default function Faq() {
                 aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-five"
               >
                 <p className="text-gray-600 dark:text-gray-400">
-                  Nullam ac diam a est malesuada pharetra. Aliquam suscipit
-                  massa ut arcu vehicula, a elementum lectus semper. Integer
-                  quis augue vel turpis viverra euismod. Ut pretium lectus ac
-                  lacus gravida maximus.
+                  Si, puede re agendar el alquiler siempre y cuando haya
+                  disponibilidad en la nueva fecha.
                 </p>
               </div>
             </div>
@@ -286,7 +280,7 @@ export default function Faq() {
                 className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-six"
               >
-                Duis condimentum sit amet ex eu feugiat.
+                Tengo que tener licencia de conducir para poder reservar?
                 <svg
                   className="hs-accordion-active:hidden block flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
                   xmlns="http://www.w3.org/2000/svg"
@@ -322,10 +316,58 @@ export default function Faq() {
                 aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-six"
               >
                 <p className="text-gray-600 dark:text-gray-400">
-                  Nullam ac diam a est malesuada pharetra. Aliquam suscipit
-                  massa ut arcu vehicula, a elementum lectus semper. Integer
-                  quis augue vel turpis viverra euismod. Ut pretium lectus ac
-                  lacus gravida maximus.
+                  Si, necesita licencia de conducir vigente (no aprendiz) para
+                  realizar la reservación y conducir el vehículo.
+                </p>
+              </div>
+            </div>
+
+            <div
+              className="hs-accordion pt-6 pb-3"
+              id="hs-basic-with-title-and-arrow-stretched-heading-seven"
+            >
+              <button
+                className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-seven"
+              >
+                Puede conducir el vehículo cualquier persona?
+                <svg
+                  className="hs-accordion-active:hidden block flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+                <svg
+                  className="hs-accordion-active:block hidden flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m18 15-6-6-6 6" />
+                </svg>
+              </button>
+              <div
+                id="hs-basic-with-title-and-arrow-stretched-collapse-seven"
+                className="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
+                aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-seven"
+              >
+                <p className="text-gray-600 dark:text-gray-400">
+                  No, solo la persona que hace la reservación está autorizado/a
+                  a conducir el vehículo ya que es el/la responsable del mismo.
                 </p>
               </div>
             </div>
