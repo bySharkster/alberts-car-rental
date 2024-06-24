@@ -4,9 +4,18 @@ import Link from "next/link";
 import routes from "@/types/routes";
 import { usePathname } from "next/navigation";
 import path from "path";
+import Image from "next/image";
+import { useRef } from "react";
 
 export default function Header() {
   const pathname = usePathname();
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+
+  const handlePClick = () => {
+    if (buttonRef.current) {
+      buttonRef.current.click();
+    }
+  };
 
   return (
     <header className="flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full text-sm fixed">
@@ -15,15 +24,23 @@ export default function Header() {
         aria-label="Global"
       >
         <div className="flex items-center justify-between">
-          <a
+          <Link
             className="flex-none text-xl font-semibold dark:text-white"
             href="/"
             aria-label="Brand"
           >
-            Albert Car Rental
-          </a>
+            <figure className="w-48">
+              <Image
+                src={"/images/logo.png"}
+                alt="logo"
+                width={120}
+                height={120}
+              />
+            </figure>
+          </Link>
           <div className="md:hidden">
             <button
+              ref={buttonRef}
               type="button"
               className="hs-collapse-toggle size-8 flex justify-center items-center text-sm font-semibold rounded-full border border-gray-200 text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
               data-hs-collapse="#navbar-collapse-with-animation"
@@ -73,7 +90,7 @@ export default function Header() {
               {routes.map(({ href, label }) => (
                 <li
                   key={href}
-                  className={`font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500 
+                  className={`font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500  
                   ${
                     pathname === href
                       ? "text-blue-500 hover:text-blue-400 md:py-6 dark:text-blue-400 dark:hover:text-blue-500"
@@ -83,7 +100,7 @@ export default function Header() {
                   `}
                 >
                   <Link href={href} key={label}>
-                    <p>{label}</p>
+                    <p onClick={handlePClick}>{label}</p>
                   </Link>
                 </li>
               ))}

@@ -15,9 +15,14 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+
       fontFamily: {
-        sans: ["Graphik", "sans-serif"],
-        serif: ["Merriweather", "serif"],
+        heading: "Kanit",
+        body: "Audiowide",
+      },
+      fontWeight: {
+        normal: "400",
+        bold: "700",
       },
     },
   },
