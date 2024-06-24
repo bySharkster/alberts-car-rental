@@ -50,7 +50,6 @@ const cars: Car[] = [
         id: 4,
         name: "Excelente rendimiento de combustible",
       },
-      { id: 5, name: "Cámara de retroceso" },
     ],
     imgUrl: "/images/kia-rio.png",
   },
