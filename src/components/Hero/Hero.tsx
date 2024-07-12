@@ -4,7 +4,8 @@ export default function Hero() {
   return (
     // <!-- Hero -->
     <div className="pt-20 min-h-[80vh]">
-      <VideoBackground />
+      {/* <!-- Video Background --> */}
+
       <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pb-24 pt-28 space-y-8">
         {/* <!-- Announcement Banner --> */}
         {/* <div className="flex justify-center">
@@ -90,6 +91,7 @@ export default function Hero() {
         </div>
         {/* <!-- End Buttons --> */}
       </div>
+      <VideoBackground />
     </div>
     // <!-- End Hero -->
   );
