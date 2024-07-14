@@ -1,19 +1,23 @@
 import config from "@/config";
 import Mailgun from "mailgun.js";
-const formData = require("form-data");
-const mailgun = new Mailgun(formData);
+import FormData from "form-data";
+import { EmailTemplate } from "@/components/email-template";
+const mailgun = new Mailgun(FormData);
 
 const mg = mailgun.client({
   username: "api",
-  key: process.env.MAILGUN_API_KEY || " ",
+  key:
+    process.env.NEXT_MAILGUN_API_KEY ||
+    "yb844d52dfff2f2e9e9e32956578c81be-8a084751-535738c0",
+  url: "https://api.mailgun.net",
 });
 
-if (!process.env.MAILGUN_API_KEY && process.env.NODE_ENV === "production") {
-  console.group("⚠️ MAILGUN_API_KEY missing from .env");
-  console.error("It's not mandatory but it's required to send emails.");
-  console.error("If you don't need it, remove the code from /libs/mailgun.js");
-  console.groupEnd();
-}
+// if (!process.env.NEXT_MAILGUN_API_KEY) {
+//   console.group("⚠️ NEXT_MAILGUN_API_KEY missing from .env");
+//   console.error("It's not mandatory but it's required to send emails.");
+//   console.error("If you don't need it, remove the code from /libs/mailgun.js");
+//   console.groupEnd();
+// }
 
 /**
  * Sends an email using the provided parameters.
@@ -28,25 +32,44 @@ if (!process.env.MAILGUN_API_KEY && process.env.NODE_ENV === "production") {
  */
 
 export const sendEmail = async ({
+  email,
+  firstName,
+  lastName,
+  phoneNumber,
   to,
   subject,
   text,
   html,
   replyTo,
 }: {
-  to: string;
+  email?: string;
+  firstName?: string;
+  lastName?: string;
+  phoneNumber?: string;
+  to?: string;
   subject: string;
-  text?: string;
+  text: string;
   html?: string;
   replyTo?: string;
 }): Promise<any> => {
   const data = {
-    from: "",
-    to: [to],
+    from: config.mailgun.supportEmail,
+    to,
     subject,
     text,
     html,
-    template: "", // Add the template property here
+    template: `
+    <div>
+      <h1>
+        Hi ALbert,
+        ${firstName} ${lastName} wants to get in touch with you!
+      </h1>
+      <p>Phone Number: ${phoneNumber}</p>
+      <p>Email:${email}</p>
+
+      <pre>${text}</pre>
+    </div>
+    `,
     ...(replyTo && { "h:Reply-To": replyTo }),
   };
 

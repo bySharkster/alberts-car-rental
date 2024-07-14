@@ -1,17 +1,17 @@
 "use client";
 import React, { useState } from "react";
 import Toast from "@/components/toast/toast";
-import { sendEmail } from "@/libs/mailgun";
+import axios from "axios";
 
 export default function ContactForm() {
   const [showToast, setShowToast] = useState(false);
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
 
   const [formData, setFormData] = useState({
-    to: "",
-    subject: firstName + " " + lastName + " - " + phoneNumber,
+    email: "",
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
     text: "",
   });
   const [message, setMessage] = useState("");
@@ -28,21 +28,22 @@ export default function ContactForm() {
     setMessage("");
 
     try {
-      const response = await sendEmail(formData);
+      const response = await axios.post("/api/contact/mailgun", formData);
 
-      if (response.ok) {
-        setMessage("Email sent successfully!");
-        console.log("Email sent successfully!");
-      } else {
-        const errorData = await response.json();
-        setMessage(
-          `Error: ${
-            errorData.error || "An error occurred while sending the email."
-          }`
-        );
+      if (response.status === 200) {
+        setMessage("Email sent successfully.");
+        setShowToast(true);
+        setFormData({
+          email: "",
+          firstName: "",
+          lastName: "",
+          phoneNumber: "",
+          text: "",
+        });
       }
     } catch (error) {
       setMessage("An error occurred while sending the email.");
+      setShowToast(true);
       console.log("An error occurred while sending the email.");
     }
   };
@@ -63,8 +64,10 @@ export default function ContactForm() {
               </label>
               <input
                 type="text"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
+                value={formData.firstName}
+                onChange={(e) =>
+                  setFormData({ ...formData, firstName: e.target.value })
+                }
                 name="firstName"
                 id="firstName"
                 className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
@@ -80,8 +83,10 @@ export default function ContactForm() {
               <input
                 type="text"
                 name="lastName"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
+                value={formData.lastName}
+                onChange={(e) =>
+                  setFormData({ ...formData, lastName: e.target.value })
+                }
                 id="lastName"
                 className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                 placeholder="Apellidos"
@@ -98,8 +103,10 @@ export default function ContactForm() {
             <input
               type="email"
               name="to"
-              value={formData.to}
-              onChange={handleChange}
+              value={formData.email}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
               id="email"
               autoComplete="email"
               className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
@@ -115,8 +122,10 @@ export default function ContactForm() {
             <input
               type="text"
               name="phoneNumber"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
+              value={formData.phoneNumber}
+              onChange={(e) =>
+                setFormData({ ...formData, phoneNumber: e.target.value })
+              }
               id="phoneNumber"
               className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
               placeholder="Número de Teléfono"
@@ -131,7 +140,9 @@ export default function ContactForm() {
             <textarea
               name="text"
               value={formData.text}
-              onChange={handleChange}
+              onChange={(e) =>
+                setFormData({ ...formData, text: e.target.value })
+              }
               id="about"
               className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
               placeholder="Detalles"
