@@ -15,7 +15,7 @@ export default function Page() {
           </p>
         </div>
 
-        <div className="mt-12 grid items-center lg:grid-cols-2 gap-6 lg:gap-16">
+        <div className="mt-12 grid items-center lg:grid-cols-2 gap-6 lg:gap-16 ">
           {/* <!-- Card --> */}
           <ContactForm />
           {/* <!-- End Card --> */}

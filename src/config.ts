@@ -3,6 +3,7 @@ import { ConfigProps } from "@/types/config";
 const config = {
   appName: "Albert Car Rental",
   appDescription: "Your car rental service in the city of Ponce, Puerto Rico",
+  ownerPhone: "+1 (787) 251-1659",
   domainName: "albertcarrental.com",
   mailgun: {
     // subdomain to use when sending emails, if you don't have a subdomain, just remove it. Highly recommended to have one (i.e. mg.yourdomain.com or mail.yourdomain.com)
