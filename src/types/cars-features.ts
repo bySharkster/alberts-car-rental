@@ -59,19 +59,15 @@ const cars: Car[] = [
     features: [
       {
         id: 1,
-        name: "",
+        name: "Comodidad y estabilidad ", //para un viaje suave y estable en diferentes tipos de terreno
       },
       {
         id: 2,
-        name: "",
+        name: "Capacidad de carga para llevar fácilmente un pasajero o transportar tus pertenencias sin problemas", // Con una capacidad de carga máxima de 331 libras con la que podrás
       },
       {
         id: 3,
-        name: "",
-      },
-      {
-        id: 4,
-        name: "Maximo rendimiento de combustible",
+        name: "Maximo rendimiento de combustible con hasta 90 MPG", // Con un rendimiento de combustible de hasta 90 MPG, el SM 200 EFI es una excelente opción para aquellos que buscan un vehículo económico y eficiente.
       },
     ],
     imgUrl: "/images/supermatch-sm-200-efi-2024.jpg",
