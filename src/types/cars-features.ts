@@ -54,6 +54,29 @@ const cars: Car[] = [
     imgUrl: "/images/kia-rio.png",
   },
   {
+    id: 3,
+    name: "Supermatch SM 200 EFI 20247",
+    features: [
+      {
+        id: 1,
+        name: "",
+      },
+      {
+        id: 2,
+        name: "",
+      },
+      {
+        id: 3,
+        name: "",
+      },
+      {
+        id: 4,
+        name: "Maximo rendimiento de combustible",
+      },
+    ],
+    imgUrl: "/images/supermatch-sm-200-efi-2024.jpg",
+  },
+  {
     id: 100,
     name: "Add-ons",
     features: [
