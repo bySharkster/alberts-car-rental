@@ -14,7 +14,7 @@ export default function Faq() {
               <br />
               Frecuentes
             </h2>
-            <p className="mt-1 hidden md:block text-gray-600 dark:text-gray-400">
+            <p className="mt-1 hidden md:block text-gray-600 dark:text-white">
               Respuestas a las preguntas más realizadas
             </p>
           </div>
@@ -29,12 +29,12 @@ export default function Faq() {
               id="hs-basic-with-title-and-arrow-stretched-heading-one"
             >
               <button
-                className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                className="hs-accordion-toggle group pl-1 pr-3 py-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-lime-700"
                 aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-one"
               >
                 Donde se recoge el vehículo?
                 <svg
-                  className="hs-accordion-active:hidden block flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
+                  className="hs-accordion-active:hidden block flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-white"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -48,7 +48,7 @@ export default function Faq() {
                   <path d="m6 9 6 6 6-6" />
                 </svg>
                 <svg
-                  className="hs-accordion-active:block hidden flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
+                  className="hs-accordion-active:block hidden flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-white"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -67,7 +67,7 @@ export default function Faq() {
                 className="hs-accordion-content w-full overflow-hidden transition-[height] duration-300"
                 aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-one"
               >
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-gray-600 dark:text-white pl-2">
                   El vehículo se recoge y se entrega en Ponce PR, la ubicación
                   del vehículo se le enviará el día que haga la reservación.
                 </p>
@@ -79,12 +79,12 @@ export default function Faq() {
               id="hs-basic-with-title-and-arrow-stretched-heading-two"
             >
               <button
-                className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                className="hs-accordion-toggle group pl-1 pr-3 py-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-lime-700"
                 aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-two"
               >
                 Desde cuanto comienzan los alquileres de vehículos?
                 <svg
-                  className="hs-accordion-active:hidden block flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
+                  className="hs-accordion-active:hidden block flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-white"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -98,7 +98,7 @@ export default function Faq() {
                   <path d="m6 9 6 6 6-6" />
                 </svg>
                 <svg
-                  className="hs-accordion-active:block hidden flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
+                  className="hs-accordion-active:block hidden flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-white"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -117,7 +117,7 @@ export default function Faq() {
                 className="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
                 aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-two"
               >
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-gray-600 dark:text-white pl-2">
                   Los alquileres comienzan desde $35.00 (precio varía por
                   temporada).
                 </p>
@@ -129,12 +129,12 @@ export default function Faq() {
               id="hs-basic-with-title-and-arrow-stretched-heading-three"
             >
               <button
-                className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                className="hs-accordion-toggle group pl-1 pr-3 py-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-lime-700"
                 aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-three"
               >
                 Donde está localizado el local?
                 <svg
-                  className="hs-accordion-active:hidden block flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
+                  className="hs-accordion-active:hidden block flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-white"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -148,7 +148,7 @@ export default function Faq() {
                   <path d="m6 9 6 6 6-6" />
                 </svg>
                 <svg
-                  className="hs-accordion-active:block hidden flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
+                  className="hs-accordion-active:block hidden flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-white"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -167,7 +167,7 @@ export default function Faq() {
                 className="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
                 aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-three"
               >
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-gray-600 dark:text-white pl-2">
                   Actualmente no contamos con local físico, el recogido y la
                   entrega se realiza en la ubicación proporcionada.
                 </p>
@@ -179,12 +179,12 @@ export default function Faq() {
               id="hs-basic-with-title-and-arrow-stretched-heading-four"
             >
               <button
-                className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                className="hs-accordion-toggle group pl-1 pr-3 py-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-lime-700"
                 aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-four"
               >
                 Puedo cancelar el alquiler?
                 <svg
-                  className="hs-accordion-active:hidden block flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
+                  className="hs-accordion-active:hidden block flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-white"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -198,7 +198,7 @@ export default function Faq() {
                   <path d="m6 9 6 6 6-6" />
                 </svg>
                 <svg
-                  className="hs-accordion-active:block hidden flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
+                  className="hs-accordion-active:block hidden flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-white"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -217,7 +217,7 @@ export default function Faq() {
                 className="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
                 aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-four"
               >
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-gray-600 dark:text-white pl-2">
                   Si, puede cancelar tomando en cuenta las políticas de
                   cancelación y devolución de dinero provistas en el contrato el
                   día de la reservación.
@@ -230,12 +230,12 @@ export default function Faq() {
               id="hs-basic-with-title-and-arrow-stretched-heading-five"
             >
               <button
-                className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                className="hs-accordion-toggle group pl-1 pr-3 py-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-lime-700"
                 aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-five"
               >
                 Puedo re agendar el alquiler?
                 <svg
-                  className="hs-accordion-active:hidden block flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
+                  className="hs-accordion-active:hidden block flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-white"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -249,7 +249,7 @@ export default function Faq() {
                   <path d="m6 9 6 6 6-6" />
                 </svg>
                 <svg
-                  className="hs-accordion-active:block hidden flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
+                  className="hs-accordion-active:block hidden flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-white"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -268,7 +268,7 @@ export default function Faq() {
                 className="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
                 aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-five"
               >
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-gray-600 dark:text-white pl-2">
                   Si, puede re agendar el alquiler siempre y cuando haya
                   disponibilidad en la nueva fecha.
                 </p>
@@ -280,12 +280,12 @@ export default function Faq() {
               id="hs-basic-with-title-and-arrow-stretched-heading-six"
             >
               <button
-                className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                className="hs-accordion-toggle group pl-1 pr-3 py-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-lime-700"
                 aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-six"
               >
                 Tengo que tener licencia de conducir para poder reservar?
                 <svg
-                  className="hs-accordion-active:hidden block flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
+                  className="hs-accordion-active:hidden block flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-white"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -299,7 +299,7 @@ export default function Faq() {
                   <path d="m6 9 6 6 6-6" />
                 </svg>
                 <svg
-                  className="hs-accordion-active:block hidden flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
+                  className="hs-accordion-active:block hidden flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-white"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -318,7 +318,7 @@ export default function Faq() {
                 className="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
                 aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-six"
               >
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-gray-600 dark:text-white pl-2">
                   Si, necesita licencia de conducir vigente (no aprendiz) para
                   realizar la reservación y conducir el vehículo.
                 </p>
@@ -330,12 +330,12 @@ export default function Faq() {
               id="hs-basic-with-title-and-arrow-stretched-heading-seven"
             >
               <button
-                className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                className="hs-accordion-toggle group pl-1 pr-3 py-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 dark:text-gray-200 dark:hover:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-lime-700"
                 aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-seven"
               >
                 Puede conducir el vehículo cualquier persona?
                 <svg
-                  className="hs-accordion-active:hidden block flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
+                  className="hs-accordion-active:hidden block flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-white"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -349,7 +349,7 @@ export default function Faq() {
                   <path d="m6 9 6 6 6-6" />
                 </svg>
                 <svg
-                  className="hs-accordion-active:block hidden flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-gray-400"
+                  className="hs-accordion-active:block hidden flex-shrink-0 size-5 text-gray-600 group-hover:text-gray-500 dark:text-white"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -368,7 +368,7 @@ export default function Faq() {
                 className="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
                 aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-seven"
               >
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-gray-600 dark:text-white pl-2">
                   No, solo la persona que hace la reservación está autorizado/a
                   a conducir el vehículo ya que es el/la responsable del mismo.
                 </p>

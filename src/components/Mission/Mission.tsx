@@ -9,7 +9,7 @@ export default function Mision() {
             <h2 className="text-3xl text-gray-950 font-bold lg:text-4xl dark:text-white">
               Nuestra Misión
             </h2>
-            <p className="mt-3 text-gray-950 dark:text-gray-400">
+            <p className="mt-3 text-gray-950 dark:text-white">
               En Albert Car Rental, potenciamos su viaje con soluciones de
               alquiler de vehículos asequibles y confiables. Experimente la
               libertad y la comodidad de explorar Puerto Rico a su propio ritmo,
@@ -41,7 +41,7 @@ export default function Mision() {
                 <h3 className="text-base sm:text-lg font-semibold text-gray-950 dark:text-gray-200">
                   Calidad y libertad
                 </h3>
-                <p className="mt-1 text-gray-900 dark:text-gray-400">
+                <p className="mt-1 text-gray-900 dark:text-white">
                   En Albert Car Rental, no nos dedicamos sólo al alquiler de
                   coches, nuestro objetivo es proporcionar una puerta de entrada
                   a la libertad y la exploración.
@@ -73,7 +73,7 @@ export default function Mision() {
                 <h3 className="text-base sm:text-lg font-semibold text-gray-950 dark:text-gray-200">
                   Una Verdadera Aventura
                 </h3>
-                <p className="mt-1 text-gray-900 dark:text-gray-400">
+                <p className="mt-1 text-gray-900 dark:text-white">
                   Con un compromiso con la accesibilidad, la confiabilidad y un
                   servicio al cliente incomparable, nos aseguramos de que cada
                   viaje que emprenda con nuestros vehículos no sea solo un

@@ -24,7 +24,7 @@ export default function ContactDetails() {
             <h3 className="font-semibold text-gray-800 dark:text-gray-200">
               Listo para alquilar
             </h3>
-            <p className="mt-1 text-sm text-gray-500">
+            <p className="mt-1 text-sm text-gray-800 dark:text-gray-200">
               Escribenos por whatsapp{" "}
             </p>
             <a
@@ -73,7 +73,7 @@ export default function ContactDetails() {
             <h3 className="font-semibold text-gray-800 dark:text-gray-200">
               FAQ
             </h3>
-            <p className="mt-1 text-sm text-gray-500">
+            <p className="mt-1 text-sm text-gray-800 dark:text-gray-200">
               Busca nuestras Preguntas Frecuente para respuestas de dudas que
               podrias tener.
             </p>
@@ -124,7 +124,7 @@ export default function ContactDetails() {
             <h3 className="font-semibold text-gray-800 dark:text-gray-200">
               Servicio
             </h3>
-            <p className="mt-1 text-sm text-gray-500">
+            <p className="mt-1 text-sm text-gray-800 dark:text-gray-200">
               Estamos aqui para ayudarte en lo que necesites.
             </p>
             <a
@@ -173,7 +173,7 @@ export default function ContactDetails() {
             <h3 className="font-semibold text-gray-800 dark:text-gray-200">
               Contáctenos por correo electrónico
             </h3>
-            <p className="mt-1 text-sm text-gray-500">
+            <p className="mt-1 text-sm text-gray-800 dark:text-gray-200">
               Si desea escribirnos por correo electrónico
             </p>
             <a

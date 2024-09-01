@@ -71,7 +71,7 @@ export default function Features() {
                         >
                           <path
                             d="M11.7518 6.24359C12.983 5.01246 14.782 4.69543 16.3057 5.29249L13.5532 8.04496C13.2216 8.37659 13.2216 8.91425 13.5532 9.24588L14.7541 10.4468C15.0857 10.7784 15.6234 10.7784 15.955 10.4468L18.7075 7.69432C19.3046 9.21796 18.9875 11.017 17.7564 12.2482C16.5253 13.4793 14.7262 13.7963 13.2026 13.1993L7.89927 18.5026C7.23602 19.1658 6.16068 19.1658 5.49744 18.5026C4.83419 17.8393 4.83419 16.764 5.49744 16.1007L10.8007 10.7974C10.2037 9.2738 10.5207 7.47472 11.7518 6.24359Z"
-                            stroke="#464455"
+                            stroke="#fff"
                             stroke-linecap="round"
                             stroke-linejoin="round"
                           />
@@ -86,8 +86,8 @@ export default function Features() {
                     <span className=" mt-1 text-gray-800 dark:hs-tab-active:text-gray-200 dark:text-gray-200 sm:pl-12">
                       <ul>
                         {car.features.map((feature: Feature, index: number) => (
-                          <li className="text-justify w-full pb-2" key={index}>
-                            {feature.name}
+                          <li className="text-pretty w-full pb-2" key={index}>
+                            - {feature.name}
                           </li>
                         ))}
                       </ul>
@@ -103,7 +103,7 @@ export default function Features() {
                         <Image
                           className="shadow-xl shadow-gray-200 rounded-xl dark:shadow-gray-900/[.2] w-full h-full object-cover"
                           src={car.imgUrl}
-                          alt="{car.name}"
+                          alt={car.name}
                           width={500}
                           height={500}
                           loading="lazy"

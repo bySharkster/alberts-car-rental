@@ -47,7 +47,7 @@ export default function Hero() {
         <div className="max-w-3xl text-center mx-auto">
           <p
             className="text-lg text-gray-200
-            dark:text-gray-400"
+            dark:text-gray-50"
           >
             Albert Car Rental es una empresa netamente puertorriqueña, dedicada
             al alquiler de autos.
@@ -72,7 +72,7 @@ export default function Hero() {
                 fill="currentColor"
               />
             </svg>
-            Comunicate
+            Comunícate
             <svg
               className="flex-shrink-0 size-4"
               xmlns="http://www.w3.org/2000/svg"

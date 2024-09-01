@@ -10,7 +10,7 @@ export default function Page() {
           <h1 className="text-3xl font-bold text-gray-800 sm:text-4xl dark:text-white">
             Contáctenos
           </h1>
-          <p className="mt-1 text-gray-800 dark:text-gray-400">
+          <p className="mt-1 text-gray-800 dark:text-gray-200">
             Nos encantaria hablar con usted y saber en que podemos ayudarle.
           </p>
         </div>

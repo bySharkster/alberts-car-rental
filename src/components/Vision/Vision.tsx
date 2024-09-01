@@ -9,7 +9,7 @@ export default function Vision() {
             <h2 className="text-3xl text-gray-950 font-bold lg:text-4xl dark:text-white">
               Nuestra Visión
             </h2>
-            <p className="mt-3 text-gray-950 dark:text-gray-400">
+            <p className="mt-3 text-gray-950 dark:text-white">
               Nuestra visión es ser reconocidos como el principal servicio de
               alquiler de vehículos de Puerto Rico, celebrado por nuestra fácil
               accesibilidad, atención excepcional al cliente y dedicación
@@ -41,7 +41,7 @@ export default function Vision() {
                 <h3 className="text-base sm:text-lg font-semibold text-gray-950 dark:text-gray-200">
                   Seguridad y Facilidad
                 </h3>
-                <p className="mt-1 text-gray-800 dark:text-gray-400">
+                <p className="mt-1 text-gray-800 dark:text-white">
                   Aspiramos a ser su socio de viajes de confianza, permitiéndole
                   explorar la belleza de Puerto Rico con facilidad, seguridad y
                   una sensación de libertad inigualable.
@@ -73,7 +73,7 @@ export default function Vision() {
                 <h3 className="text-base sm:text-lg font-semibold text-gray-950 dark:text-gray-200">
                   Viajes Unicos
                 </h3>
-                <p className="mt-1 text-gray-800 dark:text-gray-400">
+                <p className="mt-1 text-gray-800 dark:text-white">
                   A través de la innovación continua y la dedicación a la
                   excelencia, nuestro objetivo es transformar sus experiencias
                   en viajes memorables.
