@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Albert's Car Rental
 
-First, run the development server:
+A modern, user-friendly car rental application for managing vehicle bookings, customer information, and rental operations.
+
+---
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Screenshots / Demo](#screenshots--demo)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact \& Support](#contact--support)
+
+---
+
+## Overview
+
+Albert's Car Rental is a personal client web application designed to streamline the car rental process for his business and customers. The platform allows users to browse available vehicles, make reservations, and manage bookings efficiently. It is ideal for small to medium-sized car rental companies seeking a customizable and scalable solution.
+
+---
+
+## Features
+
+- Browse and search available vehicles
+- Create, update, and cancel reservations
+- Manage customer profiles and rental history
+- Admin dashboard for vehicle and booking management
+- Responsive design for desktop and mobile devices
+- Secure authentication and user roles
+
+---
+
+## Installation
+
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/bySharkster/alberts-car-rental.git
+cd alberts-car-rental
+npm install
+```
+
+Set up environment variables as needed (see `.env.example` if available), then start the application:
+
+```bash
+npm start
+```
+
+
+---
+
+## Usage
+
+After installation, access the app locally:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+For production builds:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Navigate to `http://localhost:3000` (or your configured port) in your browser.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Screenshots / Demo
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+## Contact \& Support
+
+For questions or support:
+
+- Open an issue on GitHub
+- Email: [contact@fernandoaponte.dev]
+  
+---
