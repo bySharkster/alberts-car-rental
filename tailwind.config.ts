@@ -5,7 +5,6 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "node_modules/preline/dist/*.js",
   ],
   darkMode: ["class"],
   theme: {
@@ -93,6 +92,6 @@ const config: Config = {
   		}
   	}
   },
-  plugins: [require("@tailwindcss/forms"), require("preline/plugin"), require("tailwindcss-animate")],
+  plugins: [require("@tailwindcss/forms"), require("tailwindcss-animate")],
 };
 export default config;

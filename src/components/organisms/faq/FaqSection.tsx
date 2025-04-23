@@ -2,6 +2,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "..
 import { Button } from "../../ui/button";
 
 
+import { AnimatedSection } from "@/components/templates/animations/AnimatedSection";
+
 export default function FaqSection() {
   return (
     <section id="faqs" className="py-20 bg-gray-50">
@@ -11,7 +13,7 @@ export default function FaqSection() {
         <p className="text-xl text-[#464648] max-w-3xl mx-auto">Find answers to common questions about our services, booking process, and policies.</p>
       </div>
       
-      <div className="max-w-3xl mx-auto">
+      <AnimatedSection className="max-w-3xl mx-auto" direction="up" delay={0.2}>
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-1" className="border-b border-gray-200">
             <AccordionTrigger className="text-lg font-medium text-[#1f3045] py-4">What documents do I need to rent a car?</AccordionTrigger>
@@ -62,7 +64,7 @@ export default function FaqSection() {
             Contact Support
           </Button>
         </div>
-      </div>
+      </AnimatedSection>
     </div>
     </section>
   );

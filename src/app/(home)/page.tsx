@@ -7,6 +7,7 @@ import type { Vehicle } from "@prisma/client";
 import FleetSection from "@/components/organisms/fleet/FleetSection";
 import FeaturesSection from "@/components/organisms/features/FeaturesSection";
 import CallToActionSection from "@/components/organisms/cta/CallToActionSection";
+import { ParallaxSection } from "@/components/templates/animations/AnimatedSection";
 
 export default async function Home() {
   const dbVehicles = await prisma.vehicle.findMany();
@@ -18,8 +19,10 @@ export default async function Home() {
       {/* Hero Section */}
         <HeroSection />
 
-      {/* Features Section */}
-      <FeaturesSection/>
+      {/* Features Section */}    
+
+      <FeaturesSection/>     
+
       {/* Fleet Section */}
         <FleetSection vehicles={vehicles} />
 

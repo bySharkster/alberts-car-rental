@@ -3,6 +3,7 @@ export interface ConfigProps {
   appDescription: string;
   ownerPhone: string;
   domainName: string;
+  address: string;
   resend: {
     fromNoReply: string;
     fromAdmin: string;

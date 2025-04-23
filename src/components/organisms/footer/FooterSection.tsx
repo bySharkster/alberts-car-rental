@@ -1,8 +1,7 @@
-import { Button } from "@/components/ui/button";
 import config from "@/config";
 import Link from "next/link";
 
-export default function Footer() {
+export default function FooterSection() {
   return (
     <footer className="bg-[#1f3045] text-white pt-16 pb-8">
     <div className="container mx-auto px-6">
@@ -11,7 +10,7 @@ export default function Footer() {
           <h3 className="text-xl font-bold mb-6">Albert Car Rental</h3>
           <p className="text-white/80 mb-6">Providing premium car rental experiences since 2023. Our commitment to quality and service excellence makes every journey exceptional.</p>
           <div className="flex space-x-4">
-            <Link href="https://www.facebook.com/p/Albert-Car-Rental-61557243689183/" className="text-white hover:text-[#26a6fb] transition-colors cursor-pointer h-8 w-8 flex items-center justify-center">
+            <Link href={config.social.facebook} className="text-white hover:text-[#26a6fb] transition-colors cursor-pointer h-8 w-8 flex items-center justify-center">
               <i className="fab fa-facebook-f text-xl"/>
             </Link>
             {/* <Link href="#" className="text-white hover:text-[#26a6fb] transition-colors cursor-pointer">
@@ -23,7 +22,7 @@ export default function Footer() {
             {/* <Link href="#" className="text-white hover:text-[#26a6fb] transition-colors cursor-pointer">
               <i className="fab fa-linkedin-in text-xl"/>
             </Link> */}
-            <Link href="https://www.instagram.com/albertcarrental/" className="text-white hover:text-[#26b578] transition-colors cursor-pointer h-8 w-8 flex items-center justify-center">
+            <Link href={config.social.whatsapp} className="text-white hover:text-[#26b578] transition-colors cursor-pointer h-8 w-8 flex items-center justify-center">
               <i className="fab fa-whatsapp text-2xl"/>
             </Link>
           </div>
@@ -58,7 +57,7 @@ export default function Footer() {
           <ul className="space-y-3">
             <li className="flex items-start">
               <i className="fas fa-map-marker-alt mt-1 mr-3 text-[#26a6fb]"/>  
-              <span className="text-white/80">{config.resend.supportEmail}</span>
+              <span className="text-white/80">{config.address}</span>
             </li>
             <li className="flex items-start">
               <i className="fas fa-phone-alt mt-1 mr-3 text-[#26a6fb]"/>
@@ -66,7 +65,7 @@ export default function Footer() {
             </li>
             <li className="flex items-start">
               <i className="fas fa-envelope mt-1 mr-3 text-[#26a6fb]"/>
-              <span className="text-white/80">info@albertcarrental.com</span>
+              <span className="text-white/80">{config.resend.supportEmail}</span>
             </li>
             <li className="flex items-start">
               <i className="fas fa-clock mt-1 mr-3 text-[#26a6fb]"/>
