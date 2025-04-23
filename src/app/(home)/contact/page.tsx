@@ -1,8 +1,7 @@
-import ContactDetails from "@/components/contact/ContactDetails";
-import ContactForm from "@/components/contact/ContactForm";
+import ContactDetails from "@/components/organisms/contact/ContactDetails";
+import ContactForm from "@/components/organisms/contact/ContactForm";
 
 export default function Page() {
-  //   <!-- Contact Us -->
   return (
     <div className="max-w-[85rem] px-4  pt-28 pb-10 lg:pt-32 sm:px-6 lg:px-8 lg:pb-14 mx-auto">
       <div className="max-w-2xl lg:max-w-5xl mt-20 mx-auto">
@@ -16,9 +15,7 @@ export default function Page() {
         </div>
 
         <div className="mt-12 grid items-center lg:grid-cols-2 gap-6 lg:gap-16 ">
-          {/* <!-- Card --> */}
           <ContactForm />
-          {/* <!-- End Card --> */}
           <ContactDetails />
         </div>
       </div>

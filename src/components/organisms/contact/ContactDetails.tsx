@@ -13,9 +13,10 @@ export default function ContactDetails() {
             fill="none"
             stroke="currentColor"
             stroke-width="2"
-            stroke-linecap="round"
+            strokeLinecap="round"
             stroke-linejoin="round"
           >
+            <title>Icon</title>
             <path d="m7 11 2-2-2-2" />
             <path d="M11 13h4" />
             <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
@@ -63,7 +64,7 @@ export default function ContactDetails() {
             fill="none"
             stroke="currentColor"
             stroke-width="2"
-            stroke-linecap="round"
+            strokeLinecap="round"
             stroke-linejoin="round"
           >
             <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z" />
@@ -113,7 +114,7 @@ export default function ContactDetails() {
             fill="none"
             stroke="currentColor"
             stroke-width="2"
-            stroke-linecap="round"
+            strokeLinecap="round"
             stroke-linejoin="round"
           >
             <circle cx="12" cy="12" r="10" />
@@ -163,7 +164,7 @@ export default function ContactDetails() {
             fill="none"
             stroke="currentColor"
             stroke-width="2"
-            stroke-linecap="round"
+            strokeLinecap="round"
             stroke-linejoin="round"
           >
             <path d="M21.2 8.4c.5.38.8.97.8 1.6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V10a2 2 0 0 1 .8-1.6l8-6a2 2 0 0 1 2.4 0l8 6Z" />

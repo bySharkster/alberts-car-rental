@@ -10,7 +10,7 @@ export default function ContactForm() {
         Información de Contacto
       </h2>
       <div className="my-8">
-        <div className="border-t border-gray-300"></div>
+        <div className="border-t border-gray-300"/>
       </div>
       <p className="text-white">
         Para mas informacion, llamanos al {config.ownerPhone} o contactanos por{" "}
