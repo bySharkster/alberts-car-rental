@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { motion } from "motion/react"; // corrected import
+import { motion } from "motion/react";
 import { AnimatedText, ParallaxSection } from "@/components/templates/animations/AnimatedSection";
 
 export default function HeroSection() {

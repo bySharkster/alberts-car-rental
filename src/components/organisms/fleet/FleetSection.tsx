@@ -70,7 +70,7 @@ export default function FleetSection({ vehicles }: FleetProps) {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-[#1f3045] mb-4">Our Premium Fleet</h2>
           <p className="text-[#464648] max-w-3xl mx-auto">
-            Explore our diverse range of vehicles designed to meet your every need. From luxury sedans to practical SUVs, we have the perfect car for your journey.
+            Discover a fleet crafted for comfort, style, and reliability—ready for every adventure, daily drive, or special occasion. Find your ideal ride and hit the road with confidence!
           </p>
         </div>
         
@@ -88,7 +88,8 @@ export default function FleetSection({ vehicles }: FleetProps) {
                 <CarouselItem key={category.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
                   <div className="p-1">
                     <Button 
-                      className={`h-full w-full flex items-center justify-center rounded-lg p-6 ${activeTab === category.id ? 'bg-[#024f7d] text-white' : 'bg-gray-100 text-[#1f3045]'}`}
+                    variant="outline"
+                      className={`h-full w-full flex items-center justify-center rounded-lg p-6 hover:bg-[#024f7d]/90 hover:text-white   ${activeTab === category.id ? 'bg-[#024f7d] text-white' : 'bg-gray-100 text-[#1f3045]'}`}
                       onClick={() => handleTabChange(category.id)}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter' || e.key === ' ') {
