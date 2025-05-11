@@ -10,7 +10,7 @@ import { Menu } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import * as motion from "motion/react-client";
 
 const navLinks = [
   { href: "/book", label: "Reserve Now", variant: "default" },
@@ -58,18 +58,16 @@ export default function MobileNavigation() {
               >
                 <Link href={href} className="w-full">
                   <span className="relative z-10">{label}</span>
-                  <AnimatePresence>
-                    {isActive && (
-                      <motion.span
-                        layoutId="active-nav-underline"
-                        className="absolute inset-0 bg-gradient-to-r from-[#1A57B2] to-[#1DAF5A] opacity-20 rounded-lg z-0"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.25 }}
-                      />
-                    )}
-                  </AnimatePresence>
+                  {isActive && (
+                    <motion.span
+                      layoutId="active-nav-underline"
+                      className="absolute inset-0 bg-gradient-to-r from-[#1A57B2] to-[#1DAF5A] opacity-20 rounded-lg z-0"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.25 }}
+                    />
+                  )}
                 </Link>
               </Button>
             );
