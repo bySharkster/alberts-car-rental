@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function NotFound() {
   return (
     <div className="max-w-[50rem] flex flex-col mx-auto size-full min-h-screen justify-center">
@@ -12,8 +14,7 @@ export default function NotFound() {
           Sorry, we couldn&apos;t find your page.
         </p>
         <div className="mt-5 flex flex-col justify-center items-center gap-2 sm:flex-row sm:gap-3">
-      
-          <a
+          <Link
             className="w-full sm:w-auto py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-green-600 hover:text-green-800 disabled:opacity-50 disabled:pointer-events-none dark:text-green-500 dark:hover:text-green-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
             href="/"
           >
@@ -33,7 +34,7 @@ export default function NotFound() {
               <path d="m15 18-6-6 6-6" />
             </svg>
             Regresar a pagina principal
-          </a>
+          </Link>
         </div>
       </div>
     </div>

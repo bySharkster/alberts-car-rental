@@ -195,11 +195,11 @@ export function StaggeredChildren({
       viewport={{ once: true, amount: 0.2 }}
       className={className}
     >
-    {React.Children.toArray(children).map((child) => (
-      <motion.div key={(child as React.ReactElement).key} variants={item}>
-        {child}
-      </motion.div>
-    ))}
+      {React.Children.toArray(children).map((child) => (
+        <motion.div key={(child as React.ReactElement<any>).key} variants={item}>
+          {child}
+        </motion.div>
+      ))}
     </motion.div>
   );
 }
