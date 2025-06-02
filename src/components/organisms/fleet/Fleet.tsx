@@ -12,9 +12,10 @@ import {
   Loader2Icon,
 } from "lucide-react";
 import Link from "next/link";
+import { VehicleWithImages } from "@/app/actions/vehicle/getVehiclesAction";
 
 interface FleetProps {
-  vehicles: Vehicle[];
+  vehicles: VehicleWithImages[];
 }
 
 export default function Fleet({ vehicles }: FleetProps) {
@@ -47,7 +48,7 @@ export default function Fleet({ vehicles }: FleetProps) {
                   <div className="flex flex-col gap-4 p-4">
                     <div className="flex items-center gap-4">
                       <Image
-                        src={vehicle.image || "/car-placeholder.png"}
+                        src={vehicle.images[0].url || "/car-placeholder.png"}
                         alt={`${vehicle.make} ${vehicle.model}`}
                         width={112}
                         height={80}
@@ -59,30 +60,29 @@ export default function Fleet({ vehicles }: FleetProps) {
                         </div>
 
                         <div className="text-gray-500 text-sm">
-                          {(vehicle as any).type || ""}
+                          {vehicle.category}
                         </div>
                       </div>
                     </div>
                     <ul className="flex flex-wrap gap-2 mt-2 text-xs text-gray-700">
-                      {Array.isArray(vehicle.features)
-                        ? (vehicle.features as string[]).map((f) => (
-                            <li
-                              key={f}
-                              className="bg-gray-100 px-2 py-1 rounded border border-gray-200"
-                            >
-                              {f}
-                            </li>
-                          ))
-                        : typeof vehicle.features === "string"
-                          ? (vehicle.features as string).split(",").map((f) => (
-                              <li
-                                key={f}
-                                className="bg-gray-100 px-2 py-1 rounded border border-gray-200"
-                              >
-                                {f.trim()}
-                              </li>
-                            ))
-                          : null}
+                      {Array.isArray(vehicle.features) &&
+                        (vehicle.features as string[]).map((f) => (
+                          <li
+                            key={f}
+                            className="bg-gray-100 px-2 py-1 rounded border border-gray-200"
+                          >
+                            {f}
+                          </li>
+                        ))}
+                      {typeof vehicle.features === "string" &&
+                        (vehicle.features as string).split(",").map((f) => (
+                          <li
+                            key={f}
+                            className="bg-gray-100 px-2 py-1 rounded border border-gray-200"
+                          >
+                            {f.trim()}
+                          </li>
+                        ))}
                     </ul>
                     <div className="flex justify-end">
                       <Button variant="default" size="lg">

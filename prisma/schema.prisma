@@ -8,52 +8,131 @@ datasource db {
 }
 
 model User {
-  id            String    @id
-  name          String?
-  email         String    @unique
-  emailVerified DateTime?
-  image         String?
-  isAdmin       Boolean   @default(false)
-  Account       Account[]
-  Booking       Booking[]
-  Session       Session[]
+  id                       String       @id @default(cuid())
+  name                     String?
+  email                    String       @unique
+  emailVerified            DateTime?
+  image                    String?
+  phone                    String?
+  isAdmin                  Boolean      @default(false)
+  isVerified               Boolean      @default(false)
+  notificationsPreferences Preferences?
+
+  documents        Document[]
+  Account          Account[]
+  Reservation      Reservation[]
+  Session          Session[]
+  PushSubscription PushSubscription[]
+  Onboarding       Onboarding[]
+  StatusChange     StatusChange[]
+}
+
+model Preferences {
+  id                       String  @id @default(cuid())
+  userId                   String  @unique
+  UserNotifications        Boolean @default(true)
+  ReservationNotifications Boolean @default(true)
+  LeadNotifications        Boolean @default(true)
+  ContactNotifications     Boolean @default(true)
+  PaymentNotifications     Boolean @default(true)
+  ReviewNotifications      Boolean @default(true)
+  user                     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Account {
-  id                String  @id
+  id                Int     @id @default(autoincrement())
   userId            String
-  providerAccountId String
-  access_token      String?
-  expires_at        Int?
-  id_token          String?
+  type              String
   provider          String
   refresh_token     String?
-  scope             String?
-  session_state     String?
+  access_token      String?
+  expires_at        Int?
   token_type        String?
-  type              String
-  User              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  scope             String?
+  id_token          String?
+  session_state     String?
+  providerAccountId String  @map("provider_account_id")
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
 
-model Booking {
-  id                   String   @id
-  checkin              DateTime
-  checkout             DateTime
-  status               String   @default("pending")
-  userId               String
-  createdAt            DateTime @default(now())
-  updatedAt            DateTime
-  car_fuel_type        String
-  car_make             String
-  car_model            String
-  car_transmission     String
-  total_price_in_cents Int
-  intent_id            String?
-  car_year             Int
-  car_id               Int
-  User                 User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+model Reservation {
+  id              String     @id @default(cuid())
+  pickupDate      DateTime
+  dropoffDate     DateTime
+  contracts       Document[]
+  pickupLocation  String
+  dropoffLocation String
+  pickupHour      String
+  dropoffHour     String
+
+  // Reservation Details
+  dailyRate   Int
+  totalDays   Int
+  subtotal    Int
+  tax         Int
+  totalAmount Int
+  amountPaid  Int
+
+  // Reservation Status
+  status        ReservationStatus @default(PENDING)
+  paymentStatus PaymentStatus     @default(UNPAID)
+
+  //Audit Trail
+  statusHistory StatusChange[]
+
+  // Additional Info
+  notes           String?
+  specialRequests String?
+
+  vehicleId Int?
+  vehicle   Vehicle? @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  payments  Payment[]
+}
+
+enum ReservationStatus {
+  PENDING
+  CONFIRMED
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+model DraftReservation {
+  id              String   @id @default(cuid())
+  name            String
+  email           String
+  phone           String
+  pickupDate      String
+  dropoffDate     String
+  vehicleId       Int?
+  message         String?
+  pickupLocation  String
+  dropoffLocation String
+  pickupHour      String
+  dropoffHour     String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model StatusChange {
+  id            String             @id @default(cuid())
+  reservationId String
+  fromStatus    ReservationStatus?
+  toStatus      ReservationStatus
+  reason        String?
+  changedBy     String
+  changeAt      DateTime           @default(now())
+
+  user        User        @relation(fields: [changedBy], references: [id], onDelete: Cascade)
+  reservation Reservation @relation(fields: [reservationId], references: [id], onDelete: Cascade)
 }
 
 model Session {
@@ -73,23 +152,127 @@ model VerificationToken {
 }
 
 model Vehicle {
-  id           Int             @id @default(autoincrement())
+  id           Int                 @id @default(autoincrement())
   make         String
   model        String
   category     VehicleCategory
   year         Int
   color        String
-  licensePlate String          @unique
-  status       String          @default("available")
+  transmission VehicleTransmission
+  fuel_type    VehicleFuelType     @default(GASOLINE)
+  licensePlate String              @unique
+  status       VehicleStatus       @default(PENDING)
   features     String[]
-  image        String
-  createdAt    DateTime        @default(now())
-  updatedAt    DateTime        @updatedAt
+  dailyRate    Float
+  images       Image[]
+
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  reservations      Reservation[]
+  maintenanceBlocks MaintenanceBlock[]
 }
 
 enum VehicleCategory {
-  LUXURY
+  SEDAN
   SUV
-  ECONOMY
+  COUPE
+  CONVERTIBLE
+  WAGON
+  HATCHBACK
+}
+
+enum VehicleTransmission {
+  AUTOMATIC
+  MANUAL
+}
+
+enum VehicleFuelType {
+  GASOLINE
+  DIESEL
+  HYBRID
   ELECTRIC
+}
+
+enum VehicleStatus {
+  AVAILABLE
+  UNAVAILABLE
+  PENDING
+  RENTED
+  MAINTENANCE
+}
+
+model MaintenanceBlock {
+  id        String   @id @default(cuid())
+  vehicleId Int
+  vehicle   Vehicle  @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+  reason    String
+  startDate DateTime
+  endDate   DateTime
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([vehicleId, startDate, endDate])
+}
+
+model Payment {
+  id            String        @id @default(cuid())
+  stripeSession String        @unique
+  amount        Decimal
+  status        PaymentStatus @default(UNPAID)
+  intent_id     String?
+  reservationId String
+  reservation   Reservation   @relation(fields: [reservationId], references: [id])
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+enum PaymentStatus {
+  UNPAID
+  PAID
+  PARTIAL
+  REFUNDED
+}
+
+model Document {
+  id            String       @id @default(cuid())
+  name          String // e.g. 'license', 'contract', 'insurance'
+  type          String
+  url           String
+  uploadedAt    DateTime     @default(now())
+  userId        String
+  User          User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Reservation   Reservation? @relation(fields: [reservationId], references: [id])
+  reservationId String?
+}
+
+model Image {
+  id         String   @id @default(cuid())
+  url        String // S3/GCS/Blob URL
+  uploadedAt DateTime @default(now())
+  position   Int
+  vehicle    Vehicle? @relation(fields: [vehicleId], references: [id])
+  vehicleId  Int?
+}
+
+model PushSubscription {
+  id        String   @id @default(cuid())
+  endpoint  String   @unique
+  keys      Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String
+
+  User User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Onboarding {
+  id        String   @id @default(cuid())
+  userId    String
+  tour      String   @unique @default("adminTour")
+  completed Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

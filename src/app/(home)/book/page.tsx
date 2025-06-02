@@ -27,7 +27,7 @@ export default async function BookPage({
   searchParams: Promise<{ id: string }>;
 }) {
   const { id } = await searchParams;
-  console.log(id);
+
   const vehicles = await getVehiclesAction();
 
   return (

@@ -18,6 +18,7 @@ export default function HeroSection() {
           initial={{ scale: 1.1, opacity: 0.5 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
+          controls={false}
         />
         <motion.div
           className="absolute inset-0 overflow-hidden h-full min-h-dvh bg-gradient-to-r from-[#1f3045]/90 to-transparent"

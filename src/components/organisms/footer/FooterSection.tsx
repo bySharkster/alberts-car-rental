@@ -53,21 +53,21 @@ export default function FooterSection() {
               {/* <li><Link href="/special-offers" className="text-white/80 hover:text-white transition-colors cursor-pointer">Special Offers</Link></li> */}
               <li>
                 <Link
-                  href="/reservations"
+                  href="/book"
                   className="text-white/80 hover:text-white transition-colors cursor-pointer"
                 >
                   Reservations
                 </Link>
               </li>
               {/* <li><Link href="/corporate-accounts" className="text-white/80 hover:text-white transition-colors cursor-pointer">Corporate Accounts</Link></li> */}
-              <li>
+              {/* <li>
                 <Link
                   href="/about-us"
                   className="text-white/80 hover:text-white transition-colors cursor-pointer"
                 >
                   About Us
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
 
@@ -76,7 +76,7 @@ export default function FooterSection() {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="/faq"
+                  href="/#faqs"
                   className="text-white/80 hover:text-white transition-colors cursor-pointer"
                 >
                   FAQs
@@ -132,7 +132,12 @@ export default function FooterSection() {
               <li className="flex items-start">
                 <i className="fas fa-envelope mt-1 mr-3 text-[#26a6fb]" />
                 <span className="text-white/80">
-                  {config.resend.supportEmail}
+                  <Link
+                    href={`mailto:${config.resend.supportEmail}`}
+                    className="hover:underline transition-colors cursor-pointer"
+                  >
+                    {config.resend.supportEmail}
+                  </Link>
                 </span>
               </li>
               <li className="flex items-start">

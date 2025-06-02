@@ -15,9 +15,10 @@ import * as motion from "motion/react-client";
 const navLinks = [
   { href: "/book", label: "Reserve Now", variant: "default" },
   { href: "/fleet", label: "Our Fleet", variant: "ghost" },
-  { href: "/features", label: "Features", variant: "ghost" },
-  { href: "/about", label: "About Us", variant: "ghost" },
-  { href: "/faqs", label: "FAQ", variant: "ghost" },
+  { href: "/#features", label: "Features", variant: "ghost" },
+  // { href: "/#about", label: "About Us", variant: "ghost" },
+  { href: "/#faqs", label: "FAQ", variant: "ghost" },
+  { href: "/contact", label: "Contact", variant: "ghost" },
 ];
 
 export default function MobileNavigation() {

@@ -11,6 +11,7 @@ import getVehiclesAction from "../actions/vehicle/getVehiclesAction";
 
 export default async function Home() {
   const vehicles = await getVehiclesAction();
+
   return (
     <main className="bg-[#F4EFEF] min-h-screen">
       {/* Hero Section */}

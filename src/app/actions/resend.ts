@@ -25,7 +25,6 @@ export async function sendContactEmail(formData: FormData) {
   const raw = Object.fromEntries(formData.entries());
   const parsed = ContactSchema.safeParse(raw);
   if (!parsed.success) {
-    console.log(parsed.error.flatten().fieldErrors);
     return { error: parsed.error.flatten().fieldErrors };
   }
   const { name, email, phone, car, message } = parsed.data;

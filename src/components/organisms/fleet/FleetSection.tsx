@@ -15,19 +15,13 @@ import { useState, useEffect } from "react";
 import { useRef } from "react";
 import { useInView } from "motion/react";
 import type { UseEmblaCarouselType } from "embla-carousel-react";
-import type { Vehicle, VehicleCategory } from "@prisma/client";
+import type { VehicleCategory } from "@prisma/client";
 import { motion } from "motion/react";
 import Link from "next/link";
+import { VehicleWithImages } from "@/app/actions/vehicle/getVehiclesAction";
 
 type FleetProps = {
-  vehicles: Vehicle[];
-};
-
-const VEHICLE_CATEGORY_LABELS: Record<string, string> = {
-  LUXURY: "Luxury",
-  SUV: "SUV",
-  ECONOMY: "Economy",
-  ELECTRIC: "Electric",
+  vehicles: VehicleWithImages[];
 };
 
 export default function FleetSection({ vehicles }: FleetProps) {
@@ -134,9 +128,7 @@ export default function FleetSection({ vehicles }: FleetProps) {
                       }}
                       tabIndex={0}
                     >
-                      <span className="text-lg font-medium">
-                        {VEHICLE_CATEGORY_LABELS[category] || category}
-                      </span>
+                      <span className="text-lg font-medium">{category}</span>
                     </Button>
                   </div>
                 </CarouselItem>
@@ -162,7 +154,7 @@ export default function FleetSection({ vehicles }: FleetProps) {
               <TabsList>
                 {categories.map((category) => (
                   <TabsTrigger key={category} value={category}>
-                    {VEHICLE_CATEGORY_LABELS[category] || category}
+                    {category}
                   </TabsTrigger>
                 ))}
               </TabsList>
@@ -186,7 +178,9 @@ export default function FleetSection({ vehicles }: FleetProps) {
                         >
                           <div className="h-64 overflow-hidden">
                             <Image
-                              src={vehicle.image || "/car-placeholder.png"}
+                              src={
+                                vehicle.images[0].url || "/car-placeholder.png"
+                              }
                               alt={`${vehicle.make} ${vehicle.model}`}
                               width={600}
                               height={400}
@@ -199,10 +193,7 @@ export default function FleetSection({ vehicles }: FleetProps) {
                                 <h3 className="text-xl font-bold text-[#1f3045]">
                                   {vehicle.make} {vehicle.model}
                                 </h3>
-                                <p className="text-[#464648]">
-                                  {VEHICLE_CATEGORY_LABELS[vehicle.category] ||
-                                    vehicle.category}
-                                </p>
+                                <p className="text-[#464648]">{category}</p>
                               </div>
                               {/* <span className="text-[#26b578] font-bold">$199/day</span> */}
                             </div>
@@ -231,342 +222,6 @@ export default function FleetSection({ vehicles }: FleetProps) {
                 </div>
               </TabsContent>
             ))}
-
-            <TabsContent value="suv" className="mt-0">
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {/* SUV 1 */}
-                <Card className="overflow-hidden border-none shadow-md hover:shadow-lg transition-shadow">
-                  <div className="h-64 overflow-hidden">
-                    <img
-                      src="https://readdy.ai/api/search-image?query=Luxury%20SUV%2C%20Range%20Rover%20or%20BMW%20X7%2C%20three-quarter%20view%2C%20parked%20in%20mountain%20terrain%2C%20professional%20automotive%20photography%2C%20clean%20minimal%20background%2C%20adventure%20setting%2C%20premium%20finish%2C%20detailed%20exterior%20shot&width=600&height=400&seq=5&orientation=landscape"
-                      alt="Luxury SUV"
-                      className="w-full h-full object-cover object-top"
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <h3 className="text-xl font-bold text-[#1f3045]">
-                          Premium SUV
-                        </h3>
-                        <p className="text-[#464648]">Range Rover</p>
-                      </div>
-                      <span className="text-[#26b578] font-bold">$229/day</span>
-                    </div>
-                    <div className="flex flex-wrap gap-3 mb-6">
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        7 Seats
-                      </span>
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        4WD
-                      </span>
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        Panoramic Roof
-                      </span>
-                    </div>
-                    <Button className="w-full bg-[#024f7d] hover:bg-[#026bad] text-white !rounded-button whitespace-nowrap cursor-pointer">
-                      Book Now
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                {/* SUV 2 */}
-                <Card className="overflow-hidden border-none shadow-md hover:shadow-lg transition-shadow">
-                  <div className="h-64 overflow-hidden">
-                    <img
-                      src="https://readdy.ai/api/search-image?query=Mid-size%20SUV%2C%20Audi%20Q5%20or%20Mercedes%20GLC%2C%20side%20view%2C%20parked%20in%20urban%20setting%2C%20professional%20automotive%20photography%2C%20clean%20minimal%20background%2C%20city%20environment%2C%20premium%20finish%2C%20detailed%20exterior%20shot&width=600&height=400&seq=6&orientation=landscape"
-                      alt="Mid-size SUV"
-                      className="w-full h-full object-cover object-top"
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <h3 className="text-xl font-bold text-[#1f3045]">
-                          Mid-size SUV
-                        </h3>
-                        <p className="text-[#464648]">Audi Q5</p>
-                      </div>
-                      <span className="text-[#26b578] font-bold">$179/day</span>
-                    </div>
-                    <div className="flex flex-wrap gap-3 mb-6">
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        5 Seats
-                      </span>
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        AWD
-                      </span>
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        Navigation
-                      </span>
-                    </div>
-                    <Button className="w-full bg-[#024f7d] hover:bg-[#026bad] text-white !rounded-button whitespace-nowrap cursor-pointer">
-                      Book Now
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                {/* SUV 3 */}
-                <Card className="overflow-hidden border-none shadow-md hover:shadow-lg transition-shadow">
-                  <div className="h-64 overflow-hidden">
-                    <img
-                      src="https://readdy.ai/api/search-image?query=Compact%20SUV%2C%20BMW%20X3%20or%20Volvo%20XC60%2C%20front%20view%2C%20parked%20in%20forest%20setting%2C%20professional%20automotive%20photography%2C%20clean%20minimal%20background%2C%20nature%20environment%2C%20premium%20finish%2C%20detailed%20exterior%20shot&width=600&height=400&seq=7&orientation=landscape"
-                      alt="Compact SUV"
-                      className="w-full h-full object-cover object-top"
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <h3 className="text-xl font-bold text-[#1f3045]">
-                          Compact SUV
-                        </h3>
-                        <p className="text-[#464648]">BMW X3</p>
-                      </div>
-                      <span className="text-[#26b578] font-bold">$159/day</span>
-                    </div>
-                    <div className="flex flex-wrap gap-3 mb-6">
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        5 Seats
-                      </span>
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        AWD
-                      </span>
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        Fuel Efficient
-                      </span>
-                    </div>
-                    <Button className="w-full bg-[#024f7d] hover:bg-[#026bad] text-white !rounded-button whitespace-nowrap cursor-pointer">
-                      Book Now
-                    </Button>
-                  </CardContent>
-                </Card>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="economy" className="mt-0">
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {/* Economy Car 1 */}
-                <Card className="overflow-hidden border-none shadow-md hover:shadow-lg transition-shadow">
-                  <div className="h-64 overflow-hidden">
-                    <img
-                      src="https://readdy.ai/api/search-image?query=Compact%20economy%20car%2C%20Toyota%20Corolla%20or%20Honda%20Civic%2C%20three-quarter%20view%2C%20parked%20in%20urban%20setting%2C%20professional%20automotive%20photography%2C%20clean%20minimal%20background%2C%20city%20environment%2C%20detailed%20exterior%20shot&width=600&height=400&seq=8&orientation=landscape"
-                      alt="Compact Car"
-                      className="w-full h-full object-cover object-top"
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <h3 className="text-xl font-bold text-[#1f3045]">
-                          Compact Car
-                        </h3>
-                        <p className="text-[#464648]">Toyota Corolla</p>
-                      </div>
-                      <span className="text-[#26b578] font-bold">$79/day</span>
-                    </div>
-                    <div className="flex flex-wrap gap-3 mb-6">
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        5 Seats
-                      </span>
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        Automatic
-                      </span>
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        Fuel Efficient
-                      </span>
-                    </div>
-                    <Button className="w-full bg-[#024f7d] hover:bg-[#026bad] text-white !rounded-button whitespace-nowrap cursor-pointer">
-                      Book Now
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                {/* Economy Car 2 */}
-                <Card className="overflow-hidden border-none shadow-md hover:shadow-lg transition-shadow">
-                  <div className="h-64 overflow-hidden">
-                    <img
-                      src="https://readdy.ai/api/search-image?query=Subcompact%20economy%20car%2C%20Hyundai%20Accent%20or%20Kia%20Rio%2C%20side%20view%2C%20parked%20in%20suburban%20setting%2C%20professional%20automotive%20photography%2C%20clean%20minimal%20background%2C%20residential%20environment%2C%20detailed%20exterior%20shot&width=600&height=400&seq=9&orientation=landscape"
-                      alt="Subcompact Car"
-                      className="w-full h-full object-cover object-top"
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <h3 className="text-xl font-bold text-[#1f3045]">
-                          Subcompact Car
-                        </h3>
-                        <p className="text-[#464648]">Hyundai Accent</p>
-                      </div>
-                      <span className="text-[#26b578] font-bold">$59/day</span>
-                    </div>
-                    <div className="flex flex-wrap gap-3 mb-6">
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        5 Seats
-                      </span>
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        Manual
-                      </span>
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        Bluetooth
-                      </span>
-                    </div>
-                    <Button className="w-full bg-[#024f7d] hover:bg-[#026bad] text-white !rounded-button whitespace-nowrap cursor-pointer">
-                      Book Now
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                {/* Economy Car 3 */}
-                <Card className="overflow-hidden border-none shadow-md hover:shadow-lg transition-shadow">
-                  <div className="h-64 overflow-hidden">
-                    <img
-                      src="https://readdy.ai/api/search-image?query=Economy%20hatchback%2C%20Volkswagen%20Golf%20or%20Ford%20Focus%2C%20front%20view%2C%20parked%20in%20urban%20setting%2C%20professional%20automotive%20photography%2C%20clean%20minimal%20background%2C%20city%20environment%2C%20detailed%20exterior%20shot&width=600&height=400&seq=10&orientation=landscape"
-                      alt="Hatchback"
-                      className="w-full h-full object-cover object-top"
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <h3 className="text-xl font-bold text-[#1f3045]">
-                          Hatchback
-                        </h3>
-                        <p className="text-[#464648]">Volkswagen Golf</p>
-                      </div>
-                      <span className="text-[#26b578] font-bold">$89/day</span>
-                    </div>
-                    <div className="flex flex-wrap gap-3 mb-6">
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        5 Seats
-                      </span>
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        Manual
-                      </span>
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        Spacious
-                      </span>
-                    </div>
-                    <Button className="w-full bg-[#024f7d] hover:bg-[#026bad] text-white !rounded-button whitespace-nowrap cursor-pointer">
-                      Book Now
-                    </Button>
-                  </CardContent>
-                </Card>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="electric" className="mt-0">
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {/* Electric Car 1 */}
-                <Card className="overflow-hidden border-none shadow-md hover:shadow-lg transition-shadow">
-                  <div className="h-64 overflow-hidden">
-                    <img
-                      src="https://readdy.ai/api/search-image?query=Electric%20luxury%20sedan%2C%20Tesla%20Model%20S%20or%20Lucid%20Air%2C%20three-quarter%20view%2C%20parked%20near%20charging%20station%2C%20professional%20automotive%20photography%2C%20clean%20minimal%20background%2C%20modern%20environment%2C%20premium%20finish%2C%20detailed%20exterior%20shot&width=600&height=400&seq=11&orientation=landscape"
-                      alt="Electric Sedan"
-                      className="w-full h-full object-cover object-top"
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <h3 className="text-xl font-bold text-[#1f3045]">
-                          Electric Sedan
-                        </h3>
-                        <p className="text-[#464648]">Tesla Model S</p>
-                      </div>
-                      <span className="text-[#26b578] font-bold">$189/day</span>
-                    </div>
-                    <div className="flex flex-wrap gap-3 mb-6">
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        5 Seats
-                      </span>
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        400mi Range
-                      </span>
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        Autopilot
-                      </span>
-                    </div>
-                    <Button className="w-full bg-[#024f7d] hover:bg-[#026bad] text-white !rounded-button whitespace-nowrap cursor-pointer">
-                      Book Now
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                {/* Electric Car 2 */}
-                <Card className="overflow-hidden border-none shadow-md hover:shadow-lg transition-shadow">
-                  <div className="h-64 overflow-hidden">
-                    <img
-                      src="https://readdy.ai/api/search-image?query=Electric%20SUV%2C%20Tesla%20Model%20Y%20or%20Audi%20e-tron%2C%20front%20view%2C%20parked%20in%20modern%20urban%20setting%2C%20professional%20automotive%20photography%2C%20clean%20minimal%20background%2C%20city%20environment%2C%20premium%20finish%2C%20detailed%20exterior%20shot&width=600&height=400&seq=12&orientation=landscape"
-                      alt="Electric SUV"
-                      className="w-full h-full object-cover object-top"
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <h3 className="text-xl font-bold text-[#1f3045]">
-                          Electric SUV
-                        </h3>
-                        <p className="text-[#464648]">Tesla Model Y</p>
-                      </div>
-                      <span className="text-[#26b578] font-bold">$199/day</span>
-                    </div>
-                    <div className="flex flex-wrap gap-3 mb-6">
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        7 Seats
-                      </span>
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        330mi Range
-                      </span>
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        AWD
-                      </span>
-                    </div>
-                    <Button className="w-full bg-[#024f7d] hover:bg-[#026bad] text-white !rounded-button whitespace-nowrap cursor-pointer">
-                      Book Now
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                {/* Electric Car 3 */}
-                <Card className="overflow-hidden border-none shadow-md hover:shadow-lg transition-shadow">
-                  <div className="h-64 overflow-hidden">
-                    <img
-                      src="https://readdy.ai/api/search-image?query=Compact%20electric%20car%2C%20Nissan%20Leaf%20or%20Chevrolet%20Bolt%2C%20side%20view%2C%20parked%20in%20urban%20setting%20with%20charging%20station%2C%20professional%20automotive%20photography%2C%20clean%20minimal%20background%2C%20city%20environment%2C%20detailed%20exterior%20shot&width=600&height=400&seq=13&orientation=landscape"
-                      alt="Compact Electric"
-                      className="w-full h-full object-cover object-top"
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <h3 className="text-xl font-bold text-[#1f3045]">
-                          Compact Electric
-                        </h3>
-                        <p className="text-[#464648]">Nissan Leaf</p>
-                      </div>
-                      <span className="text-[#26b578] font-bold">$99/day</span>
-                    </div>
-                    <div className="flex flex-wrap gap-3 mb-6">
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        5 Seats
-                      </span>
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        150mi Range
-                      </span>
-                      <span className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full">
-                        Eco-friendly
-                      </span>
-                    </div>
-                    <Button className="w-full bg-[#024f7d] hover:bg-[#026bad] text-white !rounded-button whitespace-nowrap cursor-pointer">
-                      Book Now
-                    </Button>
-                  </CardContent>
-                </Card>
-              </div>
-            </TabsContent>
           </Tabs>
         </motion.div>
       </motion.div>

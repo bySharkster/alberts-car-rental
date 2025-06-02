@@ -94,39 +94,40 @@ export function ParallaxSection({
   React.useEffect(() => {
     setVh(window.innerHeight);
     const handleResize = () => setVh(window.innerHeight);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   // Parallax translation
   const y = useTransform(scrollY, (value) => {
     // Only apply parallax when the section is in view
-    if (!ref.current) return '0px';
+    if (!ref.current) return "0px";
     const start = offsetTop - vh;
     const end = offsetTop + (ref.current.offsetHeight || 0);
-    if (value < start || value > end) return '0px';
+    if (value < start || value > end) return "0px";
     const progress = (value - start) / (end - start);
     return `${progress * speed * 200}px`;
   });
 
   const x = useTransform(scrollY, (value) => {
-    if (!ref.current) return '0px';
+    if (!ref.current) return "0px";
     const start = offsetTop - vh;
     const end = offsetTop + (ref.current.offsetHeight || 0);
-    if (value < start || value > end) return '0px';
+    if (value < start || value > end) return "0px";
     const progress = (value - start) / (end - start);
     return `${progress * speed * 200}px`;
   });
 
   React.useEffect(() => {
     if (ref.current) {
-      // eslint-disable-next-line no-console
-      console.log('ParallaxSection ref:', ref.current, 'height:', ref.current.offsetHeight);
     }
   }, []);
 
   return (
-    <motion.div ref={ref} className={`relative overflow-hidden border-2 border-red-500 bg-red-100 ${className}`}>
+    <motion.div
+      ref={ref}
+      className={`relative overflow-hidden border-2 border-red-500 bg-red-100 ${className}`}
+    >
       <motion.div
         style={direction === "vertical" ? { y } : { x }}
         className="relative h-full w-full"
@@ -196,7 +197,10 @@ export function StaggeredChildren({
       className={className}
     >
       {React.Children.toArray(children).map((child) => (
-        <motion.div key={(child as React.ReactElement<any>).key} variants={item}>
+        <motion.div
+          key={(child as React.ReactElement<any>).key}
+          variants={item}
+        >
           {child}
         </motion.div>
       ))}
@@ -237,7 +241,7 @@ export function AnimatedText({
           {char === " " ? "\u00A0" : char}
         </motion.span>
       ));
-    } 
+    }
   };
 
   return (
@@ -269,7 +273,8 @@ export function AnimatedCard({
         hoverEffect
           ? {
               y: -10,
-              boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+              boxShadow:
+                "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
             }
           : {}
       }

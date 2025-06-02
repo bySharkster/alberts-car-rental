@@ -5,7 +5,7 @@ import Stepper, {
   StepIndicator,
 } from "@/components/templates/animations/Stepper";
 
-import { getWhatsAppUrl } from "@/app/actions/whatsapp/getWhatsappUrlAction";
+import { getWhatsAppUrl } from "@/app/actions/notifications/getWhatsappUrlAction";
 import { toast } from "sonner";
 import {
   Select,
@@ -23,6 +23,8 @@ import {
   DateRangePicker,
 } from "@/components/ui/date-range-picker";
 import { format } from "date-fns";
+import { ReservationCalendar } from "./reservations/reservation-calendar";
+import { useReservationCalendar } from "@/hooks/useReservationCalendar";
 
 interface SteppedBookingFormProps {
   vehicles: Vehicle[];
@@ -31,58 +33,42 @@ interface SteppedBookingFormProps {
 export default function SteppedBookingForm({
   vehicles,
 }: SteppedBookingFormProps) {
-  // Mock static reservations for demo
-  const MOCK_RESERVATIONS = [
-    {
-      car: "Toyota Corolla 2022",
-      from: new Date("2025-05-15"),
-      to: new Date("2025-05-18"),
-    },
-    {
-      car: "Honda Civic 2021",
-      from: new Date("2025-05-20"),
-      to: new Date("2025-05-22"),
-    },
-    {
-      car: "Toyota Corolla 2022",
-      from: new Date("2025-05-25"),
-      to: new Date("2025-05-27"),
-    },
-  ];
-
   const [loading, setLoading] = useState(false);
   const [stepData, setStepData] = useState<{
     name: string;
     email: string;
     phone: string;
-    interestCar: string;
+    interestCar: number;
     from?: Date;
     to?: Date;
+    pickupHour: string;
+    dropoffHour: string;
+    pickupLocation: string;
+    dropoffLocation: string;
     message: string;
   }>({
     name: "",
     email: "",
     phone: "",
-    interestCar: "",
+    interestCar: 0,
     from: undefined,
     to: undefined,
+    pickupHour: "",
+    dropoffHour: "",
+    pickupLocation: "",
+    dropoffLocation: "",
     message: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  // Helper to check if the selected date range overlaps with reservations
-  function isDateRangeReserved(): boolean {
-    if (!stepData.from || !stepData.to || !stepData.interestCar) return false;
-    return MOCK_RESERVATIONS.some(
-      (r) =>
-        r.car === stepData.interestCar &&
-        stepData.from &&
-        stepData.to &&
-        ((stepData.from >= r.from && stepData.from <= r.to) ||
-          (stepData.to >= r.from && stepData.to <= r.to) ||
-          (stepData.from <= r.from && stepData.to >= r.to))
-    );
-  }
+  const {
+    selectedDates,
+    setSelectedDates,
+    blockedDates,
+    rangeUnavailableDates,
+    loadingAvailability,
+    datesAvailable,
+  } = useReservationCalendar(stepData.interestCar);
 
   // Step navigation helpers
   const handleChange = (field: string, value: string | Date | undefined) => {
@@ -90,18 +76,36 @@ export default function SteppedBookingForm({
   };
 
   // Final submit
+
   async function handleFinalSubmit() {
     setLoading(true);
+
+    const formData = new FormData();
+    const {
+      name,
+      email,
+      phone,
+      interestCar,
+      from,
+      to,
+      pickupHour,
+      dropoffHour,
+      pickupLocation,
+      dropoffLocation,
+      message,
+    } = stepData;
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("phone", phone);
+    formData.append("interestCar", String(interestCar));
+    formData.append("pickupDate", from ? from.toISOString() : "");
+    formData.append("dropoffDate", to ? to.toISOString() : "");
+    formData.append("pickupHour", pickupHour);
+    formData.append("dropoffHour", dropoffHour);
+    formData.append("pickupLocation", pickupLocation);
+    formData.append("dropoffLocation", dropoffLocation);
+    formData.append("message", message);
     try {
-      const formData = new FormData();
-      const { name, email, phone, interestCar, from, to, message } = stepData;
-      formData.append("name", name);
-      formData.append("email", email);
-      formData.append("phone", phone);
-      formData.append("interestCar", interestCar);
-      formData.append("from", from ? from.toISOString().split("T")[0] : "");
-      formData.append("to", to ? to.toISOString().split("T")[0] : "");
-      formData.append("message", message);
       const result = await getWhatsAppUrl(formData);
       if (result.errors) {
         setErrors(result.errors);
@@ -125,7 +129,7 @@ export default function SteppedBookingForm({
     Boolean(errors.name || errors.email), // Step 1
     Boolean(errors.phone), // Step 2
     Boolean(errors.interestCar), // Step 3
-    Boolean(isDateRangeReserved() || !stepData.from || !stepData.to), // Step 4
+    Boolean(!stepData.from || !stepData.to), // Step 4
     Boolean(errors.message), // Step 5
     false, // Review step (no error)
   ];
@@ -201,7 +205,7 @@ export default function SteppedBookingForm({
         <h2 className="text-lg font-semibold mb-2">Select Your Car</h2>
         <Select
           name="interestCar"
-          value={stepData.interestCar}
+          value={stepData.interestCar ? String(stepData.interestCar) : ""}
           onValueChange={(value) => handleChange("interestCar", value)}
         >
           <SelectTrigger
@@ -216,10 +220,7 @@ export default function SteppedBookingForm({
           </SelectTrigger>
           <SelectContent>
             {vehicles.map((vehicle) => (
-              <SelectItem
-                key={vehicle.id}
-                value={`${vehicle.make} ${vehicle.model} ${vehicle.year}`}
-              >
+              <SelectItem key={vehicle.id} value={String(vehicle.id)}>
                 {vehicle.make} {vehicle.model} {vehicle.year}
               </SelectItem>
             ))}
@@ -231,21 +232,171 @@ export default function SteppedBookingForm({
       </Step>
       <Step className="space-y-4 px-2">
         <h2 className="text-lg font-semibold mb-2">Select Rental Dates</h2>
-
-        <DateRangePicker
-          value={{ from: stepData.from, to: stepData.to }}
-          onChange={(range: DateRange | undefined) => {
-            handleChange("from", range?.from);
-            handleChange("to", range?.to);
+        <ReservationCalendar
+          selectedDates={selectedDates}
+          setSelectedDates={(dates) => {
+            setSelectedDates(dates);
+            handleChange("from", dates.from);
+            handleChange("to", dates.to);
           }}
-          reservedRanges={MOCK_RESERVATIONS}
-          car={stepData.interestCar}
+          blockedDates={blockedDates}
+          rangeUnavailableDates={rangeUnavailableDates}
         />
-        {isDateRangeReserved() && (
-          <span className="text-red-500 text-xs mt-2 block">
-            Selected dates are reserved for this car
+        {(errors.from || errors.to) && (
+          <span className="text-red-500 text-xs">
+            Please select a valid rental date range
           </span>
         )}
+      </Step>
+      {/* Step: Pickup/Dropoff Hours */}
+      <Step>
+        <h2 className="text-lg font-semibold mb-2">Pickup & Dropoff Hours</h2>
+        <div className="flex md:flex-row flex-col justify-center gap-2 max-w-[600px] mx-auto">
+          <div className="w-full">
+            <label
+              htmlFor="pickupHour"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+            >
+              Pickup Hour
+            </label>
+            <Select
+              name="pickupHour"
+              value={stepData.pickupHour}
+              onValueChange={(value) => handleChange("pickupHour", value)}
+              required
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select pickup hour" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="8:00 AM">8:00 AM</SelectItem>
+                <SelectItem value="9:00 AM">9:00 AM</SelectItem>
+                <SelectItem value="10:00 AM">10:00 AM</SelectItem>
+                <SelectItem value="11:00 AM">11:00 AM</SelectItem>
+                <SelectItem value="12:00 PM">12:00 PM</SelectItem>
+                <SelectItem value="1:00 PM">1:00 PM</SelectItem>
+                <SelectItem value="2:00 PM">2:00 PM</SelectItem>
+                <SelectItem value="3:00 PM">3:00 PM</SelectItem>
+                <SelectItem value="4:00 PM">4:00 PM</SelectItem>
+                <SelectItem value="5:00 PM">5:00 PM</SelectItem>
+                <SelectItem value="6:00 PM">6:00 PM</SelectItem>
+                <SelectItem value="7:00 PM">7:00 PM</SelectItem>
+                <SelectItem value="8:00 PM">8:00 PM</SelectItem>
+                <SelectItem value="9:00 PM">9:00 PM</SelectItem>
+                <SelectItem value="10:00 PM">10:00 PM</SelectItem>
+              </SelectContent>
+            </Select>
+            {errors.pickupHour && (
+              <span className="text-red-500 text-xs">{errors.pickupHour}</span>
+            )}
+          </div>
+          <div className="w-full">
+            <label
+              htmlFor="dropoffHour"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+            >
+              Dropoff Hour
+            </label>
+            <Select
+              name="dropoffHour"
+              value={stepData.dropoffHour}
+              onValueChange={(value) => handleChange("dropoffHour", value)}
+              required
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select dropoff hour" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="8:00 AM">8:00 AM</SelectItem>
+                <SelectItem value="9:00 AM">9:00 AM</SelectItem>
+                <SelectItem value="10:00 AM">10:00 AM</SelectItem>
+                <SelectItem value="11:00 AM">11:00 AM</SelectItem>
+                <SelectItem value="12:00 PM">12:00 PM</SelectItem>
+                <SelectItem value="1:00 PM">1:00 PM</SelectItem>
+                <SelectItem value="2:00 PM">2:00 PM</SelectItem>
+                <SelectItem value="3:00 PM">3:00 PM</SelectItem>
+                <SelectItem value="4:00 PM">4:00 PM</SelectItem>
+                <SelectItem value="5:00 PM">5:00 PM</SelectItem>
+                <SelectItem value="6:00 PM">6:00 PM</SelectItem>
+                <SelectItem value="7:00 PM">7:00 PM</SelectItem>
+                <SelectItem value="8:00 PM">8:00 PM</SelectItem>
+                <SelectItem value="9:00 PM">9:00 PM</SelectItem>
+                <SelectItem value="10:00 PM">10:00 PM</SelectItem>
+              </SelectContent>
+            </Select>
+            {errors.dropoffHour && (
+              <span className="text-red-500 text-xs">{errors.dropoffHour}</span>
+            )}
+          </div>
+        </div>
+      </Step>
+      {/* Step: Pickup/Dropoff Locations */}
+      <Step>
+        <h2 className="text-lg font-semibold mb-2">
+          Pickup & Dropoff Locations
+        </h2>
+        <div className="flex flex-row justify-center gap-2 md:max-w-[600px] mx-auto">
+          <div className="w-full">
+            <label
+              htmlFor="pickupLocation"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+            >
+              Pickup Location
+            </label>
+            <Select
+              name="pickupLocation"
+              value={stepData.pickupLocation}
+              onValueChange={(value) => handleChange("pickupLocation", value)}
+              required
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select pickup location" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Ponce">Ponce</SelectItem>
+                <SelectItem value="Ponce Airport">Ponce Airport</SelectItem>
+                <SelectItem value="Plaza del Caribe">
+                  Plaza del Caribe
+                </SelectItem>
+              </SelectContent>
+            </Select>
+            {errors.pickupLocation && (
+              <span className="text-red-500 text-xs">
+                {errors.pickupLocation}
+              </span>
+            )}
+          </div>
+          <div className="w-full">
+            <label
+              htmlFor="dropoffLocation"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+            >
+              Dropoff Location
+            </label>
+            <Select
+              name="dropoffLocation"
+              value={stepData.dropoffLocation}
+              onValueChange={(value) => handleChange("dropoffLocation", value)}
+              required
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select dropoff location" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Ponce">Ponce</SelectItem>
+                <SelectItem value="Ponce Airport">Ponce Airport</SelectItem>
+                <SelectItem value="Plaza del Caribe">
+                  Plaza del Caribe
+                </SelectItem>
+              </SelectContent>
+            </Select>
+            {errors.dropoffLocation && (
+              <span className="text-red-500 text-xs">
+                {errors.dropoffLocation}
+              </span>
+            )}
+          </div>
+        </div>
       </Step>
       <Step>
         <h2 className="text-lg font-semibold mb-2">Your Request</h2>
@@ -294,8 +445,8 @@ export default function SteppedBookingForm({
         <button
           type="button"
           className="mt-4 w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition duration-300 flex items-center justify-center group "
-          onClick={handleFinalSubmit}
           disabled={loading || Object.keys(errors).length > 0}
+          onClick={handleFinalSubmit}
         >
           {loading ? (
             <div className="flex items-center gap-2">

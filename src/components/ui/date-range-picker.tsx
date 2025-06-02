@@ -10,6 +10,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export type { DateRange } from "react-day-picker";
 
@@ -34,6 +35,9 @@ export function DateRangePicker({
   car,
   disabledDates = [],
 }: DateRangePickerProps) {
+  const isMobile = useIsMobile();
+  const numberOfMonths = isMobile ? 1 : 2;
+
   // Compute reserved dates for the selected car
   const reservedForCar = reservedRanges.filter((r) => !car || r.car === car);
   const isDateReserved = (date: Date) =>
@@ -86,7 +90,7 @@ export function DateRangePicker({
             mode="range"
             defaultMonth={value?.from}
             selected={value}
-            numberOfMonths={2}
+            numberOfMonths={numberOfMonths}
             disabled={disabledDates}
             modifiers={{ reserved: (date) => isDateReserved(date) }}
             modifiersClassNames={{ reserved: "bg-red-200 text-red-700" }}
