@@ -60,7 +60,7 @@ export default async function BookPage({
                     Start Booking <BookCheckIcon className="ml-2" />
                   </Button>
                 </DrawerTrigger>
-                <DrawerContent>
+                <DrawerContent className="min-h-dvh">
                   <DrawerHeader>
                     <DrawerTitle>Book Your Car</DrawerTitle>
                     <DrawerDescription>

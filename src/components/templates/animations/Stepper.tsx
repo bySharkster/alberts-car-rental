@@ -85,46 +85,66 @@ export default function Stepper({
 
   return (
     <div
-      className="flex min-h-full flex-1 flex-col items-center justify-center  sm:aspect-[4/3] md:aspect-[2/1]"
+      className="flex min-h-full flex-1 flex-col items-center justify-center sm:aspect-[4/3] md:aspect-[2/1]"
       {...rest}
     >
       <div
-        className={`mx-auto w-full max-w-md rounded-4xl  ${stepCircleContainerClassName}`}
+        className={`mx-auto w-full max-w-md rounded-4xl flex flex-col min-h-[80dvh] justify-between items-stretch ${stepCircleContainerClassName}`}
       >
         <div
-          className={`${stepContainerClassName} flex w-full items-center p-8`}
+          className={`${stepContainerClassName} flex w-full items-center p-4 sm:p-8 overflow-x-auto`}
         >
-          {stepsArray.map((_, index) => {
-            const stepNumber = index + 1;
-            const isNotLastStep = index < totalSteps - 1;
-            return (
-              <Fragment key={stepNumber}>
-                {renderStepIndicator ? (
-                  renderStepIndicator({
-                    step: stepNumber,
-                    currentStep,
-                    onStepClick: (clicked) => {
-                      setDirection(clicked > currentStep ? 1 : -1);
-                      updateStep(clicked);
-                    },
-                  })
-                ) : (
-                  <StepIndicator
-                    step={stepNumber}
-                    disableStepIndicators={disableStepIndicators}
-                    currentStep={currentStep}
-                    onClickStep={(clicked) => {
-                      setDirection(clicked > currentStep ? 1 : -1);
-                      updateStep(clicked);
-                    }}
-                  />
-                )}
-                {isNotLastStep && (
-                  <StepConnector isComplete={currentStep > stepNumber} />
-                )}
-              </Fragment>
-            );
-          })}
+          {(() => {
+            // --- Calculate visible window ---
+            const stepsToShow = 4;
+            let start = 0;
+            let end = stepsToShow;
+            if (totalSteps <= stepsToShow) {
+              start = 0;
+              end = totalSteps;
+            } else if (currentStep <= 2) {
+              start = 0;
+              end = stepsToShow;
+            } else if (currentStep >= totalSteps - 1) {
+              start = totalSteps - stepsToShow;
+              end = totalSteps;
+            } else {
+              start = currentStep - 2;
+              end = currentStep + 2;
+            }
+            return stepsArray.slice(start, end).map((_, visibleIdx) => {
+              const index = start + visibleIdx;
+              const stepNumber = index + 1;
+              const isNotLastStep = index < end - 1;
+              return (
+                <Fragment key={stepNumber}>
+                  {renderStepIndicator ? (
+                    renderStepIndicator({
+                      step: stepNumber,
+                      currentStep,
+                      onStepClick: (clicked) => {
+                        setDirection(clicked > currentStep ? 1 : -1);
+                        updateStep(clicked);
+                      },
+                    })
+                  ) : (
+                    <StepIndicator
+                      step={stepNumber}
+                      disableStepIndicators={disableStepIndicators}
+                      currentStep={currentStep}
+                      onClickStep={(clicked) => {
+                        setDirection(clicked > currentStep ? 1 : -1);
+                        updateStep(clicked);
+                      }}
+                    />
+                  )}
+                  {isNotLastStep && (
+                    <StepConnector isComplete={currentStep > stepNumber} />
+                  )}
+                </Fragment>
+              );
+            });
+          })()}
         </div>
 
         <StepContentWrapper
@@ -137,7 +157,7 @@ export default function Stepper({
         </StepContentWrapper>
 
         {!isCompleted && (
-          <div className={`px-8 pb-8 ${footerClassName}`}>
+          <div className={`px-3 sm:px-8 pb-8 ${footerClassName}`}>
             <div
               className={`mt-10 flex ${
                 currentStep !== 1 ? "justify-between" : "justify-end"

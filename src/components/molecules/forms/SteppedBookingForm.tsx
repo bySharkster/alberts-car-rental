@@ -230,7 +230,8 @@ export default function SteppedBookingForm({
           <span className="text-red-500 text-xs">{errors.interestCar}</span>
         )}
       </Step>
-      <Step className="space-y-4 px-2">
+      {/* Select Rental Dates */}
+      <Step className="space-y-4 px-2 mx-auto items-center flex flex-col w-full ">
         <h2 className="text-lg font-semibold mb-2">Select Rental Dates</h2>
         <ReservationCalendar
           selectedDates={selectedDates}
@@ -335,7 +336,7 @@ export default function SteppedBookingForm({
         <h2 className="text-lg font-semibold mb-2">
           Pickup & Dropoff Locations
         </h2>
-        <div className="flex flex-row justify-center gap-2 md:max-w-[600px] mx-auto">
+        <div className="flex flex-col md:flex-row justify-center gap-2 md:max-w-[600px] mx-auto">
           <div className="w-full">
             <label
               htmlFor="pickupLocation"
@@ -398,6 +399,7 @@ export default function SteppedBookingForm({
           </div>
         </div>
       </Step>
+      {/* Review step */}
       <Step>
         <h2 className="text-lg font-semibold mb-2">Your Request</h2>
         <textarea
@@ -415,6 +417,7 @@ export default function SteppedBookingForm({
           <span className="text-red-500 text-xs">{errors.message}</span>
         )}
       </Step>
+      {/* Review step */}
       <Step>
         <h2 className="text-lg font-semibold mb-2">Review & Submit</h2>
         <div className="space-y-2 text-sm">
