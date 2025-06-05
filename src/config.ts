@@ -9,14 +9,14 @@ const config = {
   resend: {
     fromNoReply: "Alber Car Rental <noreply@albertcarrental.com>",
     fromAdmin: "Albert Car Rental Team<albert@albertcarrental.com>",
-    supportEmail: "support@albertcarrental.com",
-    forwardRepliesTo: "contact@fernandoaponte.dev",
+    supportEmail: "contact@albertcarrental.com",
+    forwardRepliesTo: "contact@albertcarrental.com",
   },
-  social:{
+  social: {
     facebook: "https://www.facebook.com/p/Albert-Car-Rental-61557243689183/",
     instagram: "https://www.instagram.com/albertcarrental/",
-    whatsapp: "https://wa.link/k91t18"
-  }
+    whatsapp: "https://wa.link/k91t18",
+  },
 } as ConfigProps;
 
 export default config;
