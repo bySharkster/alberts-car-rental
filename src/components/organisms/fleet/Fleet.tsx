@@ -48,7 +48,9 @@ export default function Fleet({ vehicles }: FleetProps) {
                   <div className="flex flex-col gap-4 p-4">
                     <div className="flex items-center gap-4">
                       <Image
-                        src={vehicle.images[0].url || "/car-placeholder.png"}
+                        src={
+                          vehicle.images[0].url || "/images/car-placeholder.png"
+                        }
                         alt={`${vehicle.make} ${vehicle.model}`}
                         width={112}
                         height={80}

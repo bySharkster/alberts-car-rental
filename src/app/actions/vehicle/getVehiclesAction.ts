@@ -46,3 +46,27 @@ export async function getVehicleByIdAction(id: number) {
   });
   return vehicle;
 }
+
+export async function getImagesByVehicleId(vehicleId: number) {
+  try {
+    const images = await prisma.image.findMany({
+      where: { vehicleId },
+    });
+
+    if (!images) {
+      throw new Error("Failed to fetch images");
+    }
+
+    images.map((image) => {
+      const imageS3Name = new URL(image.url).pathname;
+      image.url = process.env.AWS_CDN_URL + imageS3Name;
+    });
+
+    return { images };
+  } catch (error) {
+    if (error instanceof Error) {
+      throw error;
+    }
+    throw new Error("Failed to fetch images");
+  }
+}

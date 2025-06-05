@@ -7,10 +7,20 @@ import type { Vehicle } from "@prisma/client";
 import FleetSection from "@/components/organisms/fleet/FleetSection";
 import FeaturesSection from "@/components/organisms/features/FeaturesSection";
 import CallToActionSection from "@/components/organisms/cta/CallToActionSection";
-import getVehiclesAction from "../actions/vehicle/getVehiclesAction";
+import getVehiclesAction, {
+  getImagesByVehicleId,
+} from "../actions/vehicle/getVehiclesAction";
 
 export default async function Home() {
   const vehicles = await getVehiclesAction();
+  const vehicleImages = await Promise.all(
+    vehicles.map((vehicle) => getImagesByVehicleId(vehicle.id))
+  );
+
+  const vehiclesWithImages = vehicles.map((vehicle, index) => ({
+    ...vehicle,
+    images: vehicleImages[index].images,
+  }));
 
   return (
     <main className="bg-[#F4EFEF] min-h-screen">
@@ -22,7 +32,7 @@ export default async function Home() {
       <FeaturesSection />
 
       {/* Fleet Section */}
-      <FleetSection vehicles={vehicles} />
+      <FleetSection vehicles={vehiclesWithImages} />
 
       {/* Mission & Vision Section */}
       {/* <section id="about" className="py-20 bg-[#1f3045] text-white">
