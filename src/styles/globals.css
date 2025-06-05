@@ -16,18 +16,122 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 1 0 0;
+    --foreground: 0.21 0.01 285.89;
+    --card: 1 0 0;
+    --card-foreground: 0.48 0.01 161.03;
+    --popover: 1 0 0;
+    --popover-foreground: 0.21 0.01 285.89;
+    --primary: 0.4 0.11 248.09;
+    --primary-foreground: 1 0 0;
+    --secondary: 0.68 0.16 242.62;
+    --secondary-foreground: 1 0 0;
+    --muted: 0.97 0.01 247.9;
+    --muted-foreground: 0.55 0.01 285.94;
+    --accent: 0.68 0.16 242.62;
+    --accent-foreground: 1 0 0;
+    --destructive: 0.6 0.25 29.23;
+    --destructive-foreground: 1 0 0;
+    --border: 0.93 0.01 255.51;
+    --input: 0.93 0.01 255.51;
+    --ring: 0.68 0.16 242.62;
+    --chart-1: 0.4 0.11 248.09;
+    --chart-2: 0.68 0.16 242.62;
+    --chart-3: 0.48 0.01 161.03;
+    --chart-4: 0.93 0.01 255.51;
+    --chart-5: 0 0 0;
+    --sidebar: 1 0 0;
+    --sidebar-foreground: 0.21 0.01 285.89;
+    --sidebar-primary: 0.4 0.11 248.09;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.68 0.16 242.62;
+    --sidebar-accent-foreground: 1 0 0;
+    --sidebar-border: 0.93 0.01 255.51;
+    --sidebar-ring: 0.68 0.16 242.62;
+    --font-sans: sans-serif;
+    --font-serif: serif;
+    --font-mono: monospace;
+    --radius: 0.5rem;
+    --shadow-2xs: 0 0 20px 0 hsl(0 0% 0% / 0.05);
+    --shadow-xs: 0 0 20px 0 hsl(0 0% 0% / 0.05);
+    --shadow-sm:
+      0 0 20px 0 hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+    --shadow: 0 0 20px 0 hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+    --shadow-md:
+      0 0 20px 0 hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
+    --shadow-lg:
+      0 0 20px 0 hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
+    --shadow-xl:
+      0 0 20px 0 hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
+    --shadow-2xl: 0 0 20px 0 hsl(0 0% 0% / 0.25);
+    --tracking-normal: 0;
+  }
+
+  .dark {
+    --background: 0.14 0.01 256.95;
+    --foreground: 0.96 0 247.84;
+    --card: 0.21 0.04 265.75;
+    --card-foreground: 1 0 0;
+    --popover: 0.21 0.04 265.75;
+    --popover-foreground: 0.96 0 247.84;
+    --primary: 0.4 0.11 248.09;
+    --primary-foreground: 1 0 0;
+    --secondary: 0.68 0.16 242.62;
+    --secondary-foreground: 0.96 0 247.84;
+    --muted: 0.32 0.05 263.59;
+    --muted-foreground: 0.55 0.01 285.94;
+    --accent: 0.68 0.16 242.62;
+    --accent-foreground: 0.96 0 247.84;
+    --destructive: 0.6 0.25 29.23;
+    --destructive-foreground: 0.96 0 247.84;
+    --border: 0.32 0.05 263.59;
+    --input: 0.32 0.05 263.59;
+    --ring: 0.68 0.16 242.62;
+    --chart-1: 0.4 0.11 248.09;
+    --chart-2: 0.68 0.16 242.62;
+    --chart-3: 0.48 0.01 161.03;
+    --chart-4: 0.32 0.05 263.59;
+    --chart-5: 0.96 0 247.84;
+    --sidebar: 0.21 0.04 265.75;
+    --sidebar-foreground: 0.96 0 247.84;
+    --sidebar-primary: 0.4 0.11 248.09;
+    --sidebar-primary-foreground: 0.96 0 247.84;
+    --sidebar-accent: 0.68 0.16 242.62;
+    --sidebar-accent-foreground: 0.96 0 247.84;
+    --sidebar-border: 0.32 0.05 263.59;
+    --sidebar-ring: 0.68 0.16 242.62;
+    --font-sans: sans-serif;
+    --font-serif: serif;
+    --font-mono: monospace;
+    --radius: 0.5rem;
+    --shadow-2xs: 0 0 20px 0 hsl(0 0% 0% / 0.1);
+    --shadow-xs: 0 0 20px 0 hsl(0 0% 0% / 0.1);
+    --shadow-sm:
+      0 0 20px 0 hsl(0 0% 0% / 0.2), 0 1px 2px -1px hsl(0 0% 0% / 0.2);
+    --shadow: 0 0 20px 0 hsl(0 0% 0% / 0.2), 0 1px 2px -1px hsl(0 0% 0% / 0.2);
+    --shadow-md:
+      0 0 20px 0 hsl(0 0% 0% / 0.2), 0 2px 4px -1px hsl(0 0% 0% / 0.2);
+    --shadow-lg:
+      0 0 20px 0 hsl(0 0% 0% / 0.2), 0 4px 6px -1px hsl(0 0% 0% / 0.2);
+    --shadow-xl:
+      0 0 20px 0 hsl(0 0% 0% / 0.2), 0 8px 10px -1px hsl(0 0% 0% / 0.2);
+    --shadow-2xl: 0 0 20px 0 hsl(0 0% 0% / 0.5);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }

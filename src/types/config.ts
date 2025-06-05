@@ -3,11 +3,16 @@ export interface ConfigProps {
   appDescription: string;
   ownerPhone: string;
   domainName: string;
-  mailgun: {
-    subdomain: string;
+  address: string;
+  resend: {
     fromNoReply: string;
     fromAdmin: string;
     supportEmail?: string;
     forwardRepliesTo?: string;
+  };
+  social: {
+    facebook: string;
+    instagram: string;
+    whatsapp: string;
   };
 }

@@ -1,4 +1,3 @@
-
 # Albert's Car Rental
 
 A modern, user-friendly car rental application for managing vehicle bookings, customer information, and rental operations.
@@ -51,7 +50,6 @@ Set up environment variables as needed (see `.env.example` if available), then s
 npm start
 ```
 
-
 ---
 
 ## Usage
@@ -77,7 +75,6 @@ Navigate to `http://localhost:3000` (or your configured port) in your browser.
 
 ---
 
-
 ---
 
 ## License
@@ -92,5 +89,5 @@ For questions or support:
 
 - Open an issue on GitHub
 - Email: [contact@fernandoaponte.dev]
-  
+
 ---
