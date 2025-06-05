@@ -3,10 +3,16 @@ import { AnimatedSection } from "@/components/templates/animations/AnimatedSecti
 import SpotlightCard from "@/components/ui/spotlight-card";
 import * as motion from "motion/react-client";
 import RotatingText from "@/components/ui/rotating-text";
+import {
+  CarIcon,
+  HeadsetIcon,
+  MapPinnedIcon,
+  ShieldAlertIcon,
+} from "lucide-react";
 
 const features = [
   {
-    icon: <i className="fas fa-car-side text-2xl text-[#024f7d]" />,
+    icon: <CarIcon className="text-2xl text-[#024f7d]" />,
     iconBg: "bg-[#024f7d]/10",
     spotlightColor: "rgba(2, 79, 125, 0.25)" as const,
     title: "Premium Fleet",
@@ -15,7 +21,9 @@ const features = [
     iconColor: "#024f7d",
   },
   {
-    icon: <i className="fas fa-map-marker-alt text-2xl text-[#26a6fb]" />,
+    icon: (
+      <MapPinnedIcon className="fas fa-map-marker-alt text-2xl text-[#26a6fb]" />
+    ),
     iconBg: "bg-[#26a6fb]/10",
     spotlightColor: "rgba(38, 166, 251, 0.25)" as const,
     title: "Flexible Pickup",
@@ -24,7 +32,9 @@ const features = [
     iconColor: "#26a6fb",
   },
   {
-    icon: <i className="fas fa-shield-alt text-2xl text-[#26b578]" />,
+    icon: (
+      <ShieldAlertIcon className="fas fa-shield-alt text-2xl text-[#26b578]" />
+    ),
     iconBg: "bg-[#26b578]/10",
     spotlightColor: "rgba(38, 181, 120, 0.25)" as const,
     title: "Full Insurance",
@@ -33,7 +43,7 @@ const features = [
     iconColor: "#26b578",
   },
   {
-    icon: <i className="fas fa-headset text-2xl text-[#024f7d]" />,
+    icon: <HeadsetIcon className="fas fa-headset text-2xl text-[#024f7d]" />,
     iconBg: "bg-[#024f7d]/10",
     spotlightColor: "rgba(2, 79, 125, 0.25)" as const,
     title: "24/7 Support",
