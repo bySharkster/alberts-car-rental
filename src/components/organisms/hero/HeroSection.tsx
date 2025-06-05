@@ -14,6 +14,7 @@ export default function HeroSection() {
           autoPlay
           loop
           muted
+          playsInline
           className="h-dvh object-cover w-full"
           initial={{ scale: 1.1, opacity: 0.5 }}
           animate={{ scale: 1, opacity: 1 }}
