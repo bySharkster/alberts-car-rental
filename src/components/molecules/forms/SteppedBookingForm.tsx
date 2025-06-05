@@ -59,6 +59,7 @@ export default function SteppedBookingForm({
     dropoffLocation: "",
     message: "",
   });
+  const [currentStepPosition, setCurrentStepPosition] = useState(1);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const {
@@ -134,14 +135,25 @@ export default function SteppedBookingForm({
     false, // Review step (no error)
   ];
 
+  const handleStepClick = (clickedStep: number) => {
+    if (stepHasError[clickedStep - 1]) {
+      toast.error("Please fill out all fields");
+    } else {
+      setCurrentStepPosition(clickedStep);
+    }
+  };
+
   return (
     <Stepper
       initialStep={1}
       onFinalStepCompleted={handleFinalSubmit}
       backButtonText="Previous"
+      onStepChange={handleStepClick}
       backButtonProps={{ disabled: loading }}
       nextButtonText={loading ? "Submitting..." : "Next"}
-      nextButtonProps={{ disabled: loading }}
+      nextButtonProps={{
+        disabled: loading || stepHasError[currentStepPosition - 1],
+      }}
       renderStepIndicator={({ step, currentStep, onStepClick }) => (
         <StepIndicator
           step={step}
