@@ -4,7 +4,7 @@ const config = {
   appName: "Albert Car Rental",
   appDescription: "Your car rental service in the city of Ponce, Puerto Rico",
   address: "Ponce, Puerto Rico",
-  ownerPhone: "+1 (787) 251-1659",
+  ownerPhone: "+1 (939) 251-1659",
   domainName: "albertcarrental.com",
   resend: {
     fromNoReply: "Alber Car Rental <noreply@albertcarrental.com>",

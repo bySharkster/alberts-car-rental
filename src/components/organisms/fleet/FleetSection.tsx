@@ -183,8 +183,9 @@ export default function FleetSection({ vehicles }: FleetProps) {
                               }
                               alt={`${vehicle.make} ${vehicle.model}`}
                               width={600}
-                              height={400}
-                              className="w-full h-full object-cover object-top"
+                              unoptimized={vehicle.images[0]?.url?.includes(
+                                "cloudfront.net"
+                              )}
                             />
                           </div>
                           <CardContent className="p-6">
