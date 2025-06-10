@@ -86,7 +86,7 @@ export default function Fleet({ vehicles }: FleetProps) {
                           </li>
                         ))}
                     </ul>
-                    <div className="flex flex-col lg:flex-row justify-end  gap-2">
+                    <div className="flex flex-col lg:flex-row justify-end gap-2">
                       <p className="text-[#26b578] font-bold">
                         ${vehicle.dailyRate.toFixed(2)}/day
                       </p>
