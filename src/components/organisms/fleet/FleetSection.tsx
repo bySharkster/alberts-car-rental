@@ -183,18 +183,26 @@ export default function FleetSection({ vehicles }: FleetProps) {
                               }
                               alt={`${vehicle.make} ${vehicle.model}`}
                               width={600}
+                              height={400}
                               unoptimized={vehicle.images[0]?.url?.includes(
                                 "cloudfront.net"
                               )}
                             />
                           </div>
                           <CardContent className="p-6">
-                            <div className="flex justify-between items-start mb-4">
+                            <div className="flex justify-between items-start mb-4 gap-2">
                               <div>
-                                <h3 className="text-xl font-bold text-[#1f3045]">
-                                  {vehicle.make} {vehicle.model}
-                                </h3>
-                                <p className="text-[#464648]">{category}</p>
+                                <div className="flex items-start md:items-center flex-col-reverse md:flex-row justify-between gap-2 w-full min-w-[280px] lg:min-w-[260px] xl:min-w-[320px]">
+                                  <h3 className="text-xl font-bold text-[#1f3045]">
+                                    {vehicle.make} {vehicle.model}
+                                  </h3>
+                                  <p className="text-[#26b578] font-bold">
+                                    ${vehicle.dailyRate.toFixed(2)}/day
+                                  </p>
+                                </div>
+                                <p className="text-[#464648]">
+                                  {vehicle.category.toLowerCase()}
+                                </p>
                               </div>
                               {/* <span className="text-[#26b578] font-bold">$199/day</span> */}
                             </div>
