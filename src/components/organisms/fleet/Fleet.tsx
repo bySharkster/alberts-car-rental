@@ -86,7 +86,10 @@ export default function Fleet({ vehicles }: FleetProps) {
                           </li>
                         ))}
                     </ul>
-                    <div className="flex justify-end">
+                    <div className="flex flex-col lg:flex-row justify-end  gap-2">
+                      <p className="text-[#26b578] font-bold">
+                        ${vehicle.dailyRate.toFixed(2)}/day
+                      </p>
                       <Button variant="default" size="lg">
                         <Link
                           href={`/book/?id=${vehicle.id}`}
