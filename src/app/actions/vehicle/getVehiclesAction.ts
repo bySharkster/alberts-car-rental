@@ -15,7 +15,7 @@ export default async function getVehiclesAction() {
     include: {
       images: true,
     },
-    cacheStrategy: { ttl: 60 * 60 * 24 },
+    cacheStrategy: { ttl: 60 * 60, swr: 60 * 60 },
   });
   const vehicles: VehicleWithImages[] = dbVehicles.map(
     (v: VehicleWithImages) => ({
@@ -43,6 +43,7 @@ export async function getVehicleByIdAction(id: number) {
     include: {
       images: true,
     },
+    cacheStrategy: { ttl: 60 * 60, swr: 60 * 60 },
   });
   return vehicle;
 }

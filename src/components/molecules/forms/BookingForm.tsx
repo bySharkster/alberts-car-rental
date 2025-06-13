@@ -18,6 +18,7 @@ import {
 import { ReservationCalendar } from "./reservations/reservation-calendar";
 import { useReservationCalendar } from "@/hooks/useReservationCalendar";
 import SelectVehicle from "../selectors/select-vehicle";
+import { useRouter } from "next/navigation";
 
 interface BookingFormProps {
   vehicles: Vehicle[];
@@ -27,6 +28,7 @@ interface BookingFormProps {
 export default function BookingForm({ vehicles, vehicleId }: BookingFormProps) {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const router = useRouter();
 
   const [selectedCar, setSelectedCar] = useState<number>(
     Number(vehicleId) || vehicles[0].id
@@ -63,7 +65,9 @@ export default function BookingForm({ vehicles, vehicleId }: BookingFormProps) {
         return;
       }
       setErrors({});
+      toast.success("Booking successful, you will be redirected to WhatsApp");
       window.open(result.url, "_blank");
+      router.push("/book/success");
     } catch (error: unknown) {
       if (error instanceof Error) {
         toast.error(error?.message || "Internal server error");
