@@ -17,7 +17,8 @@ export function ReservationCalendar({
   rangeUnavailableDates,
 }: ReservationCalendarProps) {
   const isMobile = useIsMobile();
-  const numberOfMonths = isMobile ? 1 : 2;
+  // const numberOfMonths = isMobile ? 1 : 2;
+  const numberOfMonths = 1;
   const isDateReserved = (date: Date) =>
     date < new Date() ||
     blockedDates.some((d) => isSameDay(d, date)) ||
