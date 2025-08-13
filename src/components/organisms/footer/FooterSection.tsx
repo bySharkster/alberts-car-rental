@@ -1,6 +1,6 @@
 import config from "@/config";
 import Link from "next/link";
-
+import Image from "next/image";
 export default function FooterSection() {
   return (
     <footer className="bg-[#1f3045] text-white pt-16 pb-8">
@@ -152,8 +152,8 @@ export default function FooterSection() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/20 ">
-          <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="pt-8 border-t border-white/20 flex gap-8 flex-col items-center">
+          <div className="flex flex-col md:flex-row justify-between items-center w-full">
             <p className="text-white/60 text-sm mb-4 md:mb-0">
               © 2025 Albert Car Rental. All rights reserved.
             </p>
@@ -162,6 +162,18 @@ export default function FooterSection() {
               <i className="fab fa-cc-mastercard text-2xl text-white/80" />
               <i className="fab fa-cc-amex text-2xl text-white/80" />
               <i className="fab fa-cc-paypal text-2xl text-white/80" />
+            </div>
+          </div>
+          <div className="flex flex-col md:flex-row justify-between items-center">
+          <div>
+              <Link href="http://digital-sunsets.com/?utm_source=albertscarrental&utm_medium=website&utm_campaign=lead&utm_content=footer-call-to-action">
+                <Image
+                  src="/designed_by_dark.svg"
+                  alt="Designed by"
+                  width={200}
+                  height={200}
+                />
+              </Link>
             </div>
           </div>
         </div>
