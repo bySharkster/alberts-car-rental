@@ -2,8 +2,6 @@ import HeroSection from "@/components/organisms/hero/HeroSection";
 import MissionSection from "@/components/organisms/mission/MissionSection";
 import VisionSection from "@/components/organisms/vision/VisionSection";
 import FaqSection from "@/components/organisms/faq/FaqSection";
-import prisma from "@/lib/prisma";
-import type { Vehicle } from "@prisma/client";
 import FleetSection from "@/components/organisms/fleet/FleetSection";
 import FeaturesSection from "@/components/organisms/features/FeaturesSection";
 import getVehiclesAction, {
@@ -34,14 +32,15 @@ export default async function Home() {
       <FleetSection vehicles={vehiclesWithImages} />
 
       {/* Mission & Vision Section */}
-      {/* <section id="about" className="py-20 bg-[#1f3045] text-white">
+      {/** biome-ignore lint/correctness/useUniqueElementIds: false positive */}
+      <section id="about" className="py-20 bg-[#1f3045] text-white">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16">
+          <div className="grid md:grid-cols-2 gap-16 space-y-px md:space-y-0 md:space-x-4">
             <MissionSection />
             <VisionSection />
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* FAQ Section */}
       <FaqSection />
