@@ -16,6 +16,10 @@
     "email:build": "email build",
     "email:serve": "email export"
   },
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=9.0.0"
+  },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
   },
