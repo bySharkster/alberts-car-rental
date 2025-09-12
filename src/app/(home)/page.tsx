@@ -16,7 +16,6 @@ export default async function Home() {
     vehicles.map((vehicle) => getImagesByVehicleId(vehicle.id))
   );
 
-
   const vehiclesWithImages = vehicles.map((vehicle, index) => ({
     ...vehicle,
     images: vehicleImages[index].images,

@@ -7,7 +7,9 @@ export interface VehicleWithImages extends Vehicle {
   images: Image[];
 }
 
-export default async function getVehiclesAction() {
+export default async function getVehiclesAction(): Promise<
+  VehicleWithImages[]
+> {
   const dbVehicles = await prisma.vehicle.findMany({
     orderBy: {
       createdAt: "desc",

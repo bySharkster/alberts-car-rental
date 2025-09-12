@@ -17,7 +17,6 @@
     "email:build": "email build",
     "email:serve": "email export"
   },
-
   "prisma": {
     "seed": "tsx prisma/seed.ts",
     "generate": "prisma generate --no-engine"
