@@ -32,29 +32,29 @@ export default async function BookPage({
 
   return (
     <>
-      <div className="w-full mx-auto py-16 px-4 sm:px-6 lg:py-20 relative min-h-[80dvh]">
+      <div className="relative mx-auto min-h-[80dvh] w-full px-4 py-16 sm:px-6 lg:py-20">
         <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#1A57B2_0%,#2C75A0_40%,#3A8F92_70%,#1DAF5A_100%)]" />
         <WavesBackground />
 
-        <div className="flex items-center justify-center h-full">
+        <div className="flex h-full items-center justify-center">
           <motion.div
-            className="max-w-3xl w-full mx-auto bg-white dark:bg-gray-800 shadow-lg rounded-xl p-8 z-20 "
+            className="z-20 mx-auto w-full max-w-3xl rounded-xl bg-white p-8 shadow-lg dark:bg-gray-800"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+            <h1 className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">
               Book Your Car
             </h1>
-            <p className="text-gray-600 dark:text-gray-300 mb-8">
+            <p className="mb-8 text-gray-600 dark:text-gray-300">
               Fill out the form below to reserve your vehicle
             </p>
 
-            <div className="md:hidden h-full w-full flex items-center justify-center">
+            <div className="flex h-full w-full items-center justify-center md:hidden">
               <Drawer>
                 <DrawerTrigger asChild>
                   <Button
-                    className="w-full justify-center bg-[#1A57B2] hover:bg-[#2C75A0] text-white"
+                    className="w-full justify-center bg-[#1A57B2] text-white hover:bg-[#2C75A0]"
                     size="lg"
                   >
                     Start Booking <BookCheckIcon className="ml-2" />
@@ -69,7 +69,7 @@ export default async function BookPage({
                   </DrawerHeader>
                   <Suspense
                     fallback={
-                      <LoaderCircle className="animate-spin size-12 text-white" />
+                      <LoaderCircle className="size-12 animate-spin text-white" />
                     }
                   >
                     <SteppedBookingForm vehicles={vehicles} />
@@ -80,7 +80,7 @@ export default async function BookPage({
             <div className="hidden md:block">
               <Suspense
                 fallback={
-                  <LoaderCircle className="animate-spin size-12 text-white" />
+                  <LoaderCircle className="size-12 animate-spin text-white" />
                 }
               >
                 <BookingForm vehicles={vehicles} vehicleId={id} />

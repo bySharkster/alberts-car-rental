@@ -77,7 +77,7 @@ const SplitText: React.FC<SplitTextProps> = ({
   return (
     <p
       ref={ref}
-      className={`split-parent overflow-hidden inline ${className}`}
+      className={`split-parent inline overflow-hidden ${className}`}
       style={{ textAlign: textAlign }}
     >
       {words.map((word, wIdx) => (

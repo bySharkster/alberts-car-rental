@@ -23,7 +23,7 @@ const CanvasRevealEffect = ({
   showGradient?: boolean;
 }) => {
   return (
-    <div className={cn("h-full relative bg-white w-full", containerClassName)}>
+    <div className={cn("relative h-full w-full bg-white", containerClassName)}>
       <div className="h-full w-full">
         {/* Simplified placeholder for the DotMatrix component */}
         <div className="absolute inset-0 bg-black/10" />
@@ -68,7 +68,7 @@ const CardSpotlight = ({
   return (
     <div
       className={cn(
-        "group/spotlight p-10 rounded-md relative border border-neutral-800 bg-black dark:border-neutral-800",
+        "group/spotlight relative rounded-md border border-neutral-800 bg-black p-10 dark:border-neutral-800",
         className
       )}
       onMouseMove={handleMouseMove}
@@ -77,7 +77,7 @@ const CardSpotlight = ({
       {...props}
     >
       <motion.div
-        className="pointer-events-none absolute z-0 -inset-px rounded-md opacity-0 transition duration-300 group-hover/spotlight:opacity-100"
+        className="pointer-events-none absolute -inset-px z-0 rounded-md opacity-0 transition duration-300 group-hover/spotlight:opacity-100"
         style={{
           backgroundColor: color,
           maskImage: useMotionTemplate`
@@ -146,11 +146,11 @@ const Step = ({
   description: string;
 }) => {
   return (
-    <li className="flex gap-2 items-start mb-4">
-      <Check className="h-5 w-5 text-blue-500 mt-1 flex-shrink-0" />
+    <li className="mb-4 flex items-start gap-2">
+      <Check className="mt-1 h-5 w-5 flex-shrink-0 text-blue-500" />
       <div>
-        <p className="text-white font-medium">{title}</p>
-        <p className="text-neutral-400 text-sm">{description}</p>
+        <p className="font-medium text-white">{title}</p>
+        <p className="text-sm text-neutral-400">{description}</p>
       </div>
     </li>
   );
@@ -159,18 +159,18 @@ const Step = ({
 // Main component that maps the data into spotlight cards
 const SpotlightCardList = () => {
   return (
-    <div className="flex flex-wrap gap-6 justify-center">
+    <div className="flex flex-wrap justify-center gap-6">
       {data.map((item) => (
         <CardSpotlight key={item.id} className="h-64 w-80">
-          <p className="text-xl font-bold relative z-20 mt-2 text-white">
+          <p className="relative z-20 mt-2 text-xl font-bold text-white">
             Step {item.id}
           </p>
-          <div className="text-neutral-200 mt-4 relative z-20">
-            <ul className="list-none mt-2">
+          <div className="relative z-20 mt-4 text-neutral-200">
+            <ul className="mt-2 list-none">
               <Step title={item.title} description={item.description} />
             </ul>
           </div>
-          <p className="text-neutral-300 mt-4 relative z-20 text-sm">
+          <p className="relative z-20 mt-4 text-sm text-neutral-300">
             Complete this step to continue with the secure account setup
             process.
           </p>
@@ -187,7 +187,7 @@ export default function ContactDetails() {
         {/* <!-- Icon Block --> */}
         <div className="flex gap-x-7 py-6">
           <svg
-            className="flex-shrink-0 size-6 mt-1.5 text-[#111] dark:text-white"
+            className="mt-1.5 size-6 flex-shrink-0 text-[#111] dark:text-white"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
@@ -212,12 +212,12 @@ export default function ContactDetails() {
               Message us on WhatsApp
             </p>
             <Link
-              className="mt-2 inline-flex items-center gap-x-2 text-sm font-medium text-[#0c4d14] hover:text-[#111] focus:text-[#111] focus:outline-none focus:ring-2 focus:ring-[#1DAF5A] transition-colors dark:text-[#aaffc0] dark:hover:text-white dark:focus:text-white"
+              className="mt-2 inline-flex items-center gap-x-2 text-sm font-medium text-[#0c4d14] transition-colors hover:text-[#111] focus:text-[#111] focus:outline-none focus:ring-2 focus:ring-[#1DAF5A] dark:text-[#aaffc0] dark:hover:text-white dark:focus:text-white"
               href="/book"
             >
               Rent Now
               <svg
-                className="flex-shrink-0 size-2.5 transition ease-in-out group-hover:translate-x-1"
+                className="size-2.5 flex-shrink-0 transition ease-in-out group-hover:translate-x-1"
                 width="16"
                 height="16"
                 viewBox="0 0 16 16"
@@ -240,7 +240,7 @@ export default function ContactDetails() {
         {/* <!-- Icon Block --> */}
         <div className="flex gap-x-7 py-6">
           <svg
-            className="flex-shrink-0 size-6 mt-1.5 text-gray-800 dark:text-gray-200"
+            className="mt-1.5 size-6 flex-shrink-0 text-gray-800 dark:text-gray-200"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
@@ -262,12 +262,12 @@ export default function ContactDetails() {
               you may have.
             </p>
             <Link
-              className="mt-2 inline-flex items-center gap-x-2 text-sm font-medium text-[#0c4d14] hover:text-[#111] focus:text-[#111] focus:outline-none focus:ring-2 focus:ring-[#1DAF5A] transition-colors dark:text-[#aaffc0] dark:hover:text-white dark:focus:text-white"
+              className="mt-2 inline-flex items-center gap-x-2 text-sm font-medium text-[#0c4d14] transition-colors hover:text-[#111] focus:text-[#111] focus:outline-none focus:ring-2 focus:ring-[#1DAF5A] dark:text-[#aaffc0] dark:hover:text-white dark:focus:text-white"
               href="/faq"
             >
               Visit the FAQs
               <svg
-                className="flex-shrink-0 size-2.5 transition ease-in-out group-hover:translate-x-1"
+                className="size-2.5 flex-shrink-0 transition ease-in-out group-hover:translate-x-1"
                 width="16"
                 height="16"
                 viewBox="0 0 16 16"
@@ -290,7 +290,7 @@ export default function ContactDetails() {
         {/* <!-- Icon Block --> */}
         <div className="flex gap-x-7 py-6">
           <svg
-            className="flex-shrink-0 size-6 mt-1.5 text-gray-800 dark:text-gray-200"
+            className="mt-1.5 size-6 flex-shrink-0 text-gray-800 dark:text-gray-200"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
@@ -314,12 +314,12 @@ export default function ContactDetails() {
               We are here to help you with anything you need.
             </p>
             <Link
-              className="mt-2 inline-flex items-center gap-x-2 text-sm font-medium text-[#0c4d14] hover:text-[#111] focus:text-[#111] focus:outline-none focus:ring-2 focus:ring-[#1DAF5A] transition-colors dark:text-[#aaffc0] dark:hover:text-white dark:focus:text-white"
+              className="mt-2 inline-flex items-center gap-x-2 text-sm font-medium text-[#0c4d14] transition-colors hover:text-[#111] focus:text-[#111] focus:outline-none focus:ring-2 focus:ring-[#1DAF5A] dark:text-[#aaffc0] dark:hover:text-white dark:focus:text-white"
               href="https://wa.link/7hyee9"
             >
               Contact Support
               <svg
-                className="flex-shrink-0 size-2.5 transition ease-in-out group-hover:translate-x-1"
+                className="size-2.5 flex-shrink-0 transition ease-in-out group-hover:translate-x-1"
                 width="16"
                 height="16"
                 viewBox="0 0 16 16"
@@ -340,9 +340,9 @@ export default function ContactDetails() {
         {/* <!-- End Icon Block --> */}
 
         {/* <!-- Icon Block --> */}
-        <div className=" flex gap-x-7 py-6">
+        <div className="flex gap-x-7 py-6">
           <svg
-            className="flex-shrink-0 size-6 mt-1.5 text-gray-800 dark:text-gray-200"
+            className="mt-1.5 size-6 flex-shrink-0 text-gray-800 dark:text-gray-200"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
@@ -365,7 +365,7 @@ export default function ContactDetails() {
               If you would like to write to us by email
             </p>
             <Link
-              className="mt-2 inline-flex items-center gap-x-2 text-sm font-medium text-[#0c4d14] hover:text-[#111] focus:text-[#111] focus:outline-none focus:ring-2 focus:ring-[#1DAF5A] transition-colors dark:text-[#aaffc0] dark:hover:text-white dark:focus:text-white"
+              className="mt-2 inline-flex items-center gap-x-2 text-sm font-medium text-[#0c4d14] transition-colors hover:text-[#111] focus:text-[#111] focus:outline-none focus:ring-2 focus:ring-[#1DAF5A] dark:text-[#aaffc0] dark:hover:text-white dark:focus:text-white"
               href="mailto:contact@albercarrental.com"
             >
               contact@albercarrental.com

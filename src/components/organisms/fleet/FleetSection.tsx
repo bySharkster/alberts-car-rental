@@ -65,10 +65,10 @@ export default function FleetSection({ vehicles }: FleetProps) {
 
   return (
     // biome-ignore lint/correctness/useUniqueElementIds: Primary Section should have unique id
-<section id="fleet" className="py-20 " ref={sectionRef}>
+    <section id="fleet" className="py-20" ref={sectionRef}>
       <motion.div className="container mx-auto px-6">
         <motion.div
-          className="text-center mb-16"
+          className="mb-16 text-center"
           initial={{ opacity: 0, y: -50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -77,7 +77,7 @@ export default function FleetSection({ vehicles }: FleetProps) {
             initial={{ opacity: 0, y: -50 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl md:text-4xl font-bold text-[#1f3045] mb-4 flex items-center justify-center gap-2"
+            className="mb-4 flex items-center justify-center gap-2 text-3xl font-bold text-[#1f3045] md:text-4xl"
           >
             Our Premium Fleet
           </motion.h2>
@@ -85,7 +85,7 @@ export default function FleetSection({ vehicles }: FleetProps) {
             initial={{ opacity: 0, y: -50 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-[#464648] max-w-3xl mx-auto"
+            className="mx-auto max-w-3xl text-[#464648]"
           >
             Discover a fleet crafted for comfort, style, and reliability—ready
             for every adventure, daily drive, or special occasion. Find your
@@ -105,18 +105,18 @@ export default function FleetSection({ vehicles }: FleetProps) {
               align: "center",
               loop: false,
             }}
-            className="w-full max-w-sm mx-auto "
+            className="mx-auto w-full max-w-sm"
           >
             <CarouselContent className="-ml-2 md:-ml-4">
               {categories.map((category) => (
                 <CarouselItem
                   key={category}
-                  className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3"
+                  className="pl-2 md:basis-1/2 md:pl-4 lg:basis-1/3"
                 >
                   <div className="p-1">
                     <Button
                       variant="outline"
-                      className={`h-full w-full flex items-center justify-center rounded-lg p-6 hover:bg-[#024f7d]/90 hover:text-white   ${
+                      className={`flex h-full w-full items-center justify-center rounded-lg p-6 hover:bg-[#024f7d]/90 hover:text-white ${
                         activeTab === category
                           ? "bg-[#024f7d] text-white"
                           : "bg-gray-100 text-[#1f3045]"
@@ -135,7 +135,7 @@ export default function FleetSection({ vehicles }: FleetProps) {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-full" />
+            <CarouselPrevious className="absolute left-0 top-1/2 -translate-x-full -translate-y-1/2" />
             <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-full" />
           </Carousel>
         </motion.div>
@@ -163,10 +163,10 @@ export default function FleetSection({ vehicles }: FleetProps) {
 
             {categories.map((category) => (
               <TabsContent key={category} value={category} className="mt-0">
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                   {vehicles.filter((v) => v.category === category).length ===
                   0 ? (
-                    <div className="col-span-full text-center text-gray-400 py-8">
+                    <div className="col-span-full py-8 text-center text-gray-400">
                       No vehicles available in this category.
                     </div>
                   ) : (
@@ -175,29 +175,30 @@ export default function FleetSection({ vehicles }: FleetProps) {
                       .map((vehicle) => (
                         <Card
                           key={vehicle.id}
-                          className="overflow-hidden border-none shadow-md hover:shadow-lg transition-shadow"
+                          className="overflow-hidden border-none shadow-md transition-shadow hover:shadow-lg"
                         >
                           <div className="h-64 overflow-hidden">
                             <Image
                               src={
-                                vehicle.images.find((img) => img.position === 1)?.url || "/images/car-placeholder.png"
+                                vehicle.images.find((img) => img.position === 1)
+                                  ?.url || "/images/car-placeholder.png"
                               }
                               alt={`${vehicle.make} ${vehicle.model}`}
                               width={600}
                               height={400}
-                              unoptimized={vehicle.images.find((img) => img.position === 1)?.url?.includes(
-                                "cloudfront.net"
-                              )}
+                              unoptimized={vehicle.images
+                                .find((img) => img.position === 1)
+                                ?.url?.includes("cloudfront.net")}
                             />
                           </div>
                           <CardContent className="p-6">
-                            <div className="flex justify-between items-start mb-4 gap-2">
+                            <div className="mb-4 flex items-start justify-between gap-2">
                               <div>
-                                <div className="flex items-start md:items-center flex-col-reverse md:flex-row justify-between gap-2 w-full min-w-[280px] lg:min-w-[260px] xl:min-w-[320px]">
+                                <div className="flex w-full min-w-[280px] flex-col-reverse items-start justify-between gap-2 md:flex-row md:items-center lg:min-w-[260px] xl:min-w-[320px]">
                                   <h3 className="text-xl font-bold text-[#1f3045]">
                                     {vehicle.make} {vehicle.model}
                                   </h3>
-                                  <p className="text-[#26b578] font-bold">
+                                  <p className="font-bold text-[#26b578]">
                                     ${vehicle.dailyRate.toFixed(2)}/day
                                   </p>
                                 </div>
@@ -207,11 +208,11 @@ export default function FleetSection({ vehicles }: FleetProps) {
                               </div>
                               {/* <span className="text-[#26b578] font-bold">$199/day</span> */}
                             </div>
-                            <div className="flex flex-wrap gap-3 mb-6">
+                            <div className="mb-6 flex flex-wrap gap-3">
                               {vehicle.features?.map((feature) => (
                                 <span
                                   key={feature}
-                                  className="px-3 py-1 bg-gray-100 text-[#464648] text-sm rounded-full"
+                                  className="rounded-full bg-gray-100 px-3 py-1 text-sm text-[#464648]"
                                 >
                                   {feature}
                                 </span>
@@ -220,7 +221,7 @@ export default function FleetSection({ vehicles }: FleetProps) {
                           </CardContent>
                           <CardFooter>
                             <Button
-                              className="w-full bg-[#024f7d] hover:bg-[#026bad] text-white !rounded-button whitespace-nowrap cursor-pointer"
+                              className="!rounded-button w-full cursor-pointer whitespace-nowrap bg-[#024f7d] text-white hover:bg-[#026bad]"
                               asChild
                             >
                               <Link href={`/book?id=${vehicle.id}`}>

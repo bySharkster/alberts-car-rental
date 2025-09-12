@@ -47,30 +47,30 @@ export default function FaqSection() {
   return (
     <motion.section
       id="faqs"
-      className="py-20 bg-[#eff2f4] inner-shadow inner-shadow-[#1f3045] inner-shadow-[inset_0px_0px_10px_0px] drop-shadow-[#1f3045] rounded-s-3xl rounded-e-3xl"
+      className="inner-shadow inner-shadow-[#1f3045] inner-shadow-[inset_0px_0px_10px_0px] rounded-e-3xl rounded-s-3xl bg-[#eff2f4] py-20 drop-shadow-[#1f3045]"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ amount: 0.1 }}
     >
       <div className="container mx-auto px-6">
         <motion.div
-          className="text-center mb-16"
+          className="mb-16 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ amount: 0.7 }}
         >
-          <h2 className="text-4xl font-bold text-[#1f3045] mb-4">
+          <h2 className="mb-4 text-4xl font-bold text-[#1f3045]">
             Frequently Asked Questions
           </h2>
-          <p className="text-xl text-[#464648] max-w-3xl mx-auto">
+          <p className="mx-auto max-w-3xl text-xl text-[#464648]">
             Find answers to common questions about our services, booking
             process, and policies.
           </p>
         </motion.div>
 
         <AnimatedSection
-          className="max-w-3xl mx-auto"
+          className="mx-auto max-w-3xl"
           direction="up"
           delay={0.2}
         >
@@ -80,7 +80,7 @@ export default function FaqSection() {
               id: idx + 1,
               title: faq.question,
               content: (
-                <span className="text-[#464648] pb-4 block">{faq.answer}</span>
+                <span className="block pb-4 text-[#464648]">{faq.answer}</span>
               ),
             }))}
             allowMultiple={false}
@@ -88,12 +88,12 @@ export default function FaqSection() {
           />
 
           <div className="mt-12 text-center">
-            <p className="text-[#464648] mb-6">
+            <p className="mb-6 text-[#464648]">
               Can&apos;t find the answer you&apos;re looking for? Contact our
               customer support team.
             </p>
             <Button
-              className="bg-[#024f7d] hover:bg-[#026bad] text-white px-8 py-6 text-lg !rounded-button whitespace-nowrap cursor-pointer"
+              className="!rounded-button cursor-pointer whitespace-nowrap bg-[#024f7d] px-8 py-6 text-lg text-white hover:bg-[#026bad]"
               asChild
             >
               <Link href="/contact">Contact Support</Link>

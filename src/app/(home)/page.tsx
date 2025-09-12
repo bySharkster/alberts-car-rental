@@ -16,7 +16,6 @@ export default async function Home() {
     vehicles.map((vehicle) => getImagesByVehicleId(vehicle.id))
   );
 
-  console.log(vehicleImages.map((image) => image.images));
 
   const vehiclesWithImages = vehicles.map((vehicle, index) => ({
     ...vehicle,
@@ -24,7 +23,7 @@ export default async function Home() {
   }));
 
   return (
-    <main className="bg-[#F4EFEF] min-h-screen">
+    <main className="min-h-screen bg-[#F4EFEF]">
       {/* Hero Section */}
       <HeroSection />
 

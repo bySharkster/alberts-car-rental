@@ -15,10 +15,10 @@ const VideoBackground = () => {
 
   return (
     <div className="absolute inset-0 -z-10">
-      <div className="absolute inset-0 bg-black/60 z-10" />
+      <div className="absolute inset-0 z-10 bg-black/60" />
       <video
         ref={videoRef}
-        className="w-full h-full object-cover pointer-events-none select-none"
+        className="pointer-events-none h-full w-full select-none object-cover"
         autoPlay
         muted
         loop

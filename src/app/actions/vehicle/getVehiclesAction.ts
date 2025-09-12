@@ -7,8 +7,6 @@ export interface VehicleWithImages extends Vehicle {
   images: Image[];
 }
 
-
-
 export default async function getVehiclesAction() {
   const dbVehicles = await prisma.vehicle.findMany({
     orderBy: {

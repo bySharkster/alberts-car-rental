@@ -28,16 +28,16 @@ export default function MobileNavigation() {
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
-        <button type="button" className="text-white pt-2">
+        <button type="button" className="pt-2 text-white">
           <Menu className="h-6 w-6" />
         </button>
       </DrawerTrigger>
-      <DrawerContent className="w-full group">
+      <DrawerContent className="group w-full">
         <DrawerHeader>
           <DrawerTitle>Albert Car Rental</DrawerTitle>
           <DrawerDescription>Select an option from the menu.</DrawerDescription>
         </DrawerHeader>
-        <div className="flex flex-col gap-2 mt-2 relative">
+        <div className="relative mt-2 flex flex-col gap-2">
           {navLinks.map(({ href, label, variant }) => {
             const isActive = pathname === href;
             return (
@@ -52,7 +52,7 @@ export default function MobileNavigation() {
                     | "outline"
                     | "secondary"
                 }
-                className={`w-full relative overflow-hidden hover:bg-gray-800 hover:text-white hover:scale-95 transition duration-300 ${
+                className={`relative w-full overflow-hidden transition duration-300 hover:scale-95 hover:bg-gray-800 hover:text-white ${
                   isActive ? "font-bold" : ""
                 }`}
                 asChild
@@ -62,7 +62,7 @@ export default function MobileNavigation() {
                   {isActive && (
                     <motion.span
                       layoutId="active-nav-underline"
-                      className="absolute inset-0 bg-gradient-to-r from-[#1A57B2] to-[#1DAF5A] opacity-20 rounded-lg z-0"
+                      className="absolute inset-0 z-0 rounded-lg bg-gradient-to-r from-[#1A57B2] to-[#1DAF5A] opacity-20"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
@@ -78,7 +78,7 @@ export default function MobileNavigation() {
           <DrawerClose asChild>
             <Button
               variant="outline"
-              className="w-full hover:bg-gray-800 hover:text-white hover:scale-95 transition duration-300"
+              className="w-full transition duration-300 hover:scale-95 hover:bg-gray-800 hover:text-white"
             >
               Close
             </Button>

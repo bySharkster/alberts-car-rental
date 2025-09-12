@@ -13,7 +13,7 @@ export default function HeaderSection() {
   const pathname = usePathname();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm">
+    <header className="fixed left-0 right-0 top-0 z-50 backdrop-blur-sm">
       {/* <nav className="container mx-auto flex items-center justify-between h-20 px-6">
         <div className="flex items-center gap-10">
           <Link
@@ -84,12 +84,12 @@ export default function HeaderSection() {
       </nav> */}
       {/* mobile menu */}
       <motion.nav
-        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm bg-[#1E2936] h-11 rounded-b-lg"
+        className="fixed left-0 right-0 top-0 z-50 h-11 rounded-b-lg bg-[#1E2936] backdrop-blur-sm"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: pathname === "/" ? 0.5 : 0 }}
       >
-        <div className="container mx-auto flex items-center justify-between h-full px-2">
+        <div className="container mx-auto flex h-full items-center justify-between px-2">
           <Link href="/">
             <div className="flex flex-row items-baseline justify-start">
               <figure>

@@ -2,7 +2,7 @@ import React from "react";
 
 export default function PrivacyPage() {
   return (
-    <main className="container prose mx-auto min-h-dvh p-6 lg:py-20 flex flex-col gap-6">
+    <main className="prose container mx-auto flex min-h-dvh flex-col gap-6 p-6 lg:py-20">
       <h1 className="text-4xl font-bold">Privacy Policy</h1>
       <p>Effective Date: June 4, 2025</p>
       <p>

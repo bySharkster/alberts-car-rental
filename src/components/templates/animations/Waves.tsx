@@ -435,17 +435,17 @@ const Waves: React.FC<WavesProps> = ({
         backgroundColor,
         ...style,
       }}
-      className={`absolute top-0 left-0 w-full h-full overflow-hidden ${className} z-0`}
+      className={`absolute left-0 top-0 h-full w-full overflow-hidden ${className} z-0`}
     >
       <div
-        className="absolute top-0 left-0 bg-[#160000] rounded-full w-[0.5rem] h-[0.5rem]"
+        className="absolute left-0 top-0 h-[0.5rem] w-[0.5rem] rounded-full bg-[#160000]"
         style={{
           transform:
             "translate3d(calc(var(--x) - 50%), calc(var(--y) - 50%), 0)",
           willChange: "transform",
         }}
       />
-      <canvas ref={canvasRef} className="block w-full h-full" />
+      <canvas ref={canvasRef} className="block h-full w-full" />
     </div>
   );
 };

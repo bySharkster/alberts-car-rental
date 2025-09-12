@@ -98,7 +98,7 @@ export function DateRangePicker({
         </PopoverContent>
       </Popover>
       {isRangeReserved(value) && (
-        <span className="text-xs text-red-500 ml-2">
+        <span className="ml-2 text-xs text-red-500">
           Selected dates are reserved for this car
         </span>
       )}
