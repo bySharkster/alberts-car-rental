@@ -19,9 +19,9 @@ export default async function getVehiclesAction(): Promise<
     cacheStrategy: { ttl: 60 * 60, swr: 60 * 60 },
   });
   const vehicles: VehicleWithImages[] = dbVehicles.map(
-    (v) => ({
+    (v: VehicleWithImages) => ({
       ...v,
-      images: v.images.map((i) => ({
+      images: v.images.map((i: Image) => ({
         ...i,
       })),
     })
