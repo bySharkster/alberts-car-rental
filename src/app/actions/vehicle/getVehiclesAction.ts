@@ -1,7 +1,7 @@
 "use server";
 
 import prisma from "@/lib/prisma";
-import {type Prisma, VehicleStatus} from "@prisma/client"
+import {type Prisma} from "@prisma/client"
 
 export type VehicleWithImages = Prisma.VehicleGetPayload<{ include: { images: true } }>
 
@@ -28,9 +28,9 @@ export default async function getVehiclesAction(): Promise<
 
   const filterVehicles = vehicles.filter(
     (vehicle) =>
-      vehicle.status !== VehicleStatus.UNAVAILABLE &&
-      vehicle.status !== VehicleStatus.MAINTENANCE &&
-      vehicle.status !== VehicleStatus.PENDING
+      vehicle.status !== "UNAVAILABLE" &&
+      vehicle.status !== "MAINTENANCE" &&
+      vehicle.status !== "PENDING"
   );
   return filterVehicles;
 }
