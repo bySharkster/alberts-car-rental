@@ -1,10 +1,10 @@
 "use server";
 
 import prisma from "@/lib/prisma";
-import { type Vehicle, type Image, VehicleStatus } from "@prisma/client";
+import type { Vehicle, Image } from "@prisma/client";
+import { VehicleStatus } from "@prisma/client";
 
 export interface VehicleWithImages extends Vehicle {
-  id: number;
   images: Image[];
 }
 
