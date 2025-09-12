@@ -1,0 +1,262 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                       String             @id @default(cuid())
+  name                     String?
+  email                    String             @unique
+  emailVerified            DateTime?
+  image                    String?
+  phone                    String?
+  isAdmin                  Boolean            @default(false)
+  isVerified               Boolean            @default(false)
+  Account                  Account[]
+  documents                Document[]
+  Onboarding               Onboarding[]
+  notificationsPreferences Preferences?
+  PushSubscription         PushSubscription[]
+  Reservation              Reservation[]
+  Session                  Session[]
+  StatusChange             StatusChange[]
+}
+
+model Preferences {
+  id                       String  @id @default(cuid())
+  userId                   String  @unique
+  UserNotifications        Boolean @default(true)
+  ReservationNotifications Boolean @default(true)
+  LeadNotifications        Boolean @default(true)
+  ContactNotifications     Boolean @default(true)
+  PaymentNotifications     Boolean @default(true)
+  ReviewNotifications      Boolean @default(true)
+  user                     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Account {
+  id                Int     @id @default(autoincrement())
+  userId            String
+  type              String
+  provider          String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  providerAccountId String  @map("provider_account_id")
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Reservation {
+  id              String            @id @default(cuid())
+  pickupDate      DateTime
+  dropoffDate     DateTime
+  pickupLocation  String
+  dropoffLocation String
+  pickupHour      String
+  dropoffHour     String
+  dailyRate       Decimal
+  totalDays       Decimal
+  subtotal        Decimal
+  tax             Decimal
+  totalAmount     Decimal
+  amountPaid      Decimal
+  status          ReservationStatus @default(PENDING)
+  paymentStatus   PaymentStatus     @default(UNPAID)
+  notes           String?
+  specialRequests String?
+  vehicleId       Int?
+  userId          String
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  contracts       Document[]
+  payments        Payment[]
+  user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  vehicle         Vehicle?          @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+  statusHistory   StatusChange[]
+}
+
+model DraftReservation {
+  id              String   @id @default(cuid())
+  name            String
+  email           String
+  phone           String
+  vehicleId       Int?
+  message         String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  dropoffDate     String
+  dropoffHour     String
+  dropoffLocation String
+  pickupDate      String
+  pickupHour      String
+  pickupLocation  String
+}
+
+model StatusChange {
+  id            String             @id @default(cuid())
+  reservationId String
+  fromStatus    ReservationStatus?
+  toStatus      ReservationStatus
+  reason        String?
+  changedBy     String?
+  changeAt      DateTime           @default(now())
+  user          User?              @relation(fields: [changedBy], references: [id], onDelete: Cascade)
+  reservation   Reservation        @relation(fields: [reservationId], references: [id], onDelete: Cascade)
+}
+
+model Session {
+  id           String   @id
+  userId       String
+  expires      DateTime
+  sessionToken String   @unique
+  User         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Vehicle {
+  id                Int                 @id @default(autoincrement())
+  make              String
+  model             String
+  category          VehicleCategory
+  year              Int
+  color             String
+  transmission      VehicleTransmission
+  fuel_type         VehicleFuelType     @default(GASOLINE)
+  licensePlate      String              @unique
+  status            VehicleStatus       @default(PENDING)
+  features          String[]
+  dailyRate         Float
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  images            Image[]
+  maintenanceBlocks MaintenanceBlock[]
+  reservations      Reservation[]
+}
+
+model MaintenanceBlock {
+  id        String   @id @default(cuid())
+  vehicleId Int
+  reason    String
+  startDate DateTime
+  endDate   DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  vehicle   Vehicle  @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+
+  @@index([vehicleId, startDate, endDate])
+}
+
+model Payment {
+  id            String        @id @default(cuid())
+  stripeSession String        @unique
+  amount        Decimal
+  status        PaymentStatus @default(UNPAID)
+  intent_id     String?
+  reservationId String
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  reservation   Reservation   @relation(fields: [reservationId], references: [id])
+}
+
+model Document {
+  id            String       @id @default(cuid())
+  name          String
+  type          String
+  url           String
+  uploadedAt    DateTime     @default(now())
+  userId        String
+  reservationId String?
+  Reservation   Reservation? @relation(fields: [reservationId], references: [id])
+  User          User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Image {
+  id         String   @id @default(cuid())
+  url        String
+  uploadedAt DateTime @default(now())
+  position   Int
+  vehicleId  Int?
+  vehicle    Vehicle? @relation(fields: [vehicleId], references: [id])
+}
+
+model PushSubscription {
+  id        String   @id @default(cuid())
+  endpoint  String   @unique
+  keys      Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String
+  User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Onboarding {
+  id        String   @id @default(cuid())
+  userId    String
+  tour      String   @unique @default("adminTour")
+  completed Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+enum ReservationStatus {
+  PENDING
+  CONFIRMED
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+enum VehicleCategory {
+  SEDAN
+  SUV
+  COUPE
+  CONVERTIBLE
+  WAGON
+  HATCHBACK
+}
+
+enum VehicleTransmission {
+  AUTOMATIC
+  MANUAL
+}
+
+enum VehicleFuelType {
+  GASOLINE
+  DIESEL
+  HYBRID
+  ELECTRIC
+}
+
+enum VehicleStatus {
+  AVAILABLE
+  UNAVAILABLE
+  PENDING
+  RENTED
+  MAINTENANCE
+}
+
+enum PaymentStatus {
+  UNPAID
+  PAID
+  PARTIAL
+  REFUNDED
+}
