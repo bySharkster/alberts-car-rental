@@ -4,6 +4,7 @@ import prisma from "@/lib/prisma";
 import { type Vehicle, type Image, VehicleStatus } from "@prisma/client";
 
 export interface VehicleWithImages extends Vehicle {
+  id: number;
   images: Image[];
 }
 
