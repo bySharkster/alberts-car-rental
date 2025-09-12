@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "next build && prisma generate --no-engine",
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
@@ -18,7 +18,8 @@
   },
 
   "prisma": {
-    "seed": "tsx prisma/seed.ts"
+    "seed": "tsx prisma/seed.ts",
+    "generate": "prisma generate --no-engine"
   },
   "dependencies": {
     "eslint-config-prettier": "^9.1.0",
