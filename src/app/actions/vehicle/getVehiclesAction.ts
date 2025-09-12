@@ -1,12 +1,11 @@
 "use server";
 
 import prisma from "@/lib/prisma";
-import type { Vehicle, Image } from "@prisma/client";
-import { VehicleStatus } from "@prisma/client";
+import { type Prisma, VehicleStatus } from "@prisma/client";
 
-export type VehicleWithImages = Vehicle & {
-  images: Image[];
-}
+export type VehicleWithImages = Prisma.VehicleGetPayload<{
+  include: { images: true }
+}>
 
 export default async function getVehiclesAction(): Promise<
   VehicleWithImages[]
@@ -21,9 +20,9 @@ export default async function getVehiclesAction(): Promise<
     cacheStrategy: { ttl: 60 * 60, swr: 60 * 60 },
   });
   const vehicles: VehicleWithImages[] = dbVehicles.map(
-    (v: VehicleWithImages) => ({
+    (v) => ({
       ...v,
-      images: v.images.map((i: Image) => ({
+      images: v.images.map((i) => ({
         ...i,
       })),
     })

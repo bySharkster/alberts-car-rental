@@ -7,15 +7,15 @@ export default async function FleetPage() {
   // SSR-compatible fetch function
 
   const vehicles = await getVehiclesAction();
-
   const vehicleImages = await Promise.all(
     vehicles.map((vehicle: VehicleWithImages) => getImagesByVehicleId(vehicle.id))
   );
-
+  
   const vehiclesWithImages: VehicleWithImages[] = vehicles.map((vehicle: VehicleWithImages, index: number) => ({
     ...vehicle,
     images: vehicleImages[index].images,
   }));
+
 
   return <Fleet vehicles={vehiclesWithImages} />;
 }
