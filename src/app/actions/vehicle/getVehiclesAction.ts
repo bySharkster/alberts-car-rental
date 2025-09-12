@@ -7,6 +7,8 @@ export interface VehicleWithImages extends Vehicle {
   images: Image[];
 }
 
+
+
 export default async function getVehiclesAction() {
   const dbVehicles = await prisma.vehicle.findMany({
     orderBy: {
@@ -58,7 +60,7 @@ export async function getImagesByVehicleId(vehicleId: number) {
       throw new Error("Failed to fetch images");
     }
 
-    images.map((image) => {
+    images.forEach((image) => {
       const imageS3Name = new URL(image.url).pathname;
       image.url = process.env.AWS_CDN_URL + imageS3Name;
     });

@@ -6,7 +6,6 @@ import prisma from "@/lib/prisma";
 import type { Vehicle } from "@prisma/client";
 import FleetSection from "@/components/organisms/fleet/FleetSection";
 import FeaturesSection from "@/components/organisms/features/FeaturesSection";
-import CallToActionSection from "@/components/organisms/cta/CallToActionSection";
 import getVehiclesAction, {
   getImagesByVehicleId,
 } from "../actions/vehicle/getVehiclesAction";
@@ -16,6 +15,8 @@ export default async function Home() {
   const vehicleImages = await Promise.all(
     vehicles.map((vehicle) => getImagesByVehicleId(vehicle.id))
   );
+
+  console.log(vehicleImages.map((image) => image.images));
 
   const vehiclesWithImages = vehicles.map((vehicle, index) => ({
     ...vehicle,

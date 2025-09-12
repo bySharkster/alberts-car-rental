@@ -18,7 +18,7 @@ import type { UseEmblaCarouselType } from "embla-carousel-react";
 import type { VehicleCategory } from "@prisma/client";
 import { motion } from "motion/react";
 import Link from "next/link";
-import { VehicleWithImages } from "@/app/actions/vehicle/getVehiclesAction";
+import type { VehicleWithImages } from "@/app/actions/vehicle/getVehiclesAction";
 
 type FleetProps = {
   vehicles: VehicleWithImages[];
@@ -64,7 +64,8 @@ export default function FleetSection({ vehicles }: FleetProps) {
   const isInView = useInView(sectionRef, { amount: 0.3, once: true });
 
   return (
-    <section id="fleet" className="py-20 " ref={sectionRef}>
+    // biome-ignore lint/correctness/useUniqueElementIds: Primary Section should have unique id
+<section id="fleet" className="py-20 " ref={sectionRef}>
       <motion.div className="container mx-auto px-6">
         <motion.div
           className="text-center mb-16"
@@ -179,12 +180,12 @@ export default function FleetSection({ vehicles }: FleetProps) {
                           <div className="h-64 overflow-hidden">
                             <Image
                               src={
-                                vehicle.images[0].url || "/car-placeholder.png"
+                                vehicle.images.find((img) => img.position === 1)?.url || "/images/car-placeholder.png"
                               }
                               alt={`${vehicle.make} ${vehicle.model}`}
                               width={600}
                               height={400}
-                              unoptimized={vehicle.images[0]?.url?.includes(
+                              unoptimized={vehicle.images.find((img) => img.position === 1)?.url?.includes(
                                 "cloudfront.net"
                               )}
                             />
