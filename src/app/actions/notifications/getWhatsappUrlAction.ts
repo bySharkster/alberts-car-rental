@@ -49,12 +49,17 @@ export async function getWhatsAppUrl(
     const validatedData = bookingSchema.safeParse(data);
 
     if (!validatedData.success) {
+      const fieldErrors = validatedData.error.flatten().fieldErrors;
+      const errorEntries: [string, string][] = [];
+
+      for (const [key, value] of Object.entries(fieldErrors)) {
+        if (value && value.length > 0 && value[0]) {
+          errorEntries.push([key, value[0]]);
+        }
+      }
+
       return {
-        errors: Object.fromEntries(
-          Object.entries(validatedData.error.flatten().fieldErrors)
-            .filter(([_, v]) => v && v.length > 0)
-            .map(([k, v]) => [k, v[0]])
-        ),
+        errors: Object.fromEntries(errorEntries),
       };
     }
 
@@ -107,11 +112,15 @@ export async function getWhatsAppUrl(
     function flattenErrorObject(
       errObj: Record<string, string[] | undefined>
     ): Record<string, string> {
-      return Object.fromEntries(
-        Object.entries(errObj)
-          .filter(([_, v]) => v && v.length > 0)
-          .map(([k, v]) => [k, v![0]])
-      );
+      const errorEntries: [string, string][] = [];
+
+      for (const [key, value] of Object.entries(errObj)) {
+        if (value && value.length > 0 && value[0]) {
+          errorEntries.push([key, value[0]]);
+        }
+      }
+
+      return Object.fromEntries(errorEntries);
     }
 
     const draftReservationResponse =

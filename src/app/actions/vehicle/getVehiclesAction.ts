@@ -2,7 +2,7 @@
 
 import prisma from "@/lib/prisma";
 import { VehicleStatus } from "../../../../prisma/generated/client";
-import type { Vehicle, Image} from "../../../../prisma/generated/client";
+import type { Vehicle, Image } from "../../../../prisma/generated/client";
 
 export type VehicleWithImages = Vehicle & { images: Image[] };
 
@@ -59,7 +59,7 @@ export async function getImagesByVehicleId(vehicleId: number) {
       throw new Error("Failed to fetch images");
     }
 
-    images.forEach((image) => {
+    images.forEach((image: Image) => {
       const imageS3Name = new URL(image.url).pathname;
       image.url = process.env.AWS_CDN_URL + imageS3Name;
     });

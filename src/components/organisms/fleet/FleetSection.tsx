@@ -50,7 +50,7 @@ export default function FleetSection({ vehicles }: FleetProps) {
 
     const onSelect = () => {
       const selectedIndex = carouselApi.selectedScrollSnap();
-      setActiveTab(categories[selectedIndex]);
+      setActiveTab(categories[selectedIndex] || "SEDAN");
     };
 
     carouselApi.on("select", onSelect);
@@ -186,9 +186,11 @@ export default function FleetSection({ vehicles }: FleetProps) {
                               alt={`${vehicle.make} ${vehicle.model}`}
                               width={600}
                               height={400}
-                              unoptimized={vehicle.images
-                                .find((img) => img.position === 1)
-                                ?.url?.includes("cloudfront.net")}
+                              unoptimized={Boolean(
+                                vehicle.images
+                                  .find((img) => img.position === 1)
+                                  ?.url?.includes("cloudfront.net")
+                              )}
                             />
                           </div>
                           <CardContent className="p-6">

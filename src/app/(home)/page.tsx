@@ -16,7 +16,7 @@ export default async function Home() {
 
   const vehiclesWithImages = vehicles.map((vehicle, index) => ({
     ...vehicle,
-    images: vehicleImages[index].images,
+    images: vehicleImages[index]?.images || [],
   }));
 
   return (
@@ -33,9 +33,9 @@ export default async function Home() {
 
       {/* Mission & Vision Section */}
       {/** biome-ignore lint/correctness/useUniqueElementIds: false positive */}
-      <section id="about" className="py-20 bg-[#1f3045] text-white">
+      <section id="about" className="bg-[#1f3045] py-20 text-white">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 space-y-px md:space-y-0 md:space-x-4">
+          <div className="grid gap-16 space-y-px md:grid-cols-2 md:space-x-4 md:space-y-0">
             <MissionSection />
             <VisionSection />
           </div>

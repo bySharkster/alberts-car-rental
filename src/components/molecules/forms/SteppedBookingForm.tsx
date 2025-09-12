@@ -51,8 +51,8 @@ export default function SteppedBookingForm({
     email: "",
     phone: "",
     interestCar: 0,
-    from: undefined,
-    to: undefined,
+    from: new Date(),
+    to: new Date(),
     pickupHour: "",
     dropoffHour: "",
     pickupLocation: "",
@@ -159,7 +159,7 @@ export default function SteppedBookingForm({
           step={step}
           currentStep={currentStep}
           onClickStep={onStepClick}
-          hasError={stepHasError[step - 1]}
+          hasError={Boolean(stepHasError[step - 1])}
         />
       )}
     >

@@ -31,7 +31,7 @@ export default function BookingForm({ vehicles, vehicleId }: BookingFormProps) {
   const router = useRouter();
 
   const [selectedCar, setSelectedCar] = useState<number>(
-    Number(vehicleId) || vehicles[0].id
+    Number(vehicleId) || vehicles[0]?.id || 0
   );
 
   const {
@@ -92,9 +92,8 @@ export default function BookingForm({ vehicles, vehicleId }: BookingFormProps) {
         </label>
         <input
           type="text"
-          id="name"
-          placeholder="Enter your name"
           name="name"
+          placeholder="Enter your name"
           required
           className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:ring-2 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
         />
@@ -109,9 +108,8 @@ export default function BookingForm({ vehicles, vehicleId }: BookingFormProps) {
         </label>
         <input
           type="email"
-          id="email"
-          placeholder="your@email.com"
           name="email"
+          placeholder="your@email.com"
           required
           className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:ring-2 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
         />
@@ -126,7 +124,6 @@ export default function BookingForm({ vehicles, vehicleId }: BookingFormProps) {
         </label>
         <input
           type="tel"
-          id="phone"
           placeholder="Your phone number"
           name="phone"
           required
@@ -138,7 +135,7 @@ export default function BookingForm({ vehicles, vehicleId }: BookingFormProps) {
         <SelectVehicle
           vehicles={vehicles}
           onSelectVehicle={(vehicle) => {
-            setSelectedCar(vehicle ? vehicle.id : vehicles[0]?.id);
+            setSelectedCar(vehicle ? vehicle.id : vehicles[0]?.id || 0);
           }}
         />
       </div>
@@ -263,7 +260,6 @@ export default function BookingForm({ vehicles, vehicleId }: BookingFormProps) {
           Your Request
         </label>
         <textarea
-          id="message"
           placeholder="Tell us about your rental needs"
           name="message"
           rows={4}

@@ -28,15 +28,15 @@ export function AnimatedSection({
   const getDirectionValues = () => {
     switch (direction) {
       case "down":
-        return { y: -distance };
+        return { x: 0, y: -distance };
       case "left":
-        return { x: distance };
+        return { x: distance, y: 0 };
       case "right":
-        return { x: -distance };
+        return { x: -distance, y: 0 };
       case "up":
-        return { y: distance };
+        return { x: 0, y: distance };
       default:
-        return { y: distance };
+        return { x: 0, y: distance };
     }
   };
 
@@ -232,7 +232,7 @@ export function AnimatedText({
     if (type === "chars") {
       return text.split("").map((char, index) => (
         <motion.span
-          key={index}
+          key={char}
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.4, delay: delay + index * 0.04 }}
@@ -242,6 +242,7 @@ export function AnimatedText({
         </motion.span>
       ));
     }
+    return null;
   };
 
   return (
