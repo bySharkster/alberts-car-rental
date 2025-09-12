@@ -10,7 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import type { Vehicle } from "@prisma/client";
+import type { Vehicle } from "../../../../prisma/generated/client";
 import {
   type DateRange,
   DateRangePicker,

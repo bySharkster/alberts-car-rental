@@ -15,7 +15,7 @@ import { useState, useEffect } from "react";
 import { useRef } from "react";
 import { useInView } from "motion/react";
 import type { UseEmblaCarouselType } from "embla-carousel-react";
-import type { VehicleCategory } from "@prisma/client";
+import type { VehicleCategory } from "../../../../prisma/generated/client";
 import { motion } from "motion/react";
 import Link from "next/link";
 import type { VehicleWithImages } from "@/app/actions/vehicle/getVehiclesAction";

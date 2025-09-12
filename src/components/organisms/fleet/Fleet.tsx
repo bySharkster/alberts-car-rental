@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "motion/react";
 import SpotlightCard from "@/components/ui/spotlight-card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import type { Vehicle } from "@prisma/client";
+import type { Vehicle } from "../../../../prisma/generated/client";
 import { WhatsAppIcon } from "@/components/ui/whats-app-icon";
 import {
   ArrowDownRightFromSquareIcon,

@@ -4,11 +4,17 @@ import config from "@/config";
 import { Loader, Send } from "lucide-react";
 import { sendContactEmail } from "@/app/actions/resend";
 
-import type { Vehicle } from "@prisma/client";
+import type { Vehicle } from "../../../../prisma/generated/client";
 import { useActionState, useEffect, useMemo } from "react";
 import { toast } from "sonner";
 
 const initialState = null;
+
+function isFieldErrorObject(
+  error: unknown
+): error is { [key: string]: string[] } {
+  return typeof error === "object" && error !== null && !Array.isArray(error);
+}
 
 async function contactFormReducer(prevState: unknown, formData: FormData) {
   return await sendContactEmail(formData);
@@ -25,11 +31,6 @@ export default function ContactFormV2({ vehicles }: { vehicles: Vehicle[] }) {
     [state]
   );
 
-  function isFieldErrorObject(
-    error: unknown
-  ): error is { [key: string]: string[] } {
-    return typeof error === "object" && error !== null && !Array.isArray(error);
-  }
 
   useEffect(() => {
     if (state?.success) {
@@ -84,7 +85,6 @@ export default function ContactFormV2({ vehicles }: { vehicles: Vehicle[] }) {
           </span>
           <input
             type="text"
-            id="name"
             name="name"
             required
             className={`w-full rounded-xl border bg-white/90 py-3 pl-10 pr-4 text-gray-900 placeholder-gray-400/70 shadow-inner transition-all duration-200 focus:border-[#1DAF5A] focus:ring-2 focus:ring-[#1DAF5A] dark:bg-gray-800 dark:text-white ${fieldErrors.name && fieldErrors.name.length > 0 ? "border-red-500 ring-red-400" : "border-gray-300 dark:border-gray-600"}`}
@@ -121,7 +121,6 @@ export default function ContactFormV2({ vehicles }: { vehicles: Vehicle[] }) {
           </span>
           <input
             type="email"
-            id="email"
             name="email"
             required
             className={`w-full rounded-xl border bg-white/90 py-3 pl-10 pr-4 text-gray-900 placeholder-gray-400/70 shadow-inner transition-all duration-200 focus:border-[#1DAF5A] focus:ring-2 focus:ring-[#1DAF5A] dark:bg-gray-800 dark:text-white ${fieldErrors.email ? "border-red-500 ring-red-400" : "border-gray-300 dark:border-gray-600"}`}
@@ -158,7 +157,6 @@ export default function ContactFormV2({ vehicles }: { vehicles: Vehicle[] }) {
           </span>
           <input
             type="tel"
-            id="phone"
             name="phone"
             required
             className={`w-full rounded-xl border bg-white/90 py-3 pl-10 pr-4 text-gray-900 placeholder-gray-400/70 shadow-inner transition-all duration-200 focus:border-[#1DAF5A] focus:ring-2 focus:ring-[#1DAF5A] dark:bg-gray-800 dark:text-white ${fieldErrors.phone ? "border-red-500 ring-red-400" : "border-gray-300 dark:border-gray-600"}`}
@@ -178,7 +176,6 @@ export default function ContactFormV2({ vehicles }: { vehicles: Vehicle[] }) {
           Vehicle (optional)
         </label>
         <select
-          id="car"
           name="car"
           className={`w-full rounded-xl border bg-white/90 py-3 pl-10 pr-4 text-gray-900 placeholder-gray-400/70 shadow-inner transition-all duration-200 focus:border-[#1DAF5A] focus:ring-2 focus:ring-[#1DAF5A] dark:bg-gray-800 dark:text-white ${fieldErrors.car ? "border-red-500 ring-red-400" : "border-gray-300 dark:border-gray-600"}`}
         >
@@ -203,7 +200,6 @@ export default function ContactFormV2({ vehicles }: { vehicles: Vehicle[] }) {
           Message
         </label>
         <textarea
-          id="message"
           name="message"
           required
           rows={5}
