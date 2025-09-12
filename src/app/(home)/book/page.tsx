@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import getVehiclesAction from "@/app/actions/vehicle/getVehiclesAction";
 import BookingForm from "@/components/molecules/forms/BookingForm";
 import SteppedBookingForm from "@/components/molecules/forms/SteppedBookingForm";
@@ -31,7 +31,6 @@ export default async function BookPage({
   const vehicles = await getVehiclesAction();
 
   return (
-    <>
       <div className="relative mx-auto min-h-[80dvh] w-full px-4 py-16 sm:px-6 lg:py-20">
         <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#1A57B2_0%,#2C75A0_40%,#3A8F92_70%,#1DAF5A_100%)]" />
         <WavesBackground />
@@ -91,6 +90,5 @@ export default async function BookPage({
 
         {/* a section to showcase the vehicles */}
       </div>
-    </>
   );
 }
