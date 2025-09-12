@@ -1,7 +1,8 @@
 "use server";
 
 import prisma from "@/lib/prisma";
-import { type Prisma, VehicleStatus } from "@prisma/client";
+import { type Prisma } from "@prisma/client";
+import { VehicleStatus } from "@prisma/client";
 
 export type VehicleWithImages = Prisma.VehicleGetPayload<{
   include: { images: true }
