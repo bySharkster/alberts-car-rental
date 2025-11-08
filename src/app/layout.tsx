@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import FontAwesomeScript from "@/components/FontAwesomeScript";
 require("dotenv").config();
 const inter = Inter({ subsets: ["latin"] });
+const defaultUrl = `${process.env.NEXT_PUBLIC_SITE_URL}` || "https://albertcarrental.com";
 
 export const metadata: Metadata = {
   title: "Albert Car Rental | Premium Car Rentals in Ponce, Puerto Rico",
@@ -12,14 +13,14 @@ export const metadata: Metadata = {
   authors: [{ name: "Albert Car Rental" }],
   creator: "CodeWFer",
   publisher: "CodeWFer",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://albertcarrental.com"),
+  metadataBase: new URL(defaultUrl),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "/",
+    url: defaultUrl,
     siteName: "Albert Car Rental",
     title: "Albert Car Rental | Premium Car Rentals in Ponce, Puerto Rico",
     description: "Rent quality vehicles in Ponce, Puerto Rico with Albert Car Rental. Affordable rates, flexible booking, and excellent service.",
