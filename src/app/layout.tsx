@@ -14,9 +14,6 @@ export const metadata: Metadata = {
   creator: "CodeWFer",
   publisher: "CodeWFer",
   metadataBase: new URL(defaultUrl),
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     type: "website",
     locale: "en_US",
