@@ -27,22 +27,23 @@ export const MotionAccordionContent = React.forwardRef<
     const observer = new MutationObserver(() => {
       setIsOpen(node.getAttribute("data-state") === "open");
     });
-    observer.observe(node, { attributes: true, attributeFilter: ["data-state"] });
+    observer.observe(node, {
+      attributes: true,
+      attributeFilter: ["data-state"],
+    });
     return () => observer.disconnect();
   }, []);
 
   return (
     <AccordionPrimitive.Content
-      ref={el => {
+      ref={(el) => {
         primitiveRef.current = el;
         if (typeof ref === "function") ref(el);
-        else if (ref && 'current' in ref) (ref as React.MutableRefObject<HTMLDivElement | null>).current = el;
+        else if (ref && "current" in ref)
+          (ref as React.MutableRefObject<HTMLDivElement | null>).current = el;
       }}
       {...props}
-      className={cn(
-        "overflow-hidden text-sm",
-        className
-      )}
+      className={cn("overflow-hidden text-sm", className)}
     >
       <motion.div
         initial={false}
@@ -52,9 +53,12 @@ export const MotionAccordionContent = React.forwardRef<
         }}
         transition={{
           maxHeight: { duration: 1.1, ease: "easeInOut" },
-          opacity: { duration: 1, ease: "easeInOut" }
+          opacity: { duration: 1, ease: "easeInOut" },
         }}
-        style={{ overflow: "hidden", willChange: "max-height, opacity, height" }}
+        style={{
+          overflow: "hidden",
+          willChange: "max-height, opacity, height",
+        }}
       >
         <div className="pb-4 pt-0">{children}</div>
       </motion.div>

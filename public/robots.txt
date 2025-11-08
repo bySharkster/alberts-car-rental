@@ -1,0 +1,36 @@
+# robots.txt for Albert Car Rental
+# https://albertcarrental.com
+
+# Allow all search engines to crawl the site
+User-agent: *
+Allow: /
+
+# Disallow crawling of admin, API routes, and private directories
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /*.json$
+
+# Allow crawling of Next.js static assets
+Allow: /_next/static/
+Allow: /_next/image
+
+# Crawl-delay for specific bots (optional, uncomment if needed)
+# User-agent: Googlebot
+# Crawl-delay: 0
+
+# User-agent: Bingbot
+# Crawl-delay: 1
+
+# Block bad bots (optional)
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://albertcarrental.com/sitemap.xml

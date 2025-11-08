@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "motion/react";
 import SpotlightCard from "@/components/ui/spotlight-card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import type { Vehicle } from "@prisma/client";
+import type { Vehicle } from "../../../../prisma/generated/client";
 import { WhatsAppIcon } from "@/components/ui/whats-app-icon";
 import {
   ArrowDownRightFromSquareIcon,
@@ -26,11 +26,11 @@ export default function Fleet({ vehicles }: FleetProps) {
   }, []);
 
   return (
-    <section className="py-16 px-4 max-w-7xl mx-auto">
-      <h2 className="text-4xl font-bold text-center mb-10">Our Fleet</h2>
+    <section className="mx-auto max-w-7xl px-4 py-16">
+      <h2 className="mb-10 text-center text-4xl font-bold">Our Fleet</h2>
       {loading ? (
-        <div className="flex flex-col justify-center items-center py-12 text-lg">
-          <Loader2Icon className="animate-spin mr-2" />
+        <div className="flex flex-col items-center justify-center py-12 text-lg">
+          <Loader2Icon className="mr-2 animate-spin" />
           Loading vehicles...
         </div>
       ) : (
@@ -44,34 +44,35 @@ export default function Fleet({ vehicles }: FleetProps) {
                 exit={{ opacity: 0, y: 40 }}
                 transition={{ duration: 0.5, delay: idx * 0.15 }}
               >
-                <SpotlightCard className="bg-white border border-none shadow-lg shadow-[#024f7d]/10">
+                <SpotlightCard className="border border-none bg-white shadow-lg shadow-[#024f7d]/10">
                   <div className="flex flex-col gap-4 p-4">
                     <div className="flex items-center gap-4">
                       <Image
                         src={
-                          vehicle.images[0].url || "/images/car-placeholder.png"
+                          vehicle.images?.[0]?.url ||
+                          "/images/car-placeholder.png"
                         }
                         alt={`${vehicle.make} ${vehicle.model}`}
                         width={112}
                         height={80}
-                        className="w-28 h-20 object-cover rounded-xl border"
+                        className="h-20 w-28 rounded-xl border object-cover"
                       />
                       <div>
                         <div className="text-lg font-bold">
                           {vehicle.make} {vehicle.model} {vehicle.year}
                         </div>
 
-                        <div className="text-gray-500 text-sm">
+                        <div className="text-sm text-gray-500">
                           {vehicle.category}
                         </div>
                       </div>
                     </div>
-                    <ul className="flex flex-wrap gap-2 mt-2 text-xs text-gray-700">
+                    <ul className="mt-2 flex flex-wrap gap-2 text-xs text-gray-700">
                       {Array.isArray(vehicle.features) &&
                         (vehicle.features as string[]).map((f) => (
                           <li
                             key={f}
-                            className="bg-gray-100 px-2 py-1 rounded border border-gray-200"
+                            className="rounded border border-gray-200 bg-gray-100 px-2 py-1"
                           >
                             {f}
                           </li>
@@ -80,14 +81,14 @@ export default function Fleet({ vehicles }: FleetProps) {
                         (vehicle.features as string).split(",").map((f) => (
                           <li
                             key={f}
-                            className="bg-gray-100 px-2 py-1 rounded border border-gray-200"
+                            className="rounded border border-gray-200 bg-gray-100 px-2 py-1"
                           >
                             {f.trim()}
                           </li>
                         ))}
                     </ul>
-                    <div className="flex flex-col lg:flex-row justify-end gap-2">
-                      <p className="text-[#26b578] font-bold">
+                    <div className="flex flex-col justify-end gap-2 lg:flex-row">
+                      <p className="font-bold text-[#26b578]">
                         ${vehicle.dailyRate.toFixed(2)}/day
                       </p>
                       <Button variant="default" size="lg">

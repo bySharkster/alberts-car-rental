@@ -39,7 +39,7 @@ const SplitText: React.FC<SplitTextProps> = ({
 
     const obs = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry && entry.isIntersecting) {
           setInView(true);
           obs.unobserve(ref.current as Element);
         }
@@ -77,7 +77,7 @@ const SplitText: React.FC<SplitTextProps> = ({
   return (
     <p
       ref={ref}
-      className={`split-parent overflow-hidden inline ${className}`}
+      className={`split-parent inline overflow-hidden ${className}`}
       style={{ textAlign: textAlign }}
     >
       {words.map((word, wIdx) => (
@@ -88,7 +88,7 @@ const SplitText: React.FC<SplitTextProps> = ({
               words.slice(0, wIdx).reduce((acc, w) => acc + w.length, 0) + lIdx;
 
             return createElement(
-              animated.span,
+              animated.span || "span",
               {
                 key: index,
                 style: {

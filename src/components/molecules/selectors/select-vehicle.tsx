@@ -9,7 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import type { Vehicle } from "@prisma/client";
+import type { Vehicle } from "../../../../prisma/generated/client";
 
 interface SelectVehicleProps {
   vehicles: Vehicle[];
@@ -34,7 +34,7 @@ export default function SelectVehicle({
 
   return (
     <div>
-      <Label htmlFor="vehicle" className="font-normal mb-1">
+      <Label htmlFor="vehicle" className="mb-1 font-normal">
         Select a vehicle:
       </Label>
       {vehicles.length === 0 ? (
@@ -44,7 +44,7 @@ export default function SelectVehicle({
               <SelectValue placeholder="No vehicles available" />
             </SelectTrigger>
           </Select>
-          <p className="text-red-500 max-w-[280px] mt-2">
+          <p className="mt-2 max-w-[280px] text-red-500">
             No vehicles available
           </p>
         </>

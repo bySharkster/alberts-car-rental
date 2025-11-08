@@ -1,13 +1,14 @@
 "use server";
 
 import prisma from "@/lib/prisma";
-import { type Vehicle, type Image, VehicleStatus } from "@prisma/client";
+import { VehicleStatus } from "../../../../prisma/generated/client";
+import type { Vehicle, Image } from "../../../../prisma/generated/client";
 
-export interface VehicleWithImages extends Vehicle {
-  images: Image[];
-}
+export type VehicleWithImages = Vehicle & { images: Image[] };
 
-export default async function getVehiclesAction() {
+export default async function getVehiclesAction(): Promise<
+  VehicleWithImages[]
+> {
   const dbVehicles = await prisma.vehicle.findMany({
     orderBy: {
       createdAt: "desc",
@@ -58,7 +59,7 @@ export async function getImagesByVehicleId(vehicleId: number) {
       throw new Error("Failed to fetch images");
     }
 
-    images.map((image) => {
+    images.forEach((image: Image) => {
       const imageS3Name = new URL(image.url).pathname;
       image.url = process.env.AWS_CDN_URL + imageS3Name;
     });

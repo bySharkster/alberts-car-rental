@@ -63,10 +63,14 @@ class Noise {
     seed = Math.floor(seed);
     if (seed < 256) seed |= seed << 8;
     for (let i = 0; i < 256; i++) {
-      let v =
-        i & 1 ? this.p[i] ^ (seed & 255) : this.p[i] ^ ((seed >> 8) & 255);
+      const pValue = this.p[i] ?? 0;
+      let v = i & 1 ? pValue ^ (seed & 255) : pValue ^ ((seed >> 8) & 255);
       this.perm[i] = this.perm[i + 256] = v;
-      this.gradP[i] = this.gradP[i + 256] = this.grad3[v % 12];
+      const gradIndex = v % 12;
+      const grad = this.grad3[gradIndex];
+      if (grad) {
+        this.gradP[i] = this.gradP[i + 256] = grad;
+      }
     }
   }
   fade(t: number): number {
@@ -82,10 +86,25 @@ class Noise {
     y -= Y;
     X &= 255;
     Y &= 255;
-    const n00 = this.gradP[X + this.perm[Y]].dot2(x, y);
-    const n01 = this.gradP[X + this.perm[Y + 1]].dot2(x, y - 1);
-    const n10 = this.gradP[X + 1 + this.perm[Y]].dot2(x - 1, y);
-    const n11 = this.gradP[X + 1 + this.perm[Y + 1]].dot2(x - 1, y - 1);
+
+    const perm00 = this.perm[Y] ?? 0;
+    const perm01 = this.perm[Y + 1] ?? 0;
+    const perm10 = this.perm[Y] ?? 0;
+    const perm11 = this.perm[Y + 1] ?? 0;
+
+    const grad00 = this.gradP[X + perm00];
+    const grad01 = this.gradP[X + perm01];
+    const grad10 = this.gradP[X + 1 + perm10];
+    const grad11 = this.gradP[X + 1 + perm11];
+
+    if (!grad00 || !grad01 || !grad10 || !grad11) {
+      return 0;
+    }
+
+    const n00 = grad00.dot2(x, y);
+    const n01 = grad01.dot2(x, y - 1);
+    const n10 = grad10.dot2(x - 1, y);
+    const n11 = grad11.dot2(x - 1, y - 1);
     const u = this.fade(x);
     return this.lerp(
       this.lerp(n00, n10, u),
@@ -344,15 +363,15 @@ const Waves: React.FC<WavesProps> = ({
       ctx.beginPath();
       ctx.strokeStyle = configRef.current.lineColor;
       linesRef.current.forEach((points) => {
-        let p1 = moved(points[0], false);
+        if (points.length === 0) return;
+        let p1 = moved(points[0]!, false);
         ctx.moveTo(p1.x, p1.y);
         points.forEach((p, idx) => {
           const isLast = idx === points.length - 1;
           p1 = moved(p, !isLast);
-          const p2 = moved(
-            points[idx + 1] || points[points.length - 1],
-            !isLast
-          );
+          const nextPoint = points[idx + 1] || points[points.length - 1];
+          if (!nextPoint) return;
+          const p2 = moved(nextPoint, !isLast);
           ctx.lineTo(p1.x, p1.y);
           if (isLast) ctx.moveTo(p2.x, p2.y);
         });
@@ -391,7 +410,9 @@ const Waves: React.FC<WavesProps> = ({
     }
     function onTouchMove(e: TouchEvent) {
       const touch = e.touches[0];
-      updateMouse(touch.clientX, touch.clientY);
+      if (touch) {
+        updateMouse(touch.clientX, touch.clientY);
+      }
     }
     function updateMouse(x: number, y: number) {
       const mouse = mouseRef.current;
@@ -435,17 +456,17 @@ const Waves: React.FC<WavesProps> = ({
         backgroundColor,
         ...style,
       }}
-      className={`absolute top-0 left-0 w-full h-full overflow-hidden ${className} z-0`}
+      className={`absolute left-0 top-0 h-full w-full overflow-hidden ${className} z-0`}
     >
       <div
-        className="absolute top-0 left-0 bg-[#160000] rounded-full w-[0.5rem] h-[0.5rem]"
+        className="absolute left-0 top-0 h-[0.5rem] w-[0.5rem] rounded-full bg-[#160000]"
         style={{
           transform:
             "translate3d(calc(var(--x) - 50%), calc(var(--y) - 50%), 0)",
           willChange: "transform",
         }}
       />
-      <canvas ref={canvasRef} className="block w-full h-full" />
+      <canvas ref={canvasRef} className="block h-full w-full" />
     </div>
   );
 };

@@ -10,14 +10,14 @@ export default async function ContactPage() {
   return (
     <>
       <motion.div
-        className="w-full mx-auto py-16 px-4 sm:px-6 lg:py-20 relative min-h-screen"
+        className="relative mx-auto min-h-screen w-full px-4 py-16 sm:px-6 lg:py-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.7, ease: "anticipate" }}
       >
         <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#1A57B2_0%,#2C75A0_40%,#3A8F92_70%,#1DAF5A_100%)]" />
 
-        <div className="max-w-2xl lg:max-w-5xl mt-20 mx-auto">
+        <div className="mx-auto mt-20 max-w-2xl lg:max-w-5xl">
           <motion.div
             className="text-center"
             initial={{ y: 40, opacity: 0 }}
@@ -26,18 +26,18 @@ export default async function ContactPage() {
           >
             <SplitText
               text="Contact Us"
-              className="text-4xl sm:text-5xl font-extrabold tracking-tight text-[#16202A] dark:text-white mb-4 mx-auto drop-shadow-lg"
+              className="mx-auto mb-4 text-4xl font-extrabold tracking-tight text-[#16202A] drop-shadow-lg dark:text-white sm:text-5xl"
             />
             <motion.div
-              className="flex justify-center mb-6 h-1.5 mx-auto"
+              className="mx-auto mb-6 flex h-1.5 justify-center"
               initial={{ opacity: 0, width: 0 }}
               animate={{ opacity: 1, width: "12em" }}
               transition={{ duration: 0.3, delay: 1.4, ease: "easeOut" }}
             >
-              <div className="w-[calc(28rem)] h-1.5 rounded-full bg-gradient-to-r from-[#1A57B2] via-[#00FFB4] to-[#1DAF5A] opacity-80" />
+              <div className="h-1.5 w-[calc(28rem)] rounded-full bg-gradient-to-r from-[#1A57B2] via-[#00FFB4] to-[#1DAF5A] opacity-80" />
             </motion.div>
             <motion.p
-              className="text-lg sm:text-xl text-[#1A1A1A] dark:text-gray-200 max-w-2xl mx-auto font-medium"
+              className="mx-auto max-w-2xl text-lg font-medium text-[#1A1A1A] dark:text-gray-200 sm:text-xl"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 2.5 }}
@@ -54,12 +54,12 @@ export default async function ContactPage() {
               We would love to talk to you and see how we can help.
             </motion.p>
           </motion.div>
-          <div className="w-full flex justify-center my-8">
-            <div className="h-px w-3/4 bg-[#1A57B2]/30 dark:bg-white/20 rounded-full" />
+          <div className="my-8 flex w-full justify-center">
+            <div className="h-px w-3/4 rounded-full bg-[#1A57B2]/30 dark:bg-white/20" />
           </div>
 
           <motion.div
-            className="mt-12 grid items-center lg:grid-cols-2 gap-6 lg:gap-16"
+            className="mt-12 grid items-center gap-6 lg:grid-cols-2 lg:gap-16"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}

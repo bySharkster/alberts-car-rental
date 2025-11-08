@@ -89,10 +89,10 @@ export default function Stepper({
       {...rest}
     >
       <div
-        className={`mx-auto w-full max-w-md rounded-4xl flex flex-col min-h-[80dvh] justify-between items-stretch ${stepCircleContainerClassName}`}
+        className={`rounded-4xl mx-auto flex min-h-[80dvh] w-full max-w-md flex-col items-stretch justify-between ${stepCircleContainerClassName}`}
       >
         <div
-          className={`${stepContainerClassName} flex w-full items-center p-4 sm:p-8 overflow-x-auto`}
+          className={`${stepContainerClassName} flex w-full items-center overflow-x-auto p-4 sm:p-8`}
         >
           {(() => {
             // --- Calculate visible window ---
@@ -157,7 +157,7 @@ export default function Stepper({
         </StepContentWrapper>
 
         {!isCompleted && (
-          <div className={`px-3 sm:px-8 pb-8 ${footerClassName}`}>
+          <div className={`px-3 pb-8 sm:px-8 ${footerClassName}`}>
             <div
               className={`mt-10 flex ${
                 currentStep !== 1 ? "justify-between" : "justify-end"
@@ -168,7 +168,7 @@ export default function Stepper({
                   onClick={handleBack}
                   className={`duration-350 rounded px-2 py-1 transition ${
                     currentStep === 1
-                      ? "pointer-events-none opacity-50 text-neutral-400"
+                      ? "pointer-events-none text-neutral-400 opacity-50"
                       : "text-neutral-400 hover:text-neutral-700"
                   }`}
                   {...backButtonProps}
@@ -179,7 +179,7 @@ export default function Stepper({
               {!isLastStep && (
                 <button
                   onClick={handleNext}
-                  className="duration-350 flex items-center justify-center rounded-full bg-green-500 py-1.5 px-3.5 font-medium tracking-tight text-white transition hover:bg-green-600 active:bg-green-700"
+                  className="duration-350 flex items-center justify-center rounded-full bg-green-500 px-3.5 py-1.5 font-medium tracking-tight text-white transition hover:bg-green-600 active:bg-green-700"
                   {...nextButtonProps}
                 >
                   {nextButtonText}

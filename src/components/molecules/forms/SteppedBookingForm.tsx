@@ -14,7 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import type { Vehicle } from "@prisma/client";
+import type { Vehicle } from "../../../../prisma/generated/client";
 import { WhatsAppIcon } from "@/components/ui/whats-app-icon";
 import { Loader2Icon } from "lucide-react";
 import { motion } from "motion/react";
@@ -51,8 +51,8 @@ export default function SteppedBookingForm({
     email: "",
     phone: "",
     interestCar: 0,
-    from: undefined,
-    to: undefined,
+    from: new Date(),
+    to: new Date(),
     pickupHour: "",
     dropoffHour: "",
     pickupLocation: "",
@@ -159,12 +159,12 @@ export default function SteppedBookingForm({
           step={step}
           currentStep={currentStep}
           onClickStep={onStepClick}
-          hasError={stepHasError[step - 1]}
+          hasError={Boolean(stepHasError[step - 1])}
         />
       )}
     >
       <Step>
-        <h2 className="text-lg font-semibold mb-2">Your Name & Email</h2>
+        <h2 className="mb-2 text-lg font-semibold">Your Name & Email</h2>
         <div className="space-y-4">
           <input
             type="text"
@@ -173,12 +173,12 @@ export default function SteppedBookingForm({
             value={stepData.name}
             onChange={(e) => handleChange("name", e.target.value)}
             required
-            className={`w-full px-4 py-3 rounded-lg border ${
+            className={`w-full rounded-lg border px-4 py-3 ${
               errors.name ? "border-red-500" : "border-gray-300"
-            } dark:border-gray-600 focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white`}
+            } focus:ring-2 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white`}
           />
           {errors.name && (
-            <span className="text-red-500 text-xs">{errors.name}</span>
+            <span className="text-xs text-red-500">{errors.name}</span>
           )}
           <input
             type="email"
@@ -187,17 +187,17 @@ export default function SteppedBookingForm({
             value={stepData.email}
             onChange={(e) => handleChange("email", e.target.value)}
             required
-            className={`w-full px-4 py-3 rounded-lg border ${
+            className={`w-full rounded-lg border px-4 py-3 ${
               errors.email ? "border-red-500" : "border-gray-300"
-            } dark:border-gray-600 focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white`}
+            } focus:ring-2 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white`}
           />
           {errors.email && (
-            <span className="text-red-500 text-xs">{errors.email}</span>
+            <span className="text-xs text-red-500">{errors.email}</span>
           )}
         </div>
       </Step>
       <Step>
-        <h2 className="text-lg font-semibold mb-2">Your Phone Number</h2>
+        <h2 className="mb-2 text-lg font-semibold">Your Phone Number</h2>
         <input
           type="tel"
           name="phone"
@@ -205,25 +205,25 @@ export default function SteppedBookingForm({
           value={stepData.phone}
           onChange={(e) => handleChange("phone", e.target.value)}
           required
-          className={`w-full px-4 py-3 rounded-lg border ${
+          className={`w-full rounded-lg border px-4 py-3 ${
             errors.phone ? "border-red-500" : "border-gray-300"
-          } dark:border-gray-600 focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white`}
+          } focus:ring-2 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white`}
         />
         {errors.phone && (
-          <span className="text-red-500 text-xs">{errors.phone}</span>
+          <span className="text-xs text-red-500">{errors.phone}</span>
         )}
       </Step>
       <Step>
-        <h2 className="text-lg font-semibold mb-2">Select Your Car</h2>
+        <h2 className="mb-2 text-lg font-semibold">Select Your Car</h2>
         <Select
           name="interestCar"
           value={stepData.interestCar ? String(stepData.interestCar) : ""}
           onValueChange={(value) => handleChange("interestCar", value)}
         >
           <SelectTrigger
-            className={`w-full px-4 py-3 rounded-lg border ${
+            className={`w-full rounded-lg border px-4 py-3 ${
               errors.interestCar ? "border-red-500" : "border-gray-300"
-            } dark:border-gray-600 focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white`}
+            } focus:ring-2 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white`}
           >
             <SelectValue
               placeholder="Select a car"
@@ -239,12 +239,12 @@ export default function SteppedBookingForm({
           </SelectContent>
         </Select>
         {errors.interestCar && (
-          <span className="text-red-500 text-xs">{errors.interestCar}</span>
+          <span className="text-xs text-red-500">{errors.interestCar}</span>
         )}
       </Step>
       {/* Select Rental Dates */}
-      <Step className="space-y-4 px-2 mx-auto items-center flex flex-col w-full ">
-        <h2 className="text-lg font-semibold mb-2">Select Rental Dates</h2>
+      <Step className="mx-auto flex w-full flex-col items-center space-y-4 px-2">
+        <h2 className="mb-2 text-lg font-semibold">Select Rental Dates</h2>
         <ReservationCalendar
           selectedDates={selectedDates}
           setSelectedDates={(dates) => {
@@ -256,19 +256,19 @@ export default function SteppedBookingForm({
           rangeUnavailableDates={rangeUnavailableDates}
         />
         {(errors.from || errors.to) && (
-          <span className="text-red-500 text-xs">
+          <span className="text-xs text-red-500">
             Please select a valid rental date range
           </span>
         )}
       </Step>
       {/* Step: Pickup/Dropoff Hours */}
       <Step>
-        <h2 className="text-lg font-semibold mb-2">Pickup & Dropoff Hours</h2>
-        <div className="flex md:flex-row flex-col justify-center gap-2 max-w-[600px] mx-auto">
+        <h2 className="mb-2 text-lg font-semibold">Pickup & Dropoff Hours</h2>
+        <div className="mx-auto flex max-w-[600px] flex-col justify-center gap-2 md:flex-row">
           <div className="w-full">
             <label
               htmlFor="pickupHour"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+              className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
             >
               Pickup Hour
             </label>
@@ -300,13 +300,13 @@ export default function SteppedBookingForm({
               </SelectContent>
             </Select>
             {errors.pickupHour && (
-              <span className="text-red-500 text-xs">{errors.pickupHour}</span>
+              <span className="text-xs text-red-500">{errors.pickupHour}</span>
             )}
           </div>
           <div className="w-full">
             <label
               htmlFor="dropoffHour"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+              className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
             >
               Dropoff Hour
             </label>
@@ -338,21 +338,21 @@ export default function SteppedBookingForm({
               </SelectContent>
             </Select>
             {errors.dropoffHour && (
-              <span className="text-red-500 text-xs">{errors.dropoffHour}</span>
+              <span className="text-xs text-red-500">{errors.dropoffHour}</span>
             )}
           </div>
         </div>
       </Step>
       {/* Step: Pickup/Dropoff Locations */}
       <Step>
-        <h2 className="text-lg font-semibold mb-2">
+        <h2 className="mb-2 text-lg font-semibold">
           Pickup & Dropoff Locations
         </h2>
-        <div className="flex flex-col md:flex-row justify-center gap-2 md:max-w-[600px] mx-auto">
+        <div className="mx-auto flex flex-col justify-center gap-2 md:max-w-[600px] md:flex-row">
           <div className="w-full">
             <label
               htmlFor="pickupLocation"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+              className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
             >
               Pickup Location
             </label>
@@ -374,7 +374,7 @@ export default function SteppedBookingForm({
               </SelectContent>
             </Select>
             {errors.pickupLocation && (
-              <span className="text-red-500 text-xs">
+              <span className="text-xs text-red-500">
                 {errors.pickupLocation}
               </span>
             )}
@@ -382,7 +382,7 @@ export default function SteppedBookingForm({
           <div className="w-full">
             <label
               htmlFor="dropoffLocation"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+              className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
             >
               Dropoff Location
             </label>
@@ -404,7 +404,7 @@ export default function SteppedBookingForm({
               </SelectContent>
             </Select>
             {errors.dropoffLocation && (
-              <span className="text-red-500 text-xs">
+              <span className="text-xs text-red-500">
                 {errors.dropoffLocation}
               </span>
             )}
@@ -413,7 +413,7 @@ export default function SteppedBookingForm({
       </Step>
       {/* Review step */}
       <Step>
-        <h2 className="text-lg font-semibold mb-2">Your Request</h2>
+        <h2 className="mb-2 text-lg font-semibold">Your Request</h2>
         <textarea
           name="message"
           placeholder="Tell us about your rental needs"
@@ -421,17 +421,17 @@ export default function SteppedBookingForm({
           onChange={(e) => handleChange("message", e.target.value)}
           rows={4}
           required
-          className={`w-full px-4 py-3 rounded-lg border ${
+          className={`w-full rounded-lg border px-4 py-3 ${
             errors.message ? "border-red-500" : "border-gray-300"
-          } dark:border-gray-600 focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white`}
+          } focus:ring-2 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white`}
         />
         {errors.message && (
-          <span className="text-red-500 text-xs">{errors.message}</span>
+          <span className="text-xs text-red-500">{errors.message}</span>
         )}
       </Step>
       {/* Review step */}
       <Step>
-        <h2 className="text-lg font-semibold mb-2">Review & Submit</h2>
+        <h2 className="mb-2 text-lg font-semibold">Review & Submit</h2>
         <div className="space-y-2 text-sm">
           <div>
             <strong>Name:</strong> {stepData.name}
@@ -459,7 +459,7 @@ export default function SteppedBookingForm({
         </div>
         <button
           type="button"
-          className="mt-4 w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition duration-300 flex items-center justify-center group "
+          className="group mt-4 flex w-full items-center justify-center rounded-lg bg-green-600 px-4 py-3 font-medium text-white transition duration-300 hover:bg-green-700"
           disabled={loading || Object.keys(errors).length > 0}
           onClick={handleFinalSubmit}
         >
@@ -485,7 +485,7 @@ export default function SteppedBookingForm({
           ) : (
             <div className="flex items-center gap-2">
               <span className="group-hover:hidden">Submit Booking Request</span>
-              <WhatsAppIcon className="ml-2 hidden group-hover:block " />
+              <WhatsAppIcon className="ml-2 hidden group-hover:block" />
             </div>
           )}
         </button>

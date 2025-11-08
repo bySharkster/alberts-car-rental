@@ -57,19 +57,19 @@ export default function FeaturesSection() {
   return (
     <motion.section
       id="features"
-      className="py-20 bg-[#F4EFEF] text-[#1f3045] relative -mt-32 z-30 overflow-visible"
+      className="relative z-30 -mt-32 overflow-visible bg-[#F4EFEF] py-20 text-[#1f3045]"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.2 }}
     >
-      <div className="container mx-auto px-6 relative z-20">
+      <div className="container relative z-20 mx-auto px-6">
         <motion.div
-          className="text-center mb-16"
+          className="mb-16 text-center"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <h2 className="text-4xl font-bold text-[#1f3045] mb-4">
+          <h2 className="mb-4 text-4xl font-bold text-[#1f3045]">
             <RotatingText
               texts={[
                 "Premium Features",
@@ -88,13 +88,13 @@ export default function FeaturesSection() {
               rotationInterval={2000}
             />
           </h2>
-          <p className="text-xl text-[#464648] max-w-3xl mx-auto">
+          <p className="mx-auto max-w-3xl text-xl text-[#464648]">
             Experience the difference with our premium services designed for
             your comfort and convenience.
           </p>
         </motion.div>
         <AnimatedSection
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-4"
+          className="grid gap-4 md:grid-cols-2 lg:grid-cols-4"
           direction="up"
           delay={0.2}
         >
@@ -106,19 +106,19 @@ export default function FeaturesSection() {
               transition={{ duration: idx === 0 ? 0.6 : 0.8, delay: idx * 0.3 }}
             >
               <SpotlightCard
-                className="bg-white border border-none shadow-lg shadow-[#024f7d]/10"
+                className="border border-none bg-white shadow-lg shadow-[#024f7d]/10"
                 spotlightColor={feature.spotlightColor}
               >
-                <div className="items-center flex flex-col justify-center md:min-h-[350px] min-h-[250px] p-2">
+                <div className="flex min-h-[250px] flex-col items-center justify-center p-2 md:min-h-[350px]">
                   <div
-                    className={`w-16 h-16 ${feature.iconBg} rounded-full flex items-center justify-center mb-6`}
+                    className={`h-16 w-16 ${feature.iconBg} mb-6 flex items-center justify-center rounded-full`}
                   >
                     {feature.icon}
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-[#1f3045]">
+                  <h3 className="mb-3 text-xl font-bold text-[#1f3045]">
                     {feature.title}
                   </h3>
-                  <p className="text-[#464648] text-center">
+                  <p className="text-center text-[#464648]">
                     {feature.description}
                   </p>
                 </div>

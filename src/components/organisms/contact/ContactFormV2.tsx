@@ -4,11 +4,17 @@ import config from "@/config";
 import { Loader, Send } from "lucide-react";
 import { sendContactEmail } from "@/app/actions/resend";
 
-import type { Vehicle } from "@prisma/client";
+import type { Vehicle } from "../../../../prisma/generated/client";
 import { useActionState, useEffect, useMemo } from "react";
 import { toast } from "sonner";
 
 const initialState = null;
+
+function isFieldErrorObject(
+  error: unknown
+): error is { [key: string]: string[] } {
+  return typeof error === "object" && error !== null && !Array.isArray(error);
+}
 
 async function contactFormReducer(prevState: unknown, formData: FormData) {
   return await sendContactEmail(formData);
@@ -25,11 +31,6 @@ export default function ContactFormV2({ vehicles }: { vehicles: Vehicle[] }) {
     [state]
   );
 
-  function isFieldErrorObject(
-    error: unknown
-  ): error is { [key: string]: string[] } {
-    return typeof error === "object" && error !== null && !Array.isArray(error);
-  }
 
   useEffect(() => {
     if (state?.success) {
@@ -52,18 +53,18 @@ export default function ContactFormV2({ vehicles }: { vehicles: Vehicle[] }) {
   return (
     <form
       action={formAction}
-      className="relative flex flex-col max-w-xl mx-auto glass-card border border-[#1DAF5A]/30 shadow-xl rounded-2xl p-6 sm:p-10 bg-white/70 dark:bg-gray-900/80 backdrop-blur-md transition-all duration-300 space-y-8 group"
+      className="glass-card group relative mx-auto flex max-w-xl flex-col space-y-8 rounded-2xl border border-[#1DAF5A]/30 bg-white/70 p-6 shadow-xl backdrop-blur-md transition-all duration-300 dark:bg-gray-900/80 sm:p-10"
     >
-      <h2 className="text-2xl font-bold text-center text-[#1A57B2] dark:text-white mb-2 drop-shadow-lg tracking-tight animate-fade-in">
+      <h2 className="animate-fade-in mb-2 text-center text-2xl font-bold tracking-tight text-[#1A57B2] drop-shadow-lg dark:text-white">
         Contact Us
       </h2>
       <div className="flex justify-center">
-        <div className="w-24 h-1.5 rounded-full bg-gradient-to-r from-[#1DAF5A] via-[#00FFB4] to-[#1A57B2] animate-pulse" />
+        <div className="h-1.5 w-24 animate-pulse rounded-full bg-gradient-to-r from-[#1DAF5A] via-[#00FFB4] to-[#1A57B2]" />
       </div>
-      <div className="relative animate-fade-in">
+      <div className="animate-fade-in relative">
         <label
           htmlFor="name"
-          className="block text-sm font-semibold text-[#1A57B2] dark:text-white mb-2"
+          className="mb-2 block text-sm font-semibold text-[#1A57B2] dark:text-white"
         >
           Full Name
         </label>
@@ -84,23 +85,22 @@ export default function ContactFormV2({ vehicles }: { vehicles: Vehicle[] }) {
           </span>
           <input
             type="text"
-            id="name"
             name="name"
             required
-            className={`w-full pl-10 pr-4 py-3 rounded-xl border bg-white/90 dark:bg-gray-800 text-gray-900 dark:text-white shadow-inner focus:ring-2 focus:ring-[#1DAF5A] focus:border-[#1DAF5A] transition-all duration-200 placeholder-gray-400/70 ${fieldErrors.name && fieldErrors.name.length > 0 ? "border-red-500 ring-red-400" : "border-gray-300 dark:border-gray-600"}`}
+            className={`w-full rounded-xl border bg-white/90 py-3 pl-10 pr-4 text-gray-900 placeholder-gray-400/70 shadow-inner transition-all duration-200 focus:border-[#1DAF5A] focus:ring-2 focus:ring-[#1DAF5A] dark:bg-gray-800 dark:text-white ${fieldErrors.name && fieldErrors.name.length > 0 ? "border-red-500 ring-red-400" : "border-gray-300 dark:border-gray-600"}`}
             placeholder="Your full name"
           />
         </div>
         {fieldErrors?.name && (
-          <span className="mt-2 inline-block px-3 py-1 bg-red-50 border-l-4 border-red-400 text-xs text-red-700 rounded-r shadow-sm animate-shake">
+          <span className="animate-shake mt-2 inline-block rounded-r border-l-4 border-red-400 bg-red-50 px-3 py-1 text-xs text-red-700 shadow-sm">
             {fieldErrors.name.join(", ")}
           </span>
         )}
       </div>
-      <div className="relative animate-fade-in">
+      <div className="animate-fade-in relative">
         <label
           htmlFor="email"
-          className="block text-sm font-semibold text-[#1A57B2] dark:text-white mb-2"
+          className="mb-2 block text-sm font-semibold text-[#1A57B2] dark:text-white"
         >
           Email
         </label>
@@ -121,15 +121,14 @@ export default function ContactFormV2({ vehicles }: { vehicles: Vehicle[] }) {
           </span>
           <input
             type="email"
-            id="email"
             name="email"
             required
-            className={`w-full pl-10 pr-4 py-3 rounded-xl border bg-white/90 dark:bg-gray-800 text-gray-900 dark:text-white shadow-inner focus:ring-2 focus:ring-[#1DAF5A] focus:border-[#1DAF5A] transition-all duration-200 placeholder-gray-400/70 ${fieldErrors.email ? "border-red-500 ring-red-400" : "border-gray-300 dark:border-gray-600"}`}
+            className={`w-full rounded-xl border bg-white/90 py-3 pl-10 pr-4 text-gray-900 placeholder-gray-400/70 shadow-inner transition-all duration-200 focus:border-[#1DAF5A] focus:ring-2 focus:ring-[#1DAF5A] dark:bg-gray-800 dark:text-white ${fieldErrors.email ? "border-red-500 ring-red-400" : "border-gray-300 dark:border-gray-600"}`}
             placeholder="your@email.com"
           />
         </div>
         {fieldErrors.email && (
-          <span className="mt-2 inline-block px-3 py-1 bg-red-50 border-l-4 border-red-400 text-xs text-red-700 rounded-r shadow-sm animate-shake">
+          <span className="animate-shake mt-2 inline-block rounded-r border-l-4 border-red-400 bg-red-50 px-3 py-1 text-xs text-red-700 shadow-sm">
             {fieldErrors.email.join(", ")}
           </span>
         )}
@@ -137,7 +136,7 @@ export default function ContactFormV2({ vehicles }: { vehicles: Vehicle[] }) {
       <div>
         <label
           htmlFor="phone"
-          className="block text-sm font-medium text-white mb-1"
+          className="mb-1 block text-sm font-medium text-white"
         >
           Phone
         </label>
@@ -158,14 +157,13 @@ export default function ContactFormV2({ vehicles }: { vehicles: Vehicle[] }) {
           </span>
           <input
             type="tel"
-            id="phone"
             name="phone"
             required
-            className={`w-full pl-10 pr-4 py-3 rounded-xl border bg-white/90 dark:bg-gray-800 text-gray-900 dark:text-white shadow-inner focus:ring-2 focus:ring-[#1DAF5A] focus:border-[#1DAF5A] transition-all duration-200 placeholder-gray-400/70 ${fieldErrors.phone ? "border-red-500 ring-red-400" : "border-gray-300 dark:border-gray-600"}`}
+            className={`w-full rounded-xl border bg-white/90 py-3 pl-10 pr-4 text-gray-900 placeholder-gray-400/70 shadow-inner transition-all duration-200 focus:border-[#1DAF5A] focus:ring-2 focus:ring-[#1DAF5A] dark:bg-gray-800 dark:text-white ${fieldErrors.phone ? "border-red-500 ring-red-400" : "border-gray-300 dark:border-gray-600"}`}
           />
         </div>
         {fieldErrors.phone && (
-          <span className="text-red-400 text-xs mt-1 block">
+          <span className="mt-1 block text-xs text-red-400">
             {fieldErrors.phone.join(", ")}
           </span>
         )}
@@ -173,14 +171,13 @@ export default function ContactFormV2({ vehicles }: { vehicles: Vehicle[] }) {
       <div>
         <label
           htmlFor="car"
-          className="block text-sm font-medium text-white mb-1"
+          className="mb-1 block text-sm font-medium text-white"
         >
           Vehicle (optional)
         </label>
         <select
-          id="car"
           name="car"
-          className={`w-full pl-10 pr-4 py-3 rounded-xl border bg-white/90 dark:bg-gray-800 text-gray-900 dark:text-white shadow-inner focus:ring-2 focus:ring-[#1DAF5A] focus:border-[#1DAF5A] transition-all duration-200 placeholder-gray-400/70 ${fieldErrors.car ? "border-red-500 ring-red-400" : "border-gray-300 dark:border-gray-600"}`}
+          className={`w-full rounded-xl border bg-white/90 py-3 pl-10 pr-4 text-gray-900 placeholder-gray-400/70 shadow-inner transition-all duration-200 focus:border-[#1DAF5A] focus:ring-2 focus:ring-[#1DAF5A] dark:bg-gray-800 dark:text-white ${fieldErrors.car ? "border-red-500 ring-red-400" : "border-gray-300 dark:border-gray-600"}`}
         >
           <option value="">-- Select a vehicle (optional) --</option>
           {vehicles.map((v: Vehicle) => (
@@ -190,7 +187,7 @@ export default function ContactFormV2({ vehicles }: { vehicles: Vehicle[] }) {
           ))}
         </select>
         {fieldErrors.car && (
-          <span className="text-red-400 text-xs mt-1 block">
+          <span className="mt-1 block text-xs text-red-400">
             {fieldErrors.car.join(", ")}
           </span>
         )}
@@ -198,20 +195,19 @@ export default function ContactFormV2({ vehicles }: { vehicles: Vehicle[] }) {
       <div>
         <label
           htmlFor="message"
-          className="block text-sm font-medium text-white mb-1"
+          className="mb-1 block text-sm font-medium text-white"
         >
           Message
         </label>
         <textarea
-          id="message"
           name="message"
           required
           rows={5}
-          className={`w-full pl-10 pr-4 py-3 rounded-xl border bg-white/90 dark:bg-gray-800 text-gray-900 dark:text-white shadow-inner focus:ring-2 focus:ring-[#1DAF5A] focus:border-[#1DAF5A] transition-all duration-200 placeholder-gray-400/70 ${fieldErrors.message ? "border-red-500 ring-red-400" : "border-gray-300 dark:border-gray-600"}`}
+          className={`w-full rounded-xl border bg-white/90 py-3 pl-10 pr-4 text-gray-900 placeholder-gray-400/70 shadow-inner transition-all duration-200 focus:border-[#1DAF5A] focus:ring-2 focus:ring-[#1DAF5A] dark:bg-gray-800 dark:text-white ${fieldErrors.message ? "border-red-500 ring-red-400" : "border-gray-300 dark:border-gray-600"}`}
           placeholder="Tell us about your inquiry or request"
         />
         {fieldErrors.message && (
-          <span className="text-red-400 text-xs mt-1 block">
+          <span className="mt-1 block text-xs text-red-400">
             {fieldErrors.message.join(", ")}
           </span>
         )}
@@ -219,31 +215,31 @@ export default function ContactFormV2({ vehicles }: { vehicles: Vehicle[] }) {
       <button
         type="submit"
         disabled={isPending}
-        className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-xl transition duration-300 flex items-center justify-center"
+        className="flex w-full items-center justify-center rounded-xl bg-green-600 px-4 py-3 font-medium text-white transition duration-300 hover:bg-green-700"
       >
         <div className="flex items-center gap-2">
           {isPending ? (
-            <Loader className="w-5 h-5 rounded-full animate-spin" />
+            <Loader className="h-5 w-5 animate-spin rounded-full" />
           ) : (
             <>
               <p className="text-sm">Send Message</p>
-              <Send className="w-5 h-5" />
+              <Send className="h-5 w-5" />
             </>
           )}
         </div>
       </button>
-      <p className="text-white text-center mt-4 text-sm">
+      <p className="mt-4 text-center text-sm text-white">
         For more information, call us at
         <Link
           href={`tel:${config.ownerPhone}`}
-          className="text-green-700 underline-offset-2 underline mx-1"
+          className="mx-1 text-green-700 underline underline-offset-2"
         >
           {config.ownerPhone}
         </Link>
         or contact us via
         <Link
           href="https://wa.link/k91t18"
-          className="text-green-700 underline-offset-2 underline mx-1"
+          className="mx-1 text-green-700 underline underline-offset-2"
         >
           WhatsApp
         </Link>

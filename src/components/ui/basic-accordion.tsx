@@ -40,7 +40,7 @@ export default function BasicAccordion({
 
   return (
     <div
-      className={`divide-light-300 dark:divide-primary flex w-full flex-col divide-y rounded-lg border ${className}`}
+      className={`divide-light-300 flex w-full flex-col divide-y rounded-lg border dark:divide-primary ${className}`}
     >
       {items.map((item) => {
         const isExpanded = expandedItems.includes(item.id);
@@ -89,7 +89,7 @@ export default function BasicAccordion({
                   }}
                   className="overflow-hidden"
                 >
-                  <div className="border-transparent dark:border-primary  px-4 py-3">
+                  <div className="border-transparent px-4 py-3 dark:border-primary">
                     {item.content}
                   </div>
                 </motion.div>

@@ -3,12 +3,12 @@ import Link from "next/link";
 import Image from "next/image";
 export default function FooterSection() {
   return (
-    <footer className="bg-[#1f3045] text-white pt-16 pb-8">
+    <footer className="bg-[#1f3045] pb-8 pt-16 text-white">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
+        <div className="mb-16 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <h3 className="text-xl font-bold mb-6">Albert Car Rental</h3>
-            <p className="text-white/80 mb-6">
+            <h3 className="mb-6 text-xl font-bold">Albert Car Rental</h3>
+            <p className="mb-6 text-white/80">
               Providing premium car rental experiences since 2023. Our
               commitment to quality and service excellence makes every journey
               exceptional.
@@ -16,7 +16,7 @@ export default function FooterSection() {
             <div className="flex space-x-4">
               <Link
                 href={config.social.facebook}
-                className="text-white hover:text-[#26a6fb] transition-colors cursor-pointer h-8 w-8 flex items-center justify-center"
+                className="flex h-8 w-8 cursor-pointer items-center justify-center text-white transition-colors hover:text-[#26a6fb]"
               >
                 <i className="fab fa-facebook-f text-xl" />
               </Link>
@@ -31,7 +31,7 @@ export default function FooterSection() {
             </Link> */}
               <Link
                 href={config.social.whatsapp}
-                className="text-white hover:text-[#26b578] transition-colors cursor-pointer h-8 w-8 flex items-center justify-center"
+                className="flex h-8 w-8 cursor-pointer items-center justify-center text-white transition-colors hover:text-[#26b578]"
               >
                 <i className="fab fa-whatsapp text-2xl" />
               </Link>
@@ -39,12 +39,12 @@ export default function FooterSection() {
           </div>
 
           <div>
-            <h3 className="text-xl font-bold mb-6">Quick Links</h3>
+            <h3 className="mb-6 text-xl font-bold">Quick Links</h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="/fleet"
-                  className="text-white/80 hover:text-white transition-colors cursor-pointer"
+                  className="cursor-pointer text-white/80 transition-colors hover:text-white"
                 >
                   Our Fleet
                 </Link>
@@ -54,7 +54,7 @@ export default function FooterSection() {
               <li>
                 <Link
                   href="/book"
-                  className="text-white/80 hover:text-white transition-colors cursor-pointer"
+                  className="cursor-pointer text-white/80 transition-colors hover:text-white"
                 >
                   Reservations
                 </Link>
@@ -72,12 +72,12 @@ export default function FooterSection() {
           </div>
 
           <div>
-            <h3 className="text-xl font-bold mb-6">Customer Support</h3>
+            <h3 className="mb-6 text-xl font-bold">Customer Support</h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="/#faqs"
-                  className="text-white/80 hover:text-white transition-colors cursor-pointer"
+                  className="cursor-pointer text-white/80 transition-colors hover:text-white"
                 >
                   FAQs
                 </Link>
@@ -85,7 +85,7 @@ export default function FooterSection() {
               <li>
                 <Link
                   href="/contact"
-                  className="text-white/80 hover:text-white transition-colors cursor-pointer"
+                  className="cursor-pointer text-white/80 transition-colors hover:text-white"
                 >
                   Contact Us
                 </Link>
@@ -94,7 +94,7 @@ export default function FooterSection() {
               <li>
                 <Link
                   href="/terms"
-                  className="text-white/80 hover:text-white transition-colors cursor-pointer"
+                  className="cursor-pointer text-white/80 transition-colors hover:text-white"
                 >
                   Terms & Conditions
                 </Link>
@@ -102,7 +102,7 @@ export default function FooterSection() {
               <li>
                 <Link
                   href="/privacy"
-                  className="text-white/80 hover:text-white transition-colors cursor-pointer"
+                  className="cursor-pointer text-white/80 transition-colors hover:text-white"
                 >
                   Privacy Policy
                 </Link>
@@ -110,7 +110,7 @@ export default function FooterSection() {
               <li>
                 <Link
                   href="/cancellation"
-                  className="text-white/80 hover:text-white transition-colors cursor-pointer"
+                  className="cursor-pointer text-white/80 transition-colors hover:text-white"
                 >
                   Cancellation Policy
                 </Link>
@@ -119,29 +119,29 @@ export default function FooterSection() {
           </div>
 
           <div className="overflow-hidden">
-            <h3 className="text-xl font-bold mb-6">Contact Information</h3>
+            <h3 className="mb-6 text-xl font-bold">Contact Information</h3>
             <ul className="space-y-3">
               <li className="flex items-start">
-                <i className="fas fa-map-marker-alt mt-1 mr-3 text-[#26a6fb]" />
+                <i className="fas fa-map-marker-alt mr-3 mt-1 text-[#26a6fb]" />
                 <span className="text-white/80">{config.address}</span>
               </li>
               <li className="flex items-start">
-                <i className="fas fa-phone-alt mt-1 mr-3 text-[#26a6fb]" />
+                <i className="fas fa-phone-alt mr-3 mt-1 text-[#26a6fb]" />
                 <span className="text-white/80">{config.ownerPhone}</span>
               </li>
               <li className="flex items-start">
-                <i className="fas fa-envelope mt-1 mr-3 text-[#26a6fb]" />
+                <i className="fas fa-envelope mr-3 mt-1 text-[#26a6fb]" />
                 <span className="text-white/80">
                   <Link
                     href={`mailto:${config.resend.supportEmail}`}
-                    className="hover:underline transition-colors cursor-pointer"
+                    className="cursor-pointer transition-colors hover:underline"
                   >
                     {config.resend.supportEmail}
                   </Link>
                 </span>
               </li>
               <li className="flex items-start">
-                <i className="fas fa-clock mt-1 mr-3 text-[#26a6fb]" />
+                <i className="fas fa-clock mr-3 mt-1 text-[#26a6fb]" />
                 <span className="text-white/80">
                   Mon-Fri: 8AM-8PM
                   <br />
@@ -152,9 +152,9 @@ export default function FooterSection() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/20 flex gap-8 flex-col items-center">
-          <div className="flex flex-col md:flex-row justify-between items-center w-full">
-            <p className="text-white/60 text-sm mb-4 md:mb-0">
+        <div className="flex flex-col items-center gap-8 border-t border-white/20 pt-8">
+          <div className="flex w-full flex-col items-center justify-between md:flex-row">
+            <p className="mb-4 text-sm text-white/60 md:mb-0">
               © 2025 Albert Car Rental. All rights reserved.
             </p>
             <div className="flex space-x-6">
@@ -164,8 +164,8 @@ export default function FooterSection() {
               <i className="fab fa-cc-paypal text-2xl text-white/80" />
             </div>
           </div>
-          <div className="flex flex-col md:flex-row justify-between items-center">
-          <div>
+          <div className="flex flex-col items-center justify-between md:flex-row">
+            <div>
               <Link href="http://digital-sunsets.com/?utm_source=albertscarrental&utm_medium=website&utm_campaign=lead&utm_content=footer-call-to-action">
                 <Image
                   src="/designed_by_dark.svg"

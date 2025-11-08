@@ -29,15 +29,15 @@ export async function sendContactEmail(formData: FormData) {
   }
   const { name, email, phone, car, message } = parsed.data;
   const [firstName, ...rest] = name.split(" ");
-  const lastName = rest.join(" ");
+  const lastName = rest.join(" ") || "";
   try {
     await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL || "noreply@albertcarrental.com",
       to: process.env.RESEND_TO_EMAIL || "contact@fernandoaponte.dev",
       subject: `New Contact Request from ${name}`,
       react: EmailTemplate({
-        firstName,
-        lastName,
+        firstName: firstName || "",
+        lastName: lastName || "",
         phoneNumber: phone,
         email,
         text: `${message}${car ? `\n\nVehicle of interest: ${car}` : ""}`,

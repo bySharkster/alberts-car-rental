@@ -10,7 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import type { Vehicle } from "@prisma/client";
+import type { Vehicle } from "../../../../prisma/generated/client";
 import {
   type DateRange,
   DateRangePicker,
@@ -31,7 +31,7 @@ export default function BookingForm({ vehicles, vehicleId }: BookingFormProps) {
   const router = useRouter();
 
   const [selectedCar, setSelectedCar] = useState<number>(
-    Number(vehicleId) || vehicles[0].id
+    Number(vehicleId) || vehicles[0]?.id || 0
   );
 
   const {
@@ -86,51 +86,48 @@ export default function BookingForm({ vehicles, vehicleId }: BookingFormProps) {
       <div>
         <label
           htmlFor="name"
-          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+          className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
         >
           Full Name
         </label>
         <input
           type="text"
-          id="name"
-          placeholder="Enter your name"
           name="name"
+          placeholder="Enter your name"
           required
-          className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white"
+          className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:ring-2 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
         />
       </div>
       {/* email */}
       <div>
         <label
           htmlFor="email"
-          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+          className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
         >
           Email Address
         </label>
         <input
           type="email"
-          id="email"
-          placeholder="your@email.com"
           name="email"
+          placeholder="your@email.com"
           required
-          className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white"
+          className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:ring-2 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
         />
       </div>
       {/* phone */}
       <div>
         <label
           htmlFor="phone"
-          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+          className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
         >
           Phone Number
         </label>
         <input
           type="tel"
-          id="phone"
           placeholder="Your phone number"
           name="phone"
           required
-          className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white"
+          className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:ring-2 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
         />
       </div>
       {/* vehicle */}
@@ -138,13 +135,13 @@ export default function BookingForm({ vehicles, vehicleId }: BookingFormProps) {
         <SelectVehicle
           vehicles={vehicles}
           onSelectVehicle={(vehicle) => {
-            setSelectedCar(vehicle ? vehicle.id : vehicles[0]?.id);
+            setSelectedCar(vehicle ? vehicle.id : vehicles[0]?.id || 0);
           }}
         />
       </div>
       {/* dates */}
-      <div className="mt-6 mx-auto w-full flex items-center justify-center flex-col">
-        <h2 className="text-lg font-semibold mb-2">Rental Dates</h2>
+      <div className="mx-auto mt-6 flex w-full flex-col items-center justify-center">
+        <h2 className="mb-2 text-lg font-semibold">Rental Dates</h2>
         <ReservationCalendar
           selectedDates={selectedDates}
           setSelectedDates={setSelectedDates}
@@ -153,11 +150,11 @@ export default function BookingForm({ vehicles, vehicleId }: BookingFormProps) {
         />
       </div>
       {/* hours */}
-      <div className="flex md:flex-row flex-col justify-center gap-2 max-w-[600px] mx-auto">
+      <div className="mx-auto flex max-w-[600px] flex-col justify-center gap-2 md:flex-row">
         <div className="w-full">
           <label
             htmlFor="pickupHour"
-            className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+            className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
           >
             Pickup Hour
           </label>
@@ -187,7 +184,7 @@ export default function BookingForm({ vehicles, vehicleId }: BookingFormProps) {
         <div className="w-full">
           <label
             htmlFor="dropoffHour"
-            className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+            className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
           >
             Dropoff Hour
           </label>
@@ -216,11 +213,11 @@ export default function BookingForm({ vehicles, vehicleId }: BookingFormProps) {
         </div>
       </div>
       {/* locations */}
-      <div className="flex flex-row justify-center gap-2 md:max-w-[600px] mx-auto">
+      <div className="mx-auto flex flex-row justify-center gap-2 md:max-w-[600px]">
         <div className="w-full">
           <label
             htmlFor="pickupLocation"
-            className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+            className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
           >
             Pickup Location
           </label>
@@ -238,7 +235,7 @@ export default function BookingForm({ vehicles, vehicleId }: BookingFormProps) {
         <div className="w-full">
           <label
             htmlFor="dropoffLocation"
-            className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+            className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
           >
             Dropoff Location
           </label>
@@ -258,23 +255,22 @@ export default function BookingForm({ vehicles, vehicleId }: BookingFormProps) {
         {/* message */}
         <label
           htmlFor="message"
-          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+          className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
         >
           Your Request
         </label>
         <textarea
-          id="message"
           placeholder="Tell us about your rental needs"
           name="message"
           rows={4}
           required
-          className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white"
+          className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:ring-2 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
         />
       </div>
 
       <button
         type="submit"
-        className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition duration-300 flex items-center justify-center"
+        className="flex w-full items-center justify-center rounded-lg bg-green-600 px-4 py-3 font-medium text-white transition duration-300 hover:bg-green-700"
         disabled={loading}
       >
         {loading ? "Submitting..." : "Submit Booking Request"}
