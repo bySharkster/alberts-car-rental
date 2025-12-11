@@ -360,7 +360,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/codewfer/Documents/ds-repo/client-projects/alberts-car-rental/prisma/generated/client",
+      "value": "/vercel/sandbox/primary/prisma/generated/client",
       "fromEnvVar": null
     },
     "config": {
@@ -369,17 +369,16 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "darwin-arm64",
+        "value": "rhel-openssl-3.0.x",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/codewfer/Documents/ds-repo/client-projects/alberts-car-rental/prisma/schema.prisma",
+    "sourceFilePath": "/vercel/sandbox/primary/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
-    "schemaEnvPath": "../../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../..",
   "clientVersion": "6.6.0",
